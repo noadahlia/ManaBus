@@ -6,3 +6,4 @@ This is a new line. I have to resolve the conflict. (Noa)
 I want to make a conflict
 
 End Elisheva
+End Noa
