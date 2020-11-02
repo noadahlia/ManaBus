@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNet5781_00_7799_9212", "dotNet5781_00_7799_9212\dotNet5781_00_7799_9212.csproj", "{676245FE-3627-4279-9066-C0D7C69979CB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNet5781_01_7799_9212", "dotNet5781_01_7799_9212\dotNet5781_01_7799_9212.csproj", "{F10C12ED-7867-4265-A47B-F8330A38351B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{676245FE-3627-4279-9066-C0D7C69979CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{676245FE-3627-4279-9066-C0D7C69979CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{676245FE-3627-4279-9066-C0D7C69979CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F10C12ED-7867-4265-A47B-F8330A38351B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F10C12ED-7867-4265-A47B-F8330A38351B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F10C12ED-7867-4265-A47B-F8330A38351B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F10C12ED-7867-4265-A47B-F8330A38351B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
