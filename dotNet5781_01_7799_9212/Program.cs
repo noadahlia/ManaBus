@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,11 @@ namespace dotNet5781_01_7799_9212
                 switch (caseSwitch)
                 {
                     case 1:  // case 1: recuperer l id du bus + date de debut pour le rentrer dans la liste des bus
-                        Console.WriteLine("1");
+                        Console.WriteLine("Enter the start date:");
+                        string in_date = Console.ReadLine();
+                        CultureInfo provider = CultureInfo.InvariantCulture;
+                        DateTime dt = DateTime.ParseExact(in_date,"dd/MM/yyyy",provider);
+                        Console.WriteLine(dt);
                         break;
                     case 2:  // case 2: choisir son bus. comment? en demandant le b_id 
                         //le programme donnera de facon aleatoire de kilometrage de la nessia
@@ -63,4 +68,12 @@ namespace dotNet5781_01_7799_9212
 
         }
     }
+
+    /*********************************Class Bus*************************************/
+    public class Bus
+    {
+        private int b_id;
+
+    }
+
 }
