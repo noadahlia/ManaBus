@@ -9,6 +9,7 @@ namespace dotNet5781_01_7799_9212
 {
     class Program
     {
+        List<Bus> busList = new List<Bus>();
         static void Main(string[] args)
         {
             int caseSwitch;
@@ -24,12 +25,42 @@ namespace dotNet5781_01_7799_9212
                 switch (caseSwitch)
                 {
                     case 1:  // case 1: recuperer l id du bus + date de debut pour le rentrer dans la liste des bus
-                        Console.WriteLine("Enter the start date:");
+                        Console.WriteLine("Enter the date of commencement of activity:");
                         string in_date = Console.ReadLine();
                         CultureInfo provider = CultureInfo.InvariantCulture;
-                        DateTime dt = DateTime.ParseExact(in_date,"dd/MM/yyyy",provider);
+                        DateTime dt = DateTime.ParseExact(in_date, "dd/MM/yyyy", provider);
                         Console.WriteLine(dt);
-                        break;
+
+                        Console.WriteLine("Enter the license number:");
+                        int license = int.Parse(Console.ReadLine());
+                        while (license.ToString().Length != 8 || license.ToString().Length != 7)
+                        {
+                            if (license.ToString().Length != 8 && dt.Year >= 2018)
+                            {
+                                Console.WriteLine("You've entered a wrong license number, please enter a 8 digits license number");
+                                license = int.Parse(Console.ReadLine());
+                            }
+
+                            else
+                            {  if (license.ToString().Length != 7 && dt.Year < 2018)
+                                {
+                                    Console.WriteLine("You've entered a wrong license number, please enter a 8 digits license number");
+                                    license = int.Parse(Console.ReadLine());
+                                }
+                            }
+                           
+                        }
+                        
+                        {
+                            Bus bus1 = new Bus();
+                            busList.Add(bus1);
+                        }
+
+
+
+
+                            break;
+
                     case 2:  // case 2: choisir son bus. comment? en demandant le b_id 
                         //le programme donnera de facon aleatoire de kilometrage de la nessia
                         //si b_id faux, on envoie un msg d erreur
@@ -69,13 +100,11 @@ namespace dotNet5781_01_7799_9212
 
 
 
-        }
-    }
-
+       
     /*********************************Class Bus*************************************/
     public class Bus
     {
-        private int b_id;
+        private int licenseNum;
 
     }
 
