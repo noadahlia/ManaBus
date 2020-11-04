@@ -72,7 +72,22 @@ namespace dotNet5781_01_7799_9212
 
 
                         break;
-                    case 3:  // case 3: plein ou maintenance : cin b_id et cin plein ou maintenance
+                    case 3:
+                        Console.WriteLine("Enter the license number: ");
+                        int lincense= int.Parse(Console.ReadLine());
+                        Bus bus = busList.Find(x => x.B_ID == lincense);
+                        Console.WriteLine("Enter 0 to refuel and 1 to refresh");
+                        int choice = int.Parse(Console.ReadLine());
+                        if(choice==0)
+                        {
+                            bus.fuel_level = 1200;
+                        }
+                        if(choice==1)
+                        {
+                            bus.km_counter = 0;
+
+                        }
+                        // case 3: plein ou maintenance : cin b_id et cin plein ou maintenance
                         //si plein, alors maj un flag a true , flag qui montre s'il y a plein
                         //      si maintenance, enregistrer la date actuelle avec datetime() et enregistrer le trajet dans lequel a ete fait ce tipoul
                         Console.WriteLine("1"); ;
