@@ -27,13 +27,12 @@ namespace dotNet5781_01_7799_9212
                         Console.WriteLine("Enter the start date:");
                         string in_date = Console.ReadLine();
                         CultureInfo provider = CultureInfo.InvariantCulture;
-                        DateTime dt = DateTime.ParseExact(in_date,"dd/MM/yyyy",provider);
-                        Console.WriteLine(dt);
+                        DateTime dt = DateTime.ParseExact(in_date, "dd/MM/yyyy", provider);
                         break;
                     case 2:  // case 2: choisir son bus. comment? en demandant le b_id 
-                        //le programme donnera de facon aleatoire de kilometrage de la nessia
-                        //si b_id faux, on envoie un msg d erreur
-                        Console.WriteLine("1");   // si b_id est bon, alors on enregistrera ce random dans les km parcourus par ce bus
+                             //le programme donnera de facon aleatoire de kilometrage de la nessia
+                             //si b_id faux, on envoie un msg d erreur
+                             // si b_id est bon, alors on enregistrera ce random dans les km parcourus par ce bus
 
                         break;
                     case 3:  // case 3: plein ou maintenance : cin b_id et cin plein ou maintenance
@@ -65,17 +64,24 @@ namespace dotNet5781_01_7799_9212
 
 
         }
-    }
 
 
+
+
+
+
+
+        /*********************************Class Bus*************************************/
+        public class Bus
+        {
+            private int b_id;
+            public int B_ID
+            {
+                get { return b_id; }
+                set { b_id = value; }
+            }
 
         }
-    }
-
-    /*********************************Class Bus*************************************/
-    public class Bus
-    {
-        private int b_id;
 
     }
 
