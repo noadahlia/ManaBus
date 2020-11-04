@@ -24,7 +24,7 @@ namespace dotNet5781_01_7799_9212
             {
                 switch (caseSwitch)
                 {
-                    case 1:  // case 1: recuperer l id du bus + date de debut pour le rentrer dans la liste des bus
+                    case 1: 
                         Console.WriteLine("Enter the date of commencement of activity:");
                         string in_date = Console.ReadLine();
                         CultureInfo provider = CultureInfo.InvariantCulture;
@@ -50,15 +50,12 @@ namespace dotNet5781_01_7799_9212
                             }
                            
                         }
-                        
+
                         {
                             Bus bus1 = new Bus();
                             busList.Add(bus1);
+
                         }
-
-
-
-
                             break;
 
                     case 2:  // case 2: choisir son bus. comment? en demandant le b_id 
