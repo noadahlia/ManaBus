@@ -28,11 +28,12 @@ namespace dotNet5781_01_7799_9212
                         string in_date = Console.ReadLine();
                         CultureInfo provider = CultureInfo.InvariantCulture;
                         DateTime dt = DateTime.ParseExact(in_date, "dd/MM/yyyy", provider);
-                        Console.WriteLine(dt);
 
                         Console.WriteLine("Enter the license number:");
                         int license = int.Parse(Console.ReadLine());
-                        while (license.ToString().Length != 8 || license.ToString().Length != 7)
+                        bool flag = true;
+                  
+                        while (flag)
                         {
                             if (license.ToString().Length != 8 && dt.Year >= 2018)
                             {
@@ -43,16 +44,16 @@ namespace dotNet5781_01_7799_9212
                             else
                             {  if (license.ToString().Length != 7 && dt.Year < 2018)
                                 {
-                                    Console.WriteLine("You've entered a wrong license number, please enter a 8 digits license number");
+                                    Console.WriteLine("You've entered a wrong license number, please enter a 7 digits license number");
                                     license = int.Parse(Console.ReadLine());
                                 }
                             }
-                           
+                            flag = false;
                         }
 
                         {
                             List<Bus> busList = new List<Bus>();
-                            Bus bus = new Bus();
+                            Bus bus = new Bus(license);
                             busList.Add(bus);
 
                         }
@@ -109,6 +110,16 @@ namespace dotNet5781_01_7799_9212
                 get { return b_id; }
                 set { b_id = value; }
             }
+            public int km_counter;
+            public int fuel_level;
+            public bool isDangerous() // if the bus is dangerous or not
+            {
+                if (km_counter >= 20000)
+                    return true;
+                else
+                    return false;
+            }
+            public Bus(int id) { b_id = id; }
 
 
         }
