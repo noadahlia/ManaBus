@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace dotNet5781_01_7799_9212
 {
     class Program
-    {
-        List<Bus> busList = new List<Bus>();
+    { 
         static void Main(string[] args)
         {
             int caseSwitch;
@@ -52,8 +51,9 @@ namespace dotNet5781_01_7799_9212
                         }
 
                         {
-                            Bus bus1 = new Bus();
-                            busList.Add(bus1);
+                            List<Bus> busList = new List<Bus>();
+                            Bus bus = new Bus();
+                            busList.Add(bus);
 
                         }
                             break;
@@ -109,6 +109,7 @@ namespace dotNet5781_01_7799_9212
                 get { return b_id; }
                 set { b_id = value; }
             }
+
 
         }
 
