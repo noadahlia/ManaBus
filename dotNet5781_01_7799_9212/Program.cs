@@ -55,10 +55,8 @@ namespace dotNet5781_01_7799_9212
                             flag = false;
                         }
 
-                        {
-                          
-                            Bus bus= new Bus(license,dt);
-                            busList.Add(bus);
+                        Bus bus = new Bus(license, dt);
+                        busList.Add(bus);
 
                         break;
 
@@ -80,7 +78,7 @@ namespace dotNet5781_01_7799_9212
                                                        //otherwise, the random is more often >1200 and the bus could'nt never travel
                         Bus bus1 = busList.Find(x => x.B_ID == license);
 
-                        Console.WriteLine(miles);
+                        Console.WriteLine("The travel is {0} km", miles);
                         DateTime d1 = DateTime.Now;
                         DateTime d2 = bus1.lastRefresh;
                         TimeSpan gap = d1 - d2;
@@ -96,7 +94,7 @@ namespace dotNet5781_01_7799_9212
                         }
                         else if ((b_fuel -= miles) < 0)
                         {
-                            Console.WriteLine("This bus has driven more than 1200 km since the last refreshing, it cannot drive.");
+                            Console.WriteLine("This bus has driven more than 1200 km since the last refueling, it cannot drive.");
                         }
                         else
                         {
@@ -108,36 +106,56 @@ namespace dotNet5781_01_7799_9212
 
                         break;
                     case 3:
-                        Console.WriteLine("Enter the license number: ");
-                        license= int.Parse(Console.ReadLine());
-                       
-                        bool isExist = busList.Exists(x => x.B_ID == lincense);
-                        if (isExist)
-                            Bus b1 =;
-                        Console.WriteLine("Enter 0 to refuel and 1 to refresh");
-                       
-                        int choice = int.Parse(Console.ReadLine());
-                        if (choice == 0)
-                        {
-                            bus1.fuel_level = 1200;
-                        }
-                        if (choice == 1)
-                        {
-                            bus1.km_counter = 0;
-                            bus1.year = DateTime.Now;
-
-                        }
-                        // case 3: plein ou maintenance : cin b_id et cin plein ou maintenance
-                        //si plein, alors maj un flag a true , flag qui montre s'il y a plein
-                        //      si maintenance, enregistrer la date actuelle avec datetime() et enregistrer le trajet dans lequel a ete fait ce tipoul
-                        Console.WriteLine("1"); ;
-                        break;
-                    case 4:      // case 4: afficher pour tous les bus leur trajet depuis le dernier tipoul
-                                 //pour chaque bus, il faut afficher le b_id et le trajet
                         if (!busList.Any())
                         {
                             Console.WriteLine("There are no buses in the list yet. Please add a new bus.");
                             goto Choices;
+                        }
+                        Console.WriteLine("Enter the license number: ");
+                        license = int.Parse(Console.ReadLine());
+                        while (!busList.Exists(x => x.B_ID == license))
+                        {
+                            Console.WriteLine("This licence nunmber doesn't exists. Enter the license number:");
+                            license = int.Parse(Console.ReadLine());
+                        }
+                        Bus bus2 = busList.Find(x => x.B_ID == license);
+                        Console.WriteLine("Enter 0 to refuel and 1 to refresh");
+
+                        int choice = int.Parse(Console.ReadLine());
+                        if (choice == 0)
+                        {
+                            bus2.fuel_level = 1200;
+                        }
+                        if (choice == 1)
+                        {
+                            bus2.km_counter = 0;
+                            bus2.lastRefresh = DateTime.Now;
+
+                        }
+
+                        break;
+                    case 4:
+                        if (!busList.Any())
+                        {
+                            Console.WriteLine("There are no buses in the list yet. Please add a new bus.");
+                            goto Choices;
+                        }
+                        foreach (Bus element in busList)
+                        {
+                            if ((element.B_ID).ToString().Length == 8)
+                            {
+                                int tmp = (element.B_ID) / 100000;
+                                int tmp1 = ((element.B_ID) / 1000) % 100;
+                                int tmp2 = (element.B_ID) % 1000;
+                                Console.WriteLine("{0}" + "-" + "{1}" + "-" + "{2}" + ": " + "{1}" + "km", tmp, tmp1, tmp2, element.km_counter);
+                            }
+                            if ((element.B_ID).ToString().Length == 7)
+                            {
+                                int tmp = (element.B_ID) / 100000;
+                                int tmp1 = ((element.B_ID) / 100) % 1000;
+                                int tmp2 = (element.B_ID) % 100;
+                                Console.WriteLine("{0}" + "-" + "{1}" + "-" + "{2}" + ": " + "{1}" + "km", tmp, tmp1, tmp2, element.km_counter);
+                            }
                         }
                         break;
                     default:
@@ -154,19 +172,7 @@ namespace dotNet5781_01_7799_9212
             }
 
 
-
-
-            //Main menu en boucle
-
-
         }
-
-
-
-
-
-
-
         /*********************************Class Bus*************************************/
         public class Bus
         {
@@ -179,15 +185,13 @@ namespace dotNet5781_01_7799_9212
             public int km_counter = 0;
             public int fuel_level = 1200;
             public DateTime lastRefresh;
-
+            public Bus(int id) { b_id = id; }
             public Bus(int id, DateTime date)
             {
                 b_id = id;
                 lastRefresh = date;
             }
-            public Bus(int id) { b_id = id; }
-
-
+           
         }
 
     }
