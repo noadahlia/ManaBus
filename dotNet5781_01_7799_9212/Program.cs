@@ -150,14 +150,14 @@ namespace dotNet5781_01_7799_9212
                                 int tmp = (element.B_ID) / 100000;
                                 int tmp1 = ((element.B_ID) / 1000) % 100;
                                 int tmp2 = (element.B_ID) % 1000;
-                                Console.WriteLine("{0}" + "-" + "{1}" + "-" + "{2}" + ": " + "{1}" + "km", tmp, tmp1, tmp2, element.KM_C);
+                                Console.WriteLine("{0}" + "-" + "{1}" + "-" + "{2}" + ": " + "{3}" + "km", tmp, tmp1, tmp2, element.KM_C);
                             }
                             if ((element.B_ID).ToString().Length == 7)
                             {
                                 int tmp = (element.B_ID) / 100000;
                                 int tmp1 = ((element.B_ID) / 100) % 1000;
                                 int tmp2 = (element.B_ID) % 100;
-                                Console.WriteLine("{0}" + "-" + "{1}" + "-" + "{2}" + ": " + "{1}" + "km", tmp, tmp1, tmp2, element.KM_C);
+                                Console.WriteLine("{0}" + "-" + "{1}" + "-" + "{2}" + ": " + "{3}" + "km", tmp, tmp1, tmp2, element.KM_C);
                             }
                         }
                         break;
