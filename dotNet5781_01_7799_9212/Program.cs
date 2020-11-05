@@ -53,7 +53,7 @@ namespace dotNet5781_01_7799_9212
 
                         {
                           
-                            Bus bus = new Bus(license);
+                            Bus bus= new Bus(license,dt);
                             busList.Add(bus);
 
                         }
@@ -68,16 +68,21 @@ namespace dotNet5781_01_7799_9212
                     case 3:
                         Console.WriteLine("Enter the license number: ");
                         int lincense= int.Parse(Console.ReadLine());
-                        Bus bus = busList.Find(x => x.B_ID == lincense);
+                       
+                        bool isExist = busList.Exists(x => x.B_ID == lincense);
+                        if (isExist)
+                            Bus b1 =;
                         Console.WriteLine("Enter 0 to refuel and 1 to refresh");
+                       
                         int choice = int.Parse(Console.ReadLine());
                         if(choice==0)
                         {
-                            bus.fuel_level = 1200;
+                            bus1.fuel_level = 1200;
                         }
                         if(choice==1)
                         {
-                            bus.km_counter = 0;
+                            bus1.km_counter = 0;
+                            bus1.year = DateTime.Now;
 
                         }
                         // case 3: plein ou maintenance : cin b_id et cin plein ou maintenance
@@ -134,7 +139,11 @@ namespace dotNet5781_01_7799_9212
                 else
                     return false;
             }
-            public Bus(int id) { b_id = id; }
+            public DateTime year;
+            public Bus(int id, DateTime newdate) 
+            { b_id = id;
+                year = newdate; 
+            }
 
 
         }
