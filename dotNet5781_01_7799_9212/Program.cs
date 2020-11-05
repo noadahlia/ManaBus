@@ -74,7 +74,7 @@ namespace dotNet5781_01_7799_9212
                         break;
                     case 3:
                         Console.WriteLine("Enter the license number: ");
-                        int lincense= int.Parse(Console.ReadLine());
+                        license= int.Parse(Console.ReadLine());
                        
                         bool isExist = busList.Exists(x => x.B_ID == lincense);
                         if (isExist)
