@@ -18,7 +18,9 @@ namespace dotNet5781_01_7799_9212
             Console.WriteLine("Press 4 to presente the traject since the last treatment for all vehicles in the company");
             Console.WriteLine("Press 5 to exit");
             caseSwitch = int.Parse(Console.ReadLine());
+
             List<Bus> busList = new List<Bus>();
+
             while (caseSwitch != 5)
             {
                 switch (caseSwitch)
@@ -60,9 +62,14 @@ namespace dotNet5781_01_7799_9212
                             break;
 
                     case 2:  // case 2: choisir son bus. comment? en demandant le b_id 
+                             //verifier si le bus existe
                              //le programme donnera de facon aleatoire de kilometrage de la nessia
                              //si b_id faux, on envoie un msg d erreur
                              // si b_id est bon, alors on enregistrera ce random dans les km parcourus par ce bus
+                        Console.WriteLine("Enter the license number:");
+                        Random r = new Random();
+                        
+
 
                         break;
                     case 3:
@@ -132,18 +139,13 @@ namespace dotNet5781_01_7799_9212
             }
             public int km_counter;
             public int fuel_level;
-            public bool isDangerous() // if the bus is dangerous or not
-            {
-                if (km_counter >= 20000)
-                    return true;
-                else
-                    return false;
+            public DateTime lastRefresh;
+
+            public Bus(int id,DateTime date) {
+                b_id = id;
+                lastRefresh = date;
             }
-            public DateTime year;
-            public Bus(int id, DateTime newdate) 
-            { b_id = id;
-                year = newdate; 
-            }
+            public Bus(int id) { b_id = id; }
 
 
         }
