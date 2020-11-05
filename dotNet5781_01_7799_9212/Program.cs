@@ -29,10 +29,10 @@ namespace dotNet5781_01_7799_9212
                     case 1:
                         Console.WriteLine("Enter the date of commencement of activity (dd/MM/yyyy) :");
                         string in_date = Console.ReadLine();
-                        CultureInfo provider = CultureInfo.InvariantCulture;
-                        DateTime dt = DateTime.ParseExact(in_date, "dd/MM/yyyy", provider);
+                        CultureInfo provider = CultureInfo.InvariantCulture; //one of the parameter in  the function ParseExact
+                        DateTime dt = DateTime.ParseExact(in_date, "dd/MM/yyyy", provider); //the string input date becomes a DateTime date
 
-                        Console.WriteLine("Enter the license number:");
+                        Console.WriteLine("Enter the license number:"); 
                         int license = int.Parse(Console.ReadLine());
                         bool flag = true;
 
@@ -61,45 +61,48 @@ namespace dotNet5781_01_7799_9212
                         break;
 
                     case 2:
-                        if (!busList.Any())
+                        if (!busList.Any()) //if the list is empty
                         {
                             Console.WriteLine("There are no buses in the list yet. Please add a new bus.");
-                            goto Choices;
+                            goto Choices; //don't let the user travel and go to the main menu to enter a new bus in the list
                         }
                         Console.WriteLine("Enter the license number:");
                         license = int.Parse(Console.ReadLine());
-                        while (!busList.Exists(x => x.B_ID == license))
+                        while (!busList.Exists(x => x.B_ID == license)) //the function exists verifies if the input license exists in the list
                         {
-                            Console.WriteLine("This licence nunmber doesn't exists. Enter the license number:");
+                            Console.WriteLine("This licence nunmber doesn't exists. Enter the license number:"); //error msg
                             license = int.Parse(Console.ReadLine());
                         }
-                        Random random = new Random();
+                        Random random = new Random(); 
                         int miles = random.Next(1200); //the random number of km of the new travel has to be < than 1200
                                                        //otherwise, the random is more often >1200 and the bus could'nt never travel
-                        Bus bus1 = busList.Find(x => x.B_ID == license);
+                        Bus bus1 = busList.Find(x => x.B_ID == license); //find in the list the bus identified by the input license
 
                         Console.WriteLine("The travel is {0} km", miles);
                         DateTime d1 = DateTime.Now;
                         DateTime d2 = bus1.lastRefresh;
-                        TimeSpan gap = d1 - d2;
-                        int b_km = bus1.km_counter;
-                        int b_fuel = bus1.fuel_level;
-                        if (gap.TotalDays > 365)
+                        TimeSpan gap = d1 - d2; //difference between the date of refreshing and today's date
+                        int km = bus1.KM_C; //saves the number of km of the bus at this moment to compare it in the conditions (if)
+                        int fuel = bus1.FUEL; // same thing with the fuel
+
+                        if (gap.TotalDays > 365) 
                         {
                             Console.WriteLine("More than one year since the last checking, it cannot drive.");
                         }
-                        else if ((b_km += miles) > 20000)
-                        {
+                        else if ((km += miles) > 20000)
+                        {                        
                             Console.WriteLine("This bus has driven more than 20000km since the last checking, it cannot drive.");
                         }
-                        else if ((b_fuel -= miles) < 0)
+                        else if ((fuel -= miles) < 0)
                         {
                             Console.WriteLine("This bus has driven more than 1200 km since the last refueling, it cannot drive.");
                         }
                         else
                         {
-                            bus1.km_counter += miles;
-                            bus1.fuel_level -= miles;
+
+                            bus1.KM_C += miles; //adds the new travel to the datas
+                            bus1.FUEL -= miles;
+
                             Console.WriteLine("Travel saved");
                         }
 
@@ -121,14 +124,14 @@ namespace dotNet5781_01_7799_9212
                         Bus bus2 = busList.Find(x => x.B_ID == license);
                         Console.WriteLine("Enter 0 to refuel and 1 to refresh");
 
-                        int choice = int.Parse(Console.ReadLine());
+                        int choice = int.Parse(Console.ReadLine()); 
                         if (choice == 0)
                         {
-                            bus2.fuel_level = 1200;
+                            bus2.FUEL = 1200;
                         }
                         if (choice == 1)
                         {
-                            bus2.km_counter = 0;
+                            bus2.KM_C = 0;
                             bus2.lastRefresh = DateTime.Now;
 
                         }
@@ -147,14 +150,14 @@ namespace dotNet5781_01_7799_9212
                                 int tmp = (element.B_ID) / 100000;
                                 int tmp1 = ((element.B_ID) / 1000) % 100;
                                 int tmp2 = (element.B_ID) % 1000;
-                                Console.WriteLine("{0}" + "-" + "{1}" + "-" + "{2}" + ": " + "{1}" + "km", tmp, tmp1, tmp2, element.km_counter);
+                                Console.WriteLine("{0}" + "-" + "{1}" + "-" + "{2}" + ": " + "{1}" + "km", tmp, tmp1, tmp2, element.KM_C);
                             }
                             if ((element.B_ID).ToString().Length == 7)
                             {
                                 int tmp = (element.B_ID) / 100000;
                                 int tmp1 = ((element.B_ID) / 100) % 1000;
                                 int tmp2 = (element.B_ID) % 100;
-                                Console.WriteLine("{0}" + "-" + "{1}" + "-" + "{2}" + ": " + "{1}" + "km", tmp, tmp1, tmp2, element.km_counter);
+                                Console.WriteLine("{0}" + "-" + "{1}" + "-" + "{2}" + ": " + "{1}" + "km", tmp, tmp1, tmp2, element.KM_C);
                             }
                         }
                         break;
@@ -182,14 +185,28 @@ namespace dotNet5781_01_7799_9212
                 get { return b_id; }
                 set { b_id = value; }
             }
-            public int km_counter = 0;
-            public int fuel_level = 1200;
+            private int km_counter;
+            public int KM_C
+            {
+                get { return km_counter; }
+                set { km_counter = value; }
+            }
+
+            private int fuel_level;
+            public int FUEL  
+            {
+                get { return fuel_level; }
+                set { fuel_level = value; }
+            }
+
             public DateTime lastRefresh;
             public Bus(int id) { b_id = id; }
             public Bus(int id, DateTime date)
             {
                 b_id = id;
                 lastRefresh = date;
+                km_counter = 0;
+                fuel_level = 1200;
             }
            
         }
