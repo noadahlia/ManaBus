@@ -14,7 +14,8 @@ namespace dotNet5781_02_7799_9212
             Travel_Time_From_Station= time ;
         }
         int Station_Distance;
-        int Travel_Time_From_Station;
+        int Travel_Time_From_Station; //in minutes
+
     }
 }
 //הגדירו מחלקה שתייצג תחנת קו אוטובוס

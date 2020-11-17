@@ -34,7 +34,8 @@ namespace dotNet5781_02_7799_9212
             }
             Console.WriteLine("Enter the name of the station");
             string statioName= Console.ReadLine();
-            station1 = new BusLineStation(key,latitude,longitude,statioName);
+
+            station1 = new BusLineStation(key, latitude, longitude, statioName);
             BusLineStation x;
             int y = 10, c = 9;
             x = new BusLineStation(key, y);
