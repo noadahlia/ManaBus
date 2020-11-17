@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_7799_9212
 {
-    enum zone { General, North, South, Center, Jerusalem };
     class BusLine
     {
-        private List<BusStation> stations;
-        public List<BusStation> STATIONS
+        private List<BusLineStation> stations;
+        public List<BusLineStation> STATIONS
         {
             get { return stations; }
             set { /*nothing*/ }
@@ -19,15 +18,15 @@ namespace dotNet5781_02_7799_9212
         private int busLine;
         public int BUSLINE { get => busLine; set => busLine = value; }
 
-        private BusStation firstS, lastS;
-        public BusStation FIRST { get => firstS; set => firstS = value; }
-        public BusStation LAST { get => lastS; set => lastS = value; }
+        private BusLineStation firstS, lastS;
+        public BusLineStation FIRST { get => firstS; set => firstS = value; }
+        public BusLineStation LAST { get => lastS; set => lastS = value; }
 
-        private zone area;
-        internal zone Area { get => area; set => area = value; }
+        private string area;
+        internal string Area { get => area; set => area = value; }
 
         BusLine() { /*nothing*/}
-        BusLine(int id, BusStation f, BusStation l, zone a)
+        BusLine(int id, BusLineStation f, BusLineStation l, string a)
         {
             busLine = id;
             firstS = f;
@@ -39,32 +38,33 @@ namespace dotNet5781_02_7799_9212
 
         public override string ToString()
         {
-            Console.WriteLine("Line N°:{0}  Area:{1} " , busLine,area);
-            Console.WriteLine("Stations:");
-            foreach(BusStation st in stations)
+            string tmp1 = "Line N°: " + busLine.ToString() + "Area: " + area.ToString() + "\nStations:";
+            string tmp2="";
+            foreach (BusLineStation st in stations)
             {
-                st.ToString();
+                tmp2 = tmp2 + st.ToString();
             }
+            return tmp1 + tmp2;
         }
 
-        public bool Search(BusStation stat)
+        public bool Search(BusLineStation stat)
         {
-            foreach (BusStation st in stations)
+            foreach (BusLineStation st in stations)
             {
-                if (st == stat) //will use IComparable of BusStation
+                if (st == stat) //will use IComparable of BusLineStation
                     return true;
             }
             return false;
         }
 
-        public void AddStation(BusStation stat, BusStation before)
+        public void AddStation(BusLineStation stat, BusLineStation before)
         {
-            if (before.BUSTATIONKEY == 0) //if the user wants to add a new first station
+            if (before.BSK == 0) //if the user wants to add a new first station
             {
                 this.firstS = stat;
                 this.stations.Insert(0, stat);
             }
-            else if(before.BUSTATIONKEY==lastS.BUSTATIONKEY) //if the user wants to add a new last station
+            else if(before.BSK==lastS.BSK) //if the user wants to add a new last station
             {
                 this.lastS = stat;
                 this.stations.Add(stat);
@@ -76,7 +76,7 @@ namespace dotNet5781_02_7799_9212
             }
         }
 
-        public void DeleteStation(BusStation stat)
+        public void DeleteStation(BusLineStation stat)
         {
             if (stat == FIRST)
             {
@@ -95,22 +95,28 @@ namespace dotNet5781_02_7799_9212
             }
         }
 
-        public double CalcDistance(BusStation s1, BusStation s2)
+        public double CalcDistance(BusLineStation s1, BusLineStation s2)
         {
-            int x1 = s1.LATITUDE;
-            int x2 = s2.LATITUDE;
-            int y1 = s1.LONGITUDE;
-            int y2 = s2.LONGITUDE;
+            double x1 = s1.Latitude;
+            double x2 = s2.Latitude;
+            double y1 = s1.Longitude;
+            double y2 = s2.Longitude;
 
-            return Math.Sqrt((y2 - y1) ^ 2 + (x2 - x1) ^ 2);
+            return Math.Sqrt((y2 - y1)* (y2 - y1)  + (x2 - x1)* (x2 - x1)); // to calculate te distance between two points
 
         }
 
-        public DateTime TravelTime(BusStation from, BusStation to)
+        public int TravelTime(BusLineStation from, BusLineStation to) //?????
         {
-            DateTime totalTime;
-            // à poursuivre...
+            return 0;
         }
+
+        public BusLine SubTravel(BusLineStation from, BusLineStation to)
+        {
+            BusLine subLine = new BusLine(this.busLine, from, to, this.area); // 2 lignes avec le mm id ?!
+            return subLine;
+        }
+
 
 
 

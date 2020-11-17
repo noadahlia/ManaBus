@@ -8,13 +8,14 @@ namespace dotNet5781_02_7799_9212
 {
     class BusLineStation : BuStation
     {
-        public BusLineStation(int distance, int time) : base (key,lat,lon,name) 
+        public BusLineStation(int key, double lat, double lon, string name, int distance, int time ) : base (key,lat,lon,name) 
         {
             Station_Distance = distance ;
             Travel_Time_From_Station= time ;
         }
         int Station_Distance;
-        int Travel_Time_From_Station;
+        int Travel_Time_From_Station; //in minutes
+
     }
 }
 //הגדירו מחלקה שתייצג תחנת קו אוטובוס
