@@ -8,14 +8,34 @@ namespace dotNet5781_02_7799_9212
 {
     class BusLineStation : BuStation
     {
-        public BusLineStation(int distance, int time) : base (key,lat,lon,name) 
+        public BusLineStation(int distance, int time, int Dsk, double Latitude, double Longitude, string Name) : base(Dsk, Latitude, Longitude, Name)
         {
-            Station_Distance = distance ;
-            Travel_Time_From_Station= time ;
+            Station_Distance = distance;
+            Travel_Time_From_Station = time;
         }
-        int Station_Distance;
-        int Travel_Time_From_Station; //in minutes
-
+        private int Station_Distance;
+        public int SD
+        { 
+            get { return Station_Distance; }
+            set 
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("The distance can't be negative");
+                Station_Distance = value;
+            }
+        }
+        private int Travel_Time_From_Station; 
+        public int TTFS
+        { 
+            get { return Travel_Time_From_Station; }
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("The Travel Time can't be negative");
+                Travel_Time_From_Station = value;
+            }
+        }
+        
     }
 }
 //הגדירו מחלקה שתייצג תחנת קו אוטובוס
