@@ -26,7 +26,7 @@ namespace dotNet5781_02_7799_9212
         internal string Area { get => area; set => area = value; }
 
         BusLine() { /*nothing*/}
-        BusLine(int id, BusLineStation f, BusLineStation l, string a)
+        BusLine(int id, BusLineStation f, BusLineStation l, zone a)
         {
             busLine = id;
             firstS = f;
