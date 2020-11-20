@@ -11,6 +11,11 @@ namespace dotNet5781_02_7799_9212
     {
         private List<BusLine> lines { get; set; }
 
+        public LinesList()
+        {
+            lines = new List<BusLine>();
+        }
+
         public bool Exists(BusLine l)
         {
             foreach (BusLine item in lines)
@@ -26,7 +31,11 @@ namespace dotNet5781_02_7799_9212
 
         public void AddLine(BusLine l)
         {
-            if (Exists(l))
+            if (!lines.Any())
+            {
+                lines.Add(l);
+            }
+            else if (Exists(l))
             {
                 throw new ArgumentOutOfRangeException("This bus line already exists.");
             }
@@ -95,7 +104,17 @@ namespace dotNet5781_02_7799_9212
             return lines.GetEnumerator();
         }
 
-         
+        public override string ToString()
+        {
+            string res = "";
+            foreach(BusLine line in lines)
+            {
+                res += line.ToString() + "\n";
+            }
+            return res;
+        }
+
+
 
     }
 }

@@ -45,23 +45,26 @@ namespace dotNet5781_02_7799_9212
 
         public override string ToString()
         {
-            string tmp1 = "Line N°: " + busLine.ToString() + "Area: " + area.ToString() + "\nStations:";
+            string tmp1 = "Line N°: " + busLine.ToString() + " Area: " + area.ToString() + "\nStations:\n";
             string tmp2="";
             foreach (BusLineStation st in stations)
             {
-                tmp2 = tmp2 + st.ToString();
+                tmp2 = tmp2 + st.ToString()+"\n";
             }
             return tmp1 + tmp2;
         }
 
-        public bool Search(BusLineStation stat)
+        public BusLineStation Find(int key)
         {
-            foreach (BusLineStation st in stations)
-            {
-                if (st.BSK == stat.BSK) 
-                    return true;
-            }
-            return false;
+
+                foreach (BusLineStation st in stations)
+                {
+                    if (st.BSK == key)
+                        return st;
+                }
+
+            return null;            
+  
         }
 
         public bool SearchByKey(int key)

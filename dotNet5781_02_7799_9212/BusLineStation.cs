@@ -35,6 +35,6 @@ namespace dotNet5781_02_7799_9212
                 Travel_Time_From_Station = value;
             }
         }
-        
+
     }
 }
