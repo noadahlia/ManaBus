@@ -8,6 +8,8 @@ namespace dotNet5781_02_7799_9212
 {
     class BusLineStation : BuStation
     {
+        
+
         public BusLineStation(int distance, int time, int Dsk, double Latitude, double Longitude, string Name) : base(Dsk, Latitude, Longitude, Name)
         {
             Station_Distance = distance;
@@ -35,7 +37,9 @@ namespace dotNet5781_02_7799_9212
                 Travel_Time_From_Station = value;
             }
         }
-        
+
+        public int Distance { get => distance; set => distance = value; }
+        public int Distance1 { get => distance; set => distance = value; }
     }
 }
 //הגדירו מחלקה שתייצג תחנת קו אוטובוס

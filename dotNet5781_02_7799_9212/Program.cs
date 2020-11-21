@@ -19,6 +19,7 @@ namespace dotNet5781_02_7799_9212
             Console.WriteLine("Press 4 PRINT");
             Console.WriteLine("Press 5 to exit");
             caseSwitch = int.Parse(Console.ReadLine());
+          
 
             while (caseSwitch != 5)
             {
