@@ -11,46 +11,61 @@ namespace dotNet5781_02_7799_9212
 
         public BuStation(int key, double lat, double lon, string name)
         {
-            Bus_Station_Key = key;
-            Latitude = lat;
-            Longitude = lon;
+           
+            try
+            {
+                if (key.ToString().Length != 6)
+                    throw new ArgumentException("The Bus Station Key must be a number with 6 digits");
+                Bus_Station_Key =key;
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            try
+            {
+                if (lat < 31 || lat > 33.3)
+                    throw new ArgumentException("The Latitude must be between 31 and 33.3 degrees");
+                Latitude = lat;
+            }
+            catch (ArgumentException ex2)
+            {
+                Console.WriteLine(ex2.Message);
+            }
+
+            try
+            {
+                if (lon < 34.3 || lon < 35.5)
+                    throw new ArgumentException("The Longitude must be between 34.3 and 35.5 degrees");
+                Longitude = lon;
+            }
+            catch (ArgumentException ex3)
+            {
+                Console.WriteLine(ex3.Message);
+            }
             Station_Name = name;
         }
 
         private int Bus_Station_Key;
         public int BSK
-        {
-            get { return Bus_Station_Key; }
-            set 
-            {
-                if (value.ToString().Length!=6)
-                    throw new ArgumentOutOfRangeException("The Bus Station Key must be a number with 6 digits");
-                Bus_Station_Key = value;
-            }
+        { 
+                get => Bus_Station_Key; 
+            set => Bus_Station_Key = value; 
         }
         
         private double Latitude;
         public double LATITUDE 
         {
-            get { return Latitude; }
-            set
-            {
-                if(value < 31 || value > 33.3)
-                    throw new ArgumentOutOfRangeException("The Latitude must be between 31 and 33.3 degrees");
-                Latitude = value;
-            }
+            get => Latitude;
+            set => Latitude = value;
         }
         
         private double Longitude;
         public double LONGITUDE
         {
-            get { return Longitude; }
-            set
-            {  
-            if (value< 34.3 || value  < 35.5)
-                    throw new ArgumentOutOfRangeException("The Longitude must be between 34.3 and 35.5 degrees");
-                Longitude = value;
-            }
+            get=>Longitude;
+            set => Longitude = value;
         }
        
         private string Station_Name;

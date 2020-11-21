@@ -22,7 +22,7 @@ namespace dotNet5781_02_7799_9212
             set 
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException("The distance can't be negative");
+                    throw new ArgumentException("The distance can't be negative");//necessaire??
                 Station_Distance = value;
             }
         }
@@ -33,7 +33,7 @@ namespace dotNet5781_02_7799_9212
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException("The Travel Time can't be negative");
+                    throw new ArgumentException("The Travel Time can't be negative");//necessaire??
                 Travel_Time_From_Station = value;
             }
         }
