@@ -19,10 +19,8 @@ namespace dotNet5781_02_7799_9212
         public int SD
         { 
             get { return Station_Distance; }
-            set 
-            {
-                if (value < 0)
-                    throw new ArgumentException("The distance can't be negative");//necessaire??
+            set
+            { 
                 Station_Distance = value;
             }
         }
@@ -31,9 +29,7 @@ namespace dotNet5781_02_7799_9212
         { 
             get { return Travel_Time_From_Station; }
             set
-            {
-                if (value < 0)
-                    throw new ArgumentException("The Travel Time can't be negative");//necessaire??
+            { 
                 Travel_Time_From_Station = value;
             }
         }

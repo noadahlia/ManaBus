@@ -31,7 +31,17 @@ namespace dotNet5781_02_7799_9212
 
         public BusLine(int id, List<BusLineStation> lst, int a)
         {
-            busLine = id;
+            try
+            {
+                if (id.ToString().Length > 3 || id.ToString().Length < 2)
+                    throw new ArgumentException("Invalide number of line");
+                busLine = id;
+            }
+            catch (ArgumentException exx)
+            {
+                Console.WriteLine(exx.Message);
+            }
+
             stations = lst;
             area = (EnumZone)a;
             if (lst.Count != 0)
@@ -57,24 +67,41 @@ namespace dotNet5781_02_7799_9212
         public BusLineStation Find(int key)
         {
 
+            try
+            {
                 foreach (BusLineStation st in stations)
                 {
                     if (st.BSK == key)
                         return st;
                 }
+                    throw new ArgumentException("Doesn't exist");
+            }
 
-            return null;            
+            catch (ArgumentException exp)
+            {
+                Console.WriteLine(exp.Message);
+                return null;
+            }         
   
         }
 
         public bool SearchByKey(int key)
         {
-            foreach(BusLineStation item in stations)
+            try
             {
-                if(item.BSK==key)
-                    return true;
+                foreach (BusLineStation item in stations)
+                {
+                    if (item.BSK == key)
+                        return true;
+                }
+                throw new ArgumentException("Does'nt exist");
             }
-            return false;
+            catch (ArgumentException ex3)
+            {
+                Console.WriteLine(ex3.Message);
+                return false;
+            }
+           
 
         }
 

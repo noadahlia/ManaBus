@@ -15,8 +15,12 @@ namespace dotNet5781_02_7799_9212
             try
             {
                 if (key.ToString().Length != 6)
+                {
                     throw new ArgumentException("The Bus Station Key must be a number with 6 digits");
-                Bus_Station_Key =key;
+                    Bus_Station_Key = 0;
+                }
+                
+                Bus_Station_Key = key;
             }
             catch (ArgumentException ex)
             {
@@ -26,7 +30,10 @@ namespace dotNet5781_02_7799_9212
             try
             {
                 if (lat < 31 || lat > 33.3)
+                { 
                     throw new ArgumentException("The Latitude must be between 31 and 33.3 degrees");
+                    Latitude = 0.0;
+                }
                 Latitude = lat;
             }
             catch (ArgumentException ex2)
@@ -37,7 +44,11 @@ namespace dotNet5781_02_7799_9212
             try
             {
                 if (lon < 34.3 || lon < 35.5)
+                { 
                     throw new ArgumentException("The Longitude must be between 34.3 and 35.5 degrees");
+                    Longitude = 0.0;
+                }
+
                 Longitude = lon;
             }
             catch (ArgumentException ex3)
