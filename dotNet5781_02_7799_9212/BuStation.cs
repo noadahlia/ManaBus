@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dotNet5781_02_7799_9212
 {
@@ -11,15 +7,15 @@ namespace dotNet5781_02_7799_9212
 
         public BuStation(int key, double lat, double lon, string name)
         {
-           
+
             try
             {
                 if (key.ToString().Length != 6)
                 {
                     throw new ArgumentException("The Bus Station Key must be a number with 6 digits");
-                    Bus_Station_Key = 0;
+                    //Bus_Station_Key = 0;
                 }
-                
+
                 Bus_Station_Key = key;
             }
             catch (ArgumentException ex)
@@ -30,9 +26,9 @@ namespace dotNet5781_02_7799_9212
             try
             {
                 if (lat < 31 || lat > 33.3)
-                { 
+                {
                     throw new ArgumentException("The Latitude must be between 31 and 33.3 degrees");
-                    Latitude = 0.0;
+                    //Latitude = 0.0;
                 }
                 Latitude = lat;
             }
@@ -43,10 +39,10 @@ namespace dotNet5781_02_7799_9212
 
             try
             {
-                if (lon < 34.3 || lon < 35.5)
-                { 
+                if (lon < 34 || lon > 36)
+                {
                     throw new ArgumentException("The Longitude must be between 34.3 and 35.5 degrees");
-                    Longitude = 0.0;
+                    //  Longitude = 0.0;
                 }
 
                 Longitude = lon;
@@ -60,25 +56,25 @@ namespace dotNet5781_02_7799_9212
 
         private int Bus_Station_Key;
         public int BSK
-        { 
-                get => Bus_Station_Key; 
-            set => Bus_Station_Key = value; 
+        {
+            get => Bus_Station_Key;
+            set => Bus_Station_Key = value;
         }
-        
+
         private double Latitude;
-        public double LATITUDE 
+        public double LATITUDE
         {
             get => Latitude;
             set => Latitude = value;
         }
-        
+
         private double Longitude;
         public double LONGITUDE
         {
-            get=>Longitude;
+            get => Longitude;
             set => Longitude = value;
         }
-       
+
         private string Station_Name;
         public string SNAME
         { get => Station_Name; set => Station_Name = value; }

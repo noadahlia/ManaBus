@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dotNet5781_02_7799_9212
 {
@@ -25,7 +22,7 @@ namespace dotNet5781_02_7799_9212
         private EnumZone area { get; set; }
 
         private int travelTime { get; set; }
-      
+
 
         public BusLine() { /*nothing*/}
 
@@ -50,16 +47,16 @@ namespace dotNet5781_02_7799_9212
                 lastS = lst[lst.Count - 1];
             }
             travelTime = TravelTime(FIRST, LAST);
-           
+
         }
 
         public override string ToString()
         {
             string tmp1 = "Line N°: " + busLine.ToString() + " Area: " + area.ToString() + "\nStations:\n";
-            string tmp2="";
+            string tmp2 = "";
             foreach (BusLineStation st in stations)
             {
-                tmp2 = tmp2 + st.ToString()+"\n";
+                tmp2 = tmp2 + st.ToString() + "\n";
             }
             return tmp1 + tmp2;
         }
@@ -74,15 +71,15 @@ namespace dotNet5781_02_7799_9212
                     if (st.BSK == key)
                         return st;
                 }
-                    throw new ArgumentException("Doesn't exist");
+                throw new ArgumentException("Doesn't exist");
             }
 
             catch (ArgumentException exp)
             {
                 Console.WriteLine(exp.Message);
                 return null;
-            }         
-  
+            }
+
         }
 
         public bool SearchByKey(int key)
@@ -101,8 +98,18 @@ namespace dotNet5781_02_7799_9212
                 Console.WriteLine(ex3.Message);
                 return false;
             }
-           
 
+
+        }
+
+        public bool IsStatExists(int key)
+        {
+            foreach (BusLineStation item in stations)
+            {
+                if (item.BSK == key) //if the input station is in this line
+                    return true;
+            }
+            return false;
         }
 
         public void AddFirstStation(BusLineStation input)
@@ -117,9 +124,9 @@ namespace dotNet5781_02_7799_9212
         }
         public void AddMiddleStation(BusLineStation stat, BusLineStation before)
         {
-            int index = stations.IndexOf(before); 
+            int index = stations.IndexOf(before);
             this.stations.Insert(index, stat);
-            
+
         }
 
         public void DeleteStation(BusLineStation stat)
@@ -147,14 +154,14 @@ namespace dotNet5781_02_7799_9212
             double y1 = s1.LONGITUDE;
             double y2 = s2.LONGITUDE;
 
-            return Math.Sqrt((y2 - y1)* (y2 - y1)  + (x2 - x1)* (x2 - x1)); // to calculate te distance between two points
+            return Math.Sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1)); // to calculate te distance between two points
 
         }
 
-        public int TravelTime(BusLineStation from, BusLineStation to) 
+        public int TravelTime(BusLineStation from, BusLineStation to)
         {
             int totalTime = 0;
-            for (int i = stations.IndexOf(from); i<=stations.IndexOf(to); i++) //when i increase, we add the traveltime of the next station in the station list of this line
+            for (int i = stations.IndexOf(from); i <= stations.IndexOf(to); i++) //when i increase, we add the traveltime of the next station in the station list of this line
             {
                 totalTime += stations[i].TTFS;
             }
@@ -164,8 +171,8 @@ namespace dotNet5781_02_7799_9212
         public BusLine SubTravel(BusLineStation from, BusLineStation to)
         {
             BusLine subLine = new BusLine(); //create a virtual line (whithout any key or first station
-                                            // it's just to collect the section of line between the two stations
-            for(int i = stations.IndexOf(from); i <= stations.IndexOf(to); i++)
+                                             // it's just to collect the section of line between the two stations
+            for (int i = stations.IndexOf(from); i <= stations.IndexOf(to); i++)
             {
                 subLine.stations.Add(this.stations[i]);
             }

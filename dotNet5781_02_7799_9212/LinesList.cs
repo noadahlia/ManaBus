@@ -2,8 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dotNet5781_02_7799_9212
 {
@@ -56,7 +54,7 @@ namespace dotNet5781_02_7799_9212
         public List<BusLine> StopsHere(int key)
         {
             List<BusLine> lst = new List<BusLine>();
-            foreach(BusLine item in lines)
+            foreach (BusLine item in lines)
             {
                 if (item.SearchByKey(key))
                 {
@@ -86,7 +84,7 @@ namespace dotNet5781_02_7799_9212
         public int FindByKey(int key)
         {
             BusLine kbus = new BusLine();
-            foreach(BusLine item in lines)
+            foreach (BusLine item in lines)
             {
                 if (item.BUSLINE == key)
                 {
@@ -107,7 +105,7 @@ namespace dotNet5781_02_7799_9212
         public override string ToString()
         {
             string res = "";
-            foreach(BusLine line in lines)
+            foreach (BusLine line in lines)
             {
                 res += line.ToString() + "\n";
             }

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dotNet5781_01_7799_9212
 {
@@ -32,7 +30,7 @@ namespace dotNet5781_01_7799_9212
                         CultureInfo provider = CultureInfo.InvariantCulture; //one of the parameter in  the function ParseExact
                         DateTime dt = DateTime.ParseExact(in_date, "dd/MM/yyyy", provider); //the string input date becomes a DateTime date
 
-                        Console.WriteLine("Enter the license number:"); 
+                        Console.WriteLine("Enter the license number:");
                         int license = int.Parse(Console.ReadLine());
                         bool flag = true;
 
@@ -73,7 +71,7 @@ namespace dotNet5781_01_7799_9212
                             Console.WriteLine("This licence nunmber doesn't exists. Enter the license number:"); //error msg
                             license = int.Parse(Console.ReadLine());
                         }
-                        Random random = new Random(); 
+                        Random random = new Random();
                         int miles = random.Next(1200); //the random number of km of the new travel has to be < than 1200
                                                        //otherwise, the random is more often >1200 and the bus could'nt never travel
                         Bus bus1 = busList.Find(x => x.B_ID == license); //find in the list the bus identified by the input license
@@ -85,12 +83,12 @@ namespace dotNet5781_01_7799_9212
                         int km = bus1.KM_C; //saves the number of km of the bus at this moment to compare it in the conditions (if)
                         int fuel = bus1.FUEL; // same thing with the fuel
 
-                        if (gap.TotalDays > 365) 
+                        if (gap.TotalDays > 365)
                         {
                             Console.WriteLine("More than one year since the last checking, it cannot drive.");
                         }
                         else if ((km += miles) > 20000)
-                        {                        
+                        {
                             Console.WriteLine("This bus has driven more than 20000km since the last checking, it cannot drive.");
                         }
                         else if ((fuel -= miles) < 0)
@@ -124,7 +122,7 @@ namespace dotNet5781_01_7799_9212
                         Bus bus2 = busList.Find(x => x.B_ID == license);
                         Console.WriteLine("Enter 0 to refuel and 1 to refresh");
 
-                        int choice = int.Parse(Console.ReadLine()); 
+                        int choice = int.Parse(Console.ReadLine());
                         if (choice == 0)
                         {
                             bus2.FUEL = 1200;
@@ -193,7 +191,7 @@ namespace dotNet5781_01_7799_9212
             }
 
             private int fuel_level;
-            public int FUEL  
+            public int FUEL
             {
                 get { return fuel_level; }
                 set { fuel_level = value; }
@@ -208,7 +206,7 @@ namespace dotNet5781_01_7799_9212
                 km_counter = 0;
                 fuel_level = 1200;
             }
-           
+
         }
 
     }
