@@ -63,8 +63,21 @@ namespace dotNet5781_02_7799_9212
                         }
                         if (choice == 1) //add a new bus line
                         {
-                            Console.WriteLine("Enter the bus line number");
+                          LineNum:  Console.WriteLine("Enter the bus line number");
                             int id = int.Parse(Console.ReadLine());
+                            try
+                            {
+                                if (id.ToString().Length > 3 || id.ToString().Length < 1)
+                                {
+                                    throw new ArgumentException("Invalide number of line");
+                                    
+                                }
+                            }
+                            catch (ArgumentException mess)
+                            {
+                                Console.WriteLine(mess.Message);
+                                goto LineNum;
+                            }
 
                         area:
                             Console.WriteLine("Enter the area (General(1) /North(2) /South(3) /Center(4) /Jerusalem(5)) :");
@@ -79,38 +92,106 @@ namespace dotNet5781_02_7799_9212
                             Console.WriteLine("Departure station");
                             Console.WriteLine("Station key: ");
                             int num = int.Parse(Console.ReadLine());
+                            try
+                            {
+                                if (num.ToString().Length != 6)
+                                {
+                                    throw new ArgumentException("The Bus Station Key must be a number with 6 digits");
+                                }
+                            }
+                            catch (ArgumentException ex)
+                            {
+                                Console.WriteLine(ex.Message);
+                                goto departure;
+                            }
+
                             Console.WriteLine("Station name:");
                             string name = Console.ReadLine();
+
                             Console.WriteLine("Latitude: ");
                             double lat = double.Parse(Console.ReadLine());
+                            try
+                            {
+                                if (lat < 31 || lat > 33.3)
+                                {
+                                    throw new ArgumentException("The Latitude must be between 31 and 33.3 degrees");
+                                }
+                            }
+                            catch (ArgumentException ex2)
+                            {
+                                Console.WriteLine(ex2.Message);
+                                goto departure;
+                            }
+                            
                             Console.WriteLine("Longitude: ");
                             double lon = double.Parse(Console.ReadLine());
-
-
-                            BusLineStation firstStation = new BusLineStation(r.Next(300), r.Next(5), num, lat, lon, name);
-                            if (firstStation.BSK == 0 || firstStation.LATITUDE == 0.0 || firstStation.LONGITUDE == 0.0)
+                            try
+                            {
+                                if (lon < 34 || lon > 36)
+                                {
+                                    throw new ArgumentException("The Longitude must be between 34.3 and 35.5 degrees");
+                                }
+                            }
+                            catch (ArgumentException ex3)
+                            {
+                                Console.WriteLine(ex3.Message);
                                 goto departure;
-
+                            }
+                            BusLineStation firstStation = new BusLineStation(r.Next(300), r.Next(5), num, lat, lon, name);
                             allStations.Add(firstStation);
 
                         arrival:
                             Console.WriteLine("Arrival station");
                             Console.WriteLine("Station key: ");
-                            num = int.Parse(Console.ReadLine());
-                            Console.WriteLine( "Station name:");
-                            name = Console.ReadLine();
-                            Console.WriteLine("Latitude: ");
-                            lat = double.Parse(Console.ReadLine());
-                            Console.WriteLine("Longitude: ");
-                            lon = double.Parse(Console.ReadLine());
-
-                            BusLineStation lastStation = new BusLineStation(r.Next(300), r.Next(5), num, lat, lon, name);
-                            if (firstStation.BSK == 0 || firstStation.LATITUDE == 0.0 || firstStation.LONGITUDE == 0.0)
+                            int num2 = int.Parse(Console.ReadLine());
+                            try
+                            {
+                                if (num2.ToString().Length != 6)
+                                {
+                                    throw new ArgumentException("The Bus Station Key must be a number with 6 digits");
+                                }
+                            }
+                            catch (ArgumentException ex)
+                            {
+                                Console.WriteLine(ex.Message);
                                 goto arrival;
+                            }
 
+                            Console.WriteLine("Station name:");
+                            string nameS = Console.ReadLine();
+
+                            Console.WriteLine("Latitude: ");
+                            double latitude = double.Parse(Console.ReadLine());
+                            try
+                            {
+                                if (latitude < 31 || latitude > 33.3)
+                                {
+                                    throw new ArgumentException("The Latitude must be between 31 and 33.3 degrees");
+                                }
+                            }
+                            catch (ArgumentException ex2)
+                            {
+                                Console.WriteLine(ex2.Message);
+                                goto arrival;
+                            }
+
+                            Console.WriteLine("Longitude: ");
+                            double longitude = double.Parse(Console.ReadLine());
+                            try
+                            {
+                                if (longitude < 34 || longitude > 36)
+                                {
+                                    throw new ArgumentException("The Longitude must be between 34.3 and 35.5 degrees");;
+                                }
+                            }
+                            catch (ArgumentException ex3)
+                            {
+                                Console.WriteLine(ex3.Message);
+                                goto arrival;
+                            }
+                            BusLineStation lastStation = new BusLineStation(r.Next(300), r.Next(5), num, lat, lon, name);
+                            
                             allStations.Add(lastStation);
-
-
                             List<BusLineStation> newLstStat = new List<BusLineStation>();
                             newLstStat.Add(firstStation);
                             newLstStat.Add(lastStation);
@@ -142,18 +223,54 @@ namespace dotNet5781_02_7799_9212
                             newLine:
                                 Console.WriteLine("Station key: ");
                                 int num = int.Parse(Console.ReadLine());
-                                Console.WriteLine("Name:");
+                                try
+                                {
+                                    if (num.ToString().Length != 6)
+                                    {
+                                        throw new ArgumentException("The Bus Station Key must be a number with 6 digits");
+                                    }
+                                }
+                                catch (ArgumentException ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                    goto newLine;
+                                }
+
+                                Console.WriteLine("Station name:");
                                 string name = Console.ReadLine();
+
                                 Console.WriteLine("Latitude: ");
                                 double lat = double.Parse(Console.ReadLine());
+                                try
+                                {
+                                    if (lat < 31 || lat > 33.3)
+                                    {
+                                        throw new ArgumentException("The Latitude must be between 31 and 33.3 degrees");
+                                    }
+                                }
+                                catch (ArgumentException ex2)
+                                {
+                                    Console.WriteLine(ex2.Message);
+                                    goto newLine;
+                                }
+
                                 Console.WriteLine("Longitude: ");
                                 double lon = double.Parse(Console.ReadLine());
+                                try
+                                {
+                                    if (lon < 34 || lon > 36)
+                                    {
+                                        throw new ArgumentException("The Longitude must be between 34.3 and 35.5 degrees");
+                                    }
+                                }
+                                catch (ArgumentException ex3)
+                                {
+                                    Console.WriteLine(ex3.Message);
+                                    goto newLine;
+                                }
 
 
                                 BusLineStation newStat = new BusLineStation(r.Next(300), r.Next(5), num, lat, lon, name);
-                                if (newStat.BSK == 0 || newStat.LATITUDE == 0.0 || newStat.LONGITUDE == 0.0)
-                                    goto newLine;
-
                                 allStations.Add(newStat);
 
                                 Console.WriteLine("What kind station it will be in the line? (first/last/middle) ?");
@@ -201,8 +318,22 @@ namespace dotNet5781_02_7799_9212
 
                         if (choice == 1)
                         {
-                            Console.WriteLine("Enter the bus line number");
+                          Line: Console.WriteLine("Enter the bus line number");
                             int tmp = int.Parse(Console.ReadLine());
+                            try
+                            {
+                                if (tmp.ToString().Length > 3 || tmp.ToString().Length < 1)
+                                {
+                                    throw new ArgumentException("Invalide number of line");
+                                }
+                              
+                            }
+                            catch (ArgumentException exx)
+                            {
+                                Console.WriteLine(exx.Message);
+                                goto Line;
+                            }
+                            
                             int counter = 0;
                             foreach (BusLine line in allLines)
                             {
