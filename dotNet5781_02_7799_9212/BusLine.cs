@@ -28,17 +28,7 @@ namespace dotNet5781_02_7799_9212
 
         public BusLine(int id, List<BusLineStation> lst, int a)
         {
-            try
-            {
-                if (id.ToString().Length > 3 || id.ToString().Length < 2)
-                    throw new ArgumentException("Invalide number of line");
-                busLine = id;
-            }
-            catch (ArgumentException exx)
-            {
-                Console.WriteLine(exx.Message);
-            }
-
+            busLine = id;
             stations = lst;
             area = (EnumZone)a;
             if (lst.Count != 0)
