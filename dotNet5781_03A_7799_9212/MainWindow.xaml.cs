@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace dotNet5781_03A_7799_9212
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
