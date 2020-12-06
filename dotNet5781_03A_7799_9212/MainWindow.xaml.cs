@@ -31,9 +31,8 @@ namespace dotNet5781_03A_7799_9212
             List<BusLine> list = new List<BusLine>();
         
 
-
-
-            private BusLine currentDisplayBusLine;//8
         }
+        private BusLine currentDisplayBusLine;//8
+
     }
 }
