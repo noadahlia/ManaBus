@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using dotNet5781_02_7799_9212;
 
 namespace dotNet5781_03A_7799_9212
 {
@@ -20,13 +21,14 @@ namespace dotNet5781_03A_7799_9212
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
         public MainWindow()
         {
             InitializeComponent();
 
 
             List<BusLine> list = new List<BusLine>();
+        
 
 
 
