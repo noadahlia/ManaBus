@@ -20,9 +20,17 @@ namespace dotNet5781_03A_7799_9212
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
+
+
+            List<BusLine> list = new List<BusLine>();
+
+
+
+            private BusLine currentDisplayBusLine;//8
         }
     }
 }
