@@ -1,4 +1,6 @@
-﻿namespace dotNet5781_02_7799_9212
+﻿using System;
+
+namespace dotNet5781_02_7799_9212
 {
    public class BusLineStation : BuStation
     {
@@ -26,6 +28,11 @@
             {
                 Travel_Time_From_Station = value;
             }
+        }
+         public override string ToString()
+        { 
+            TimeSpan travelTime = TimeSpan.FromMinutes(TTFS);
+            return base.ToString()+"      "+travelTime ;
         }
 
     }

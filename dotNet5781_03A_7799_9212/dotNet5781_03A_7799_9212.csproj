@@ -100,5 +100,11 @@
       <Name>dotNet5781_02_7799_9212</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bus1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bus-png-image-5a39f988c2f971.30631951151374887279864946.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

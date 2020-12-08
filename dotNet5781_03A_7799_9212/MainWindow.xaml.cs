@@ -34,7 +34,7 @@ namespace dotNet5781_03A_7799_9212
             /* Create 40 stations */
             for (int i = 0; i < 40; i++)
             {
-                BusLineStation newSt = new BusLineStation(r.Next(300), r.Next(5), r.Next(100000, 999999), r.Next(31, 33) + r.NextDouble(), r.Next(34, 36) + r.NextDouble(), "station" + i);
+                BusLineStation newSt = new BusLineStation(r.Next(300), r.Next(30), r.Next(100000, 999999), r.Next(31, 33) + r.NextDouble(), r.Next(34, 36) + r.NextDouble(), "station" + i);
                 allStations.Add(newSt);
             }
 
