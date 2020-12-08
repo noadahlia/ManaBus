@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace dotNet5781_02_7799_9212
 {
-    class LinesList : IEnumerable
+    public class LinesList : IEnumerable
     {
         private List<BusLine> lines { get; set; }
 
@@ -74,12 +74,14 @@ namespace dotNet5781_02_7799_9212
             return sortedLst;
         }
 
-        public BusLine this[int myKey]
+        public BusLine this[int index]
         {
-            get => lines[FindByKey(myKey)];
-            set => lines[FindByKey(myKey)] = value;
+            get => lines[FindByKey(index)];
+            set => lines[FindByKey(index)] = value;
 
         }
+
+         
 
         public int FindByKey(int key)
         {

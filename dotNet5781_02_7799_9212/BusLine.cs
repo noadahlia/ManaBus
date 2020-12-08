@@ -175,5 +175,10 @@ namespace dotNet5781_02_7799_9212
         {
             return this.travelTime.CompareTo(other.travelTime);
         }
+
+        public BusLine  ReturnBus(int key)
+        {
+            return this;
+        }
     }
 }

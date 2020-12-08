@@ -2,7 +2,7 @@
 
 namespace dotNet5781_02_7799_9212
 {
-    class BuStation
+    public class BuStation
     {
 
         public BuStation(int key, double lat, double lon, string name)

@@ -1,6 +1,6 @@
 ﻿namespace dotNet5781_02_7799_9212
 {
-    class BusLineStation : BuStation
+   public class BusLineStation : BuStation
     {
 
 
