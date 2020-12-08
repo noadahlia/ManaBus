@@ -53,12 +53,10 @@ namespace dotNet5781_03A_7799_9212
                 busLines.AddLine(newLine);
             }
                 
-            cbBusLines.ItemsSource = busLines;
-            cbBusLines.DisplayMemberPath = "BUSLINE";
-            cbBusLines.SelectedIndex = 0;
-           // ShowBusLine();
-
-
+            this.cbBusLines.ItemsSource = busLines;
+            this.cbBusLines.DisplayMemberPath = "BUSLINE";
+            this.cbBusLines.SelectedIndex = 0;
+            //ShowBusLine
 
 
          }
@@ -69,7 +67,7 @@ namespace dotNet5781_03A_7799_9212
             ShowBusLine((cbBusLines.SelectedValue as BusLine).BUSLINE);
         
         }
-        ; 
+        
         private void ShowBusLine(int index)
         {
             currentDisplayBusLine = busLines[index];

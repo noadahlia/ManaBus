@@ -1,6 +1,6 @@
 ﻿namespace dotNet5781_02_7799_9212
 {
-    enum EnumZone
+    public enum EnumZone
     {
         General = 1,
         North = 2,

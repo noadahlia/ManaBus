@@ -12,14 +12,13 @@ namespace dotNet5781_02_7799_9212
             set { /*nothing*/ }
         }
 
-        private int busLine;
-        public int BUSLINE { get => busLine; set => busLine = value; }
+        public int  BUSLINE { get; set; }
 
         private BusLineStation firstS, lastS;
         public BusLineStation FIRST { get => firstS; set => firstS = value; }
         public BusLineStation LAST { get => lastS; set => lastS = value; }
 
-        private EnumZone area { get; set; }
+        public EnumZone area { get; set; }
 
         private int travelTime { get; set; }
 
@@ -28,7 +27,7 @@ namespace dotNet5781_02_7799_9212
 
         public BusLine(int id, List<BusLineStation> lst, int a)
         {
-            busLine = id;
+            BUSLINE = id;
             stations = lst;
             area = (EnumZone)a;
             if (lst.Count != 0)
@@ -42,7 +41,7 @@ namespace dotNet5781_02_7799_9212
 
         public override string ToString()
         {
-            string tmp1 = "Line N°: " + busLine.ToString() + " Area: " + area.ToString() + "\nStations:\n";
+            string tmp1 = "Line N°: " + BUSLINE.ToString() + " Area: " + area.ToString() + "\nStations:\n";
             string tmp2 = "";
             foreach (BusLineStation st in stations)
             {

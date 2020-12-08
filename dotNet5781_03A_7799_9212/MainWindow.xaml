@@ -28,10 +28,10 @@
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="7*"/>
             </Grid.ColumnDefinitions>
-            <ComboBox x:Name="cbBusLines" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,10,4.667,38" VerticalAlignment="Stretch" IsSynchronizedWithCurrentItem="True" Background="#FF9FC4C4" Foreground="{x:Null}" BorderBrush="{x:Null}" SelectionChanged="cbBusLines_SelectionChanged" ItemsSource="{Binding}"/>
+            <ComboBox x:Name="cbBusLines" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,10,4.667,38" VerticalAlignment="Stretch"  Background="#FF9FC4C4"  SelectionChanged="cbBusLines_SelectionChanged" DisplayMemberPath="BUSLINE" />
             <Label Content="Bus Lines Number :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="58" Width="178" FontSize="18.9" FontFamily="Palatino Linotype" Background="#00000000" FontWeight="Thin"/>
             <Label Content="    Area : " Grid.Column="2" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Height="48" Width="155" FontFamily="Palatino Linotype" FontSize="19"/>
-            <TextBox x:Name ="tbArea" Grid.Column="3" TextWrapping="Wrap" VerticalAlignment="Stretch" Text="{Binding Area}" Margin="0,10,10.333,38" Background="#FFCEEAEA"/>
+            <TextBox x:Name ="tbArea" Grid.Column="3" TextWrapping="Wrap" VerticalAlignment="Stretch" Text="{Binding area}" Margin="0,10,10.333,38" Background="#FFCEEAEA"/>
 
         </Grid>
         <ListBox Margin="10,10,10.333,297.667" Grid.Row="1"
