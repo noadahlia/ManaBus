@@ -60,7 +60,43 @@ namespace dotNet5781_03B_7799_9212
 
             #endregion
 
+            #region classBus
+                 public class Bus
+        {
+            private int b_id;
+            public int B_ID
+            {
+                get { return b_id; }
+                set { b_id = value; }
+            }
+            private int km_counter;
+            public int KM_C
+            {
+                get { return km_counter; }
+                set { km_counter = value; }
+            }
 
+            private int fuel_level;
+            public int FUEL
+            {
+                get { return fuel_level; }
+                set { fuel_level = value; }
+            }
+
+            public DateTime lastRefresh;
+            public Bus(int id) { b_id = id; }
+            public Bus(int id, DateTime date)
+            {
+                b_id = id;
+                lastRefresh = date;
+                km_counter = 0;
+                fuel_level = 1200;
+            }
+            enum State {readyToGo, inProgress, onRefueling, inTreatment };
+            private State buState;
         }
+
     }
+
 }
+            #endregion
