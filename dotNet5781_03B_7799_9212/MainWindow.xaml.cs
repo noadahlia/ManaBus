@@ -46,7 +46,7 @@ namespace dotNet5781_03B_7799_9212
             }
             for (int i = 0; i < 4; i++)
             {
-                 in_date2 = r.Next(1, 31) + "/" + r.Next(1, 13) + "/" + r.Next(2019, 2099);
+                 in_date2 = r.Next(1, 31) + "/" + r.Next(1, 13) + "/" + r.Next(2019, 2021);
                  in_date3 = r.Next(1, 31) + "/" + r.Next(1, 12) + "/2020";
                  dt2 = DateTime.ParseExact(in_date2, "d/M/yyyy", provider);
                  dt3 = DateTime.ParseExact(in_date3, "d/M/yyyy", provider);
@@ -79,12 +79,14 @@ namespace dotNet5781_03B_7799_9212
             this.cbBus.SelectedIndex = 0;
 
         }
+   
 
+        private void btn_insertClick(object sender, RoutedEventArgs e) {
+            lbl1.Visibility = Visibility.Visible;
+            datePicker1.Visibility = Visibility.Visible;
+            
+        }
 
-        //private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-
-        //}
 
 
     }

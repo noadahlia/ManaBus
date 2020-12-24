@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_7799_9212"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="800" Visibility="Visible">
+    <Grid x:Name="grid1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -16,6 +16,15 @@
                   VerticalAlignment="Stretch"  Background="#FF9FC4C4" 
                   DisplayMemberPath="B_ID" Width="154" RenderTransformOrigin="1.305,0.625" />
         <TextBox HorizontalAlignment="Left" Height="28" Margin="11,44,0,0" TextWrapping="Wrap" Text="Bus number:" VerticalAlignment="Top" Width="75" BorderBrush="{x:Null}" />
+        <Button x:Name="btn_insert" Content="Insert a new bus"
+                HorizontalAlignment="Left" Height="33" Margin="66,135,0,0" 
+                VerticalAlignment="Top" Width="106"
+                Click="btn_insertClick"
+                />
+        <Label x:Name="lbl1" Content="Select the date of commencement activity:" HorizontalAlignment="Left" Height="26" Margin="11,184,0,0" VerticalAlignment="Top" Width="255" Grid.ColumnSpan="2" Visibility="Hidden"/>
+        <Label x:Name="lbl2" Content="Enter the bus license" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
+        <TextBox x:Name="id_res" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <DatePicker x:Name="datePicker1" HorizontalAlignment="Left" Height="28" Margin="11,236,0,0" VerticalAlignment="Top" Width="234" Visibility="Hidden"/>
 
     </Grid>
 </Window>
