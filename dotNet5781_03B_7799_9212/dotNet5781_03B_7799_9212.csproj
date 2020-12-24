@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{40B40338-1AE6-42B8-8316-431B71CE6756}</ProjectGuid>
+    <ProjectGuid>{67FAA8BF-2A3B-4F79-A9A7-1DAC70CE6F6A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>dotNet5781_03B_7799_9212</RootNamespace>
     <AssemblyName>dotNet5781_03B_7799_9212</AssemblyName>
@@ -93,6 +93,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dotNet5781_01_7799_9212\dotNet5781_01_7799_9212.csproj">
+      <Project>{ea24a5fe-351f-4b32-8829-a10819c366ae}</Project>
+      <Name>dotNet5781_01_7799_9212</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dotNet5781_02_7799_9212\dotNet5781_02_7799_9212.csproj">
+      <Project>{46f3d16a-ef2c-4bea-8510-7a76ab05f504}</Project>
+      <Name>dotNet5781_02_7799_9212</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

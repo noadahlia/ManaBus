@@ -9,7 +9,7 @@ using System.Windows;
 namespace dotNet5781_03B_7799_9212
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Logique d'interaction pour App.xaml
     /// </summary>
     public partial class App : Application
     {
