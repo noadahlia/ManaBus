@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox x:Name="cbBus" HorizontalAlignment="Right" Margin="0,44,19,347" 
+                  VerticalAlignment="Stretch"  Background="#FF9FC4C4" 
+                  DisplayMemberPath="B_ID" Width="154" RenderTransformOrigin="1.305,0.625" />
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="11,44,0,0" TextWrapping="Wrap" Text="Bus number:" VerticalAlignment="Top" Width="75" BorderBrush="{x:Null}" />
+
     </Grid>
 </Window>

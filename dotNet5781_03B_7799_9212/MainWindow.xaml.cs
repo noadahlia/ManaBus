@@ -31,78 +31,100 @@ namespace dotNet5781_03B_7799_9212
             /*Create 8 random buses*/
             Random r = new Random();
             CultureInfo provider = CultureInfo.InvariantCulture;
-            string in_date1 = r.Next(31) + "/" + r.Next(13) + "/" + r.Next(1990,2019);
-            string in_date2= r.Next(31) + "/" + r.Next(13) + "/" + r.Next(2019, 2099);
-            string in_date3 = r.Next(31) + "/" + r.Next(12) + "/2020";
-
-            DateTime dt1 = DateTime.ParseExact(in_date1, "dd/MM/yyyy", provider);
-            DateTime dt2 = DateTime.ParseExact(in_date2, "dd/MM/yyyy", provider);
-            DateTime dt3 = DateTime.ParseExact(in_date3, "dd/MM/yyyy", provider);
-
-
+            string in_date1, in_date2, in_date3;
+            DateTime dt1, dt2, dt3;
+            
             for (int i = 0; i < 4; i++)
             {
-                Bus bus = new Bus(r.Next(10000000,99999999), dt1);
-                bus.lastRefresh= dt3;
+                 in_date1 = r.Next(1, 31) + "/" + r.Next(1, 13) + "/" + r.Next(1990, 2019);
+                 dt1 = DateTime.ParseExact(in_date1, "d/M/yyyy", provider);
+                 in_date3 = r.Next(1, 31) + "/" + r.Next(1, 12) + "/2020";
+                 dt3 = DateTime.ParseExact(in_date3, "d/M/yyyy", provider);
+                Bus bus = new Bus(r.Next(1000000, 10000000), dt1);
+                bus.lastRefresh = dt3;
                 busList.Add(bus);
             }
             for (int i = 0; i < 4; i++)
             {
-                Bus bus = new Bus(r.Next(1000000, 9999999), dt2);
+                 in_date2 = r.Next(1, 31) + "/" + r.Next(1, 13) + "/" + r.Next(2019, 2099);
+                 in_date3 = r.Next(1, 31) + "/" + r.Next(1, 12) + "/2020";
+                 dt2 = DateTime.ParseExact(in_date2, "d/M/yyyy", provider);
+                 dt3 = DateTime.ParseExact(in_date3, "d/M/yyyy", provider);
+                Bus bus = new Bus(r.Next(10000000, 100000000), dt2);
                 bus.lastRefresh = dt3;
                 busList.Add(bus);
 
             }
             /*Create 3 special buses*/
+            in_date1 = r.Next(1, 31) + "/" + r.Next(1, 13) + "/" + r.Next(1990, 2019);
+            dt1 = DateTime.ParseExact(in_date1, "d/M/yyyy", provider);
             Bus b1 = new Bus(r.Next(10000000, 99999999), dt1);
             b1.lastRefresh = DateTime.ParseExact("12/12/2019", "dd/MM/yyyy", provider);
             busList.Add(b1);
+            in_date1 = r.Next(1, 31) + "/" + r.Next(1, 13) + "/" + r.Next(1990, 2019);
+            dt1 = DateTime.ParseExact(in_date1, "d/M/yyyy", provider);
             Bus b2 = new Bus(r.Next(10000000, 99999999), dt1);
             b2.KM_C = 19935;
             busList.Add(b2);
+            in_date1 = r.Next(1, 31) + "/" + r.Next(1, 13) + "/" + r.Next(1990, 2019);
+            dt1 = DateTime.ParseExact(in_date1, "d/M/yyyy", provider);
             Bus b3 = new Bus(r.Next(10000000, 99999999), dt1);
             b3.FUEL = 30;
             busList.Add(b3);
 
             #endregion
 
-            #region classBus
-                 public class Bus
-        {
-            private int b_id;
-            public int B_ID
-            {
-                get { return b_id; }
-                set { b_id = value; }
-            }
-            private int km_counter;
-            public int KM_C
-            {
-                get { return km_counter; }
-                set { km_counter = value; }
-            }
+            this.cbBus.ItemsSource = busList;
+            this.cbBus.DisplayMemberPath = "B_ID";
+            this.cbBus.SelectedIndex = 0;
 
-            private int fuel_level;
-            public int FUEL
-            {
-                get { return fuel_level; }
-                set { fuel_level = value; }
-            }
-
-            public DateTime lastRefresh;
-            public Bus(int id) { b_id = id; }
-            public Bus(int id, DateTime date)
-            {
-                b_id = id;
-                lastRefresh = date;
-                km_counter = 0;
-                fuel_level = 1200;
-            }
-            enum State {readyToGo, inProgress, onRefueling, inTreatment };
-            private State buState;
         }
+
+
+        //private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+
+        //}
+
 
     }
 
+    #region classBus
+    public class Bus
+    {
+        private int b_id;
+        public int B_ID
+        {
+            get { return b_id; }
+            set { b_id = value; }
+        }
+        private int km_counter;
+        public int KM_C
+        {
+            get { return km_counter; }
+            set { km_counter = value; }
+        }
+
+        private int fuel_level;
+        public int FUEL
+        {
+            get { return fuel_level; }
+            set { fuel_level = value; }
+        }
+
+        public DateTime lastRefresh;
+        public Bus(int id) { b_id = id; }
+        public Bus(int id, DateTime date)
+        {
+            b_id = id;
+            lastRefresh = date;
+            km_counter = 0;
+            fuel_level = 1200;
+        }
+        enum State { readyToGo, inProgress, onRefueling, inTreatment };
+        private State buState;
+    }
+    #endregion
+
+
 }
-            #endregion
