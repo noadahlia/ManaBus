@@ -84,7 +84,8 @@ namespace dotNet5781_03B_7799_9212
         private void btn_insertClick(object sender, RoutedEventArgs e) {
             lbl1.Visibility = Visibility.Visible;
             datePicker1.Visibility = Visibility.Visible;
-            
+            DateTime myTime = (DateTime)this.datePicker1.SelectedDate;
+            MessageBox.Show(myTime.ToString());
         }
 
 
