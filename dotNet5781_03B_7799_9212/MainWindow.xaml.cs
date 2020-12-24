@@ -26,7 +26,7 @@ namespace dotNet5781_03B_7799_9212
         public MainWindow()
         {
             InitializeComponent();
-
+            List<Bus> busList = new List<Bus>();
             #region createBus
             /*Create 8 random buses*/
             Random r = new Random();
@@ -44,19 +44,25 @@ namespace dotNet5781_03B_7799_9212
             {
                 Bus bus = new Bus(r.Next(10000000,99999999), dt1);
                 bus.lastRefresh= dt3;
+                busList.Add(bus);
             }
             for (int i = 0; i < 4; i++)
             {
                 Bus bus = new Bus(r.Next(1000000, 9999999), dt2);
                 bus.lastRefresh = dt3;
+                busList.Add(bus);
+
             }
             /*Create 3 special buses*/
             Bus b1 = new Bus(r.Next(10000000, 99999999), dt1);
             b1.lastRefresh = DateTime.ParseExact("12/12/2019", "dd/MM/yyyy", provider);
+            busList.Add(b1);
             Bus b2 = new Bus(r.Next(10000000, 99999999), dt1);
             b2.KM_C = 19935;
+            busList.Add(b2);
             Bus b3 = new Bus(r.Next(10000000, 99999999), dt1);
             b3.FUEL = 30;
+            busList.Add(b3);
 
             #endregion
 
