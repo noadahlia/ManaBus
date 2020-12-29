@@ -38,8 +38,8 @@ namespace dotNet5781_03B_7799_9212
                 if (isReady(travelKM, selBus.KM_C, selBus.FUEL))
                 {
                     selBus.KM_C += travelKM;
-                    selBus.FUEL -= travelKM;
-                    MessageBox.Show(selBus.KM_C + " " + selBus.FUEL);
+                    selBus.FUEL -= travelKM; 
+                    MessageBox.Show("Saved travel");
                 }
                 else
                 {
