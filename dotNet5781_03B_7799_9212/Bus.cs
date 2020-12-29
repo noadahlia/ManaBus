@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace dotNet5781_03B_7799_9212
 {
-    class Bus
+    public class Bus
     {
 
         private int b_id;
@@ -87,23 +88,22 @@ namespace dotNet5781_03B_7799_9212
 
         public void drive(int dist) 
         {
-            this.KM_C += distance;
-            this.FUEL -= distance;
+            this.KM_C += dist;
+            this.FUEL -= dist;
         }
 
-        public bool insert(int license, DateTime dt)
+
+
+        public override string ToString()
         {
-            if (license.ToString().Length != 8 && dt.Year >= 2018)
-            {
-                return false;
-            }
+            string str;
+            CultureInfo provider = CultureInfo.InvariantCulture;
 
-            if (license.ToString().Length != 7 && dt.Year < 2018)
-            {
-                return false;
-            }
-
-            return true;
+            str = "Bus id: " + this.B_ID + "\n";
+            str += "Date of last refresh: " + this.lastRefresh.ToString("dd/MM/yyyy") + "\n";
+            str += "Kilometrage: " + this.KM_C + "\n";
+            str += "Fuel kilometers: " + this.FUEL;
+            return str;
         }
 
 
