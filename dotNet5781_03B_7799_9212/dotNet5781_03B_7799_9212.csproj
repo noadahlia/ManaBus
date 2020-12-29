@@ -55,6 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Drive.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InsertWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -64,6 +72,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CalendarDatePicker.cs" />
+    <Compile Include="Drive.xaml.cs">
+      <DependentUpon>Drive.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InsertWin.xaml.cs">
+      <DependentUpon>InsertWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -104,6 +118,12 @@
       <Project>{46f3d16a-ef2c-4bea-8510-7a76ab05f504}</Project>
       <Name>dotNet5781_02_7799_9212</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="paysage1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="paysage2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

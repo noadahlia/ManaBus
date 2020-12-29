@@ -1,0 +1,18 @@
+﻿<Window x:Class="dotNet5781_03B_7799_9212.InsertWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dotNet5781_03B_7799_9212"
+        mc:Ignorable="d"
+        Title="New Bus Informations" Height="233.212" Width="285.949">
+    <Grid>
+
+        <Label x:Name="lbl1" Content="Select the date of commencement activity:" HorizontalAlignment="Left" Height="26" Margin="11,10,0,0" VerticalAlignment="Top" Width="255" Visibility="Visible"/>
+        <Label x:Name="lbl2" Content="Enter the bus license" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible" Margin="11,74,0,0"/>
+        <TextBox x:Name="id_res" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Visible" Margin="11,105,0,0" UndoLimit="8" />
+        <DatePicker x:Name="datePicker1" HorizontalAlignment="Left" Height="28" Margin="11,41,0,0" VerticalAlignment="Top" Width="234" Visibility="Visible" SelectedDateChanged="datePicker1_SelectedDateChanged" FirstDayOfWeek="Sunday" Text="Select a date"/>
+        <Button x:Name="insert_btn" Content="Insert" HorizontalAlignment="Left" Height="38" Margin="100,154,0,0" VerticalAlignment="Top" Width="68" Click="Button_Click"/>
+
+    </Grid>
+</Window>

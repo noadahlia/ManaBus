@@ -16,15 +16,19 @@ using System.Windows.Shapes;
 using dotNet5781_01_7799_9212;
 using static dotNet5781_01_7799_9212.Program;
 using System.Threading;
-using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace dotNet5781_03B_7799_9212
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
+    ///        
+
     public partial class MainWindow : Window
     {
+        ObservableCollection<Bus> busList = new ObservableCollection<Bus>();
+
 
         public MainWindow()
         {
@@ -35,71 +39,151 @@ namespace dotNet5781_03B_7799_9212
             #region createBus
             /*Create 8 random buses*/
             Random r = new Random();
-            CultureInfo provider = CultureInfo.InvariantCulture;
             string in_date1, in_date2, in_date3;
+            CultureInfo provider = CultureInfo.InvariantCulture;
             DateTime dt1, dt2, dt3;
             
             for (int i = 0; i < 4; i++)
             {
-                 in_date1 = r.Next(1, 31) + "/" + r.Next(1, 13) + "/" + r.Next(1990, 2019);
-                 dt1 = DateTime.ParseExact(in_date1, "d/M/yyyy", provider);
-                 in_date3 = r.Next(1, 31) + "/" + r.Next(1, 12) + "/2020";
-                 dt3 = DateTime.ParseExact(in_date3, "d/M/yyyy", provider);
+                 in_date1 = r.Next(3)+""+r.Next(1,10) + "/" + r.Next(1,13) + "/" + r.Next(1990, 2019);
+                 dt1 = DateTime.ParseExact(in_date1, "dd/M/yyyy", provider);
+                 in_date3 = r.Next(3) + "" + r.Next(1,10) + "/" + r.Next(1, 12) + "/2020";
+                 dt3 = DateTime.ParseExact(in_date3, "dd/M/yyyy", provider);
                 Bus bus = new Bus(r.Next(1000000, 10000000), dt1);
                 bus.lastRefresh = dt3;
                 busList.Add(bus);
             }
+
             for (int i = 0; i < 4; i++)
             {
-                 in_date2 = r.Next(1, 31) + "/" + r.Next(1, 13) + "/" + r.Next(2019, 2021);
-                 in_date3 = r.Next(1, 31) + "/" + r.Next(1, 12) + "/2020";
-                 dt2 = DateTime.ParseExact(in_date2, "d/M/yyyy", provider);
-                 dt3 = DateTime.ParseExact(in_date3, "d/M/yyyy", provider);
+                 in_date2 = r.Next(3) + "" + r.Next(1,10) + "/" + r.Next(1, 13) + "/" + r.Next(2019, 2021);
+                 in_date3 = r.Next(3) + "" + r.Next(1,10) + "/" + r.Next(1, 12) + "/2020";
+                 dt2 = DateTime.ParseExact(in_date2, "dd/M/yyyy", provider);
+                 dt3 = DateTime.ParseExact(in_date3, "dd/M/yyyy", provider);
                 Bus bus = new Bus(r.Next(10000000, 100000000), dt2);
                 bus.lastRefresh = dt3;
                 busList.Add(bus);
 
             }
             /*Create 3 special buses*/
-            in_date1 = r.Next(1, 31) + "/" + r.Next(1, 13) + "/" + r.Next(1990, 2019);
-            dt1 = DateTime.ParseExact(in_date1, "d/M/yyyy", provider);
+            in_date1 = r.Next(3) + "" + r.Next(1,10) + "/" + r.Next(1, 13) + "/" + r.Next(1990, 2019);
+            dt1 = DateTime.ParseExact(in_date1, "dd/M/yyyy", provider);
             Bus b1 = new Bus(r.Next(10000000, 99999999), dt1);
             b1.lastRefresh = DateTime.ParseExact("12/12/2019", "dd/MM/yyyy", provider);
             busList.Add(b1);
-            in_date1 = r.Next(1, 31) + "/" + r.Next(1, 13) + "/" + r.Next(1990, 2019);
-            dt1 = DateTime.ParseExact(in_date1, "d/M/yyyy", provider);
+            in_date1 = r.Next(3) + "" + r.Next(1,10) + "/" + r.Next(1, 13) + "/" + r.Next(1990, 2019);
+            dt1 = DateTime.ParseExact(in_date1, "dd/M/yyyy", provider);
             Bus b2 = new Bus(r.Next(10000000, 99999999), dt1);
             b2.KM_C = 19935;
             busList.Add(b2);
-            in_date1 = r.Next(1, 31) + "/" + r.Next(1, 13) + "/" + r.Next(1990, 2019);
-            dt1 = DateTime.ParseExact(in_date1, "d/M/yyyy", provider);
+            in_date1 = r.Next(3) + "" + r.Next(1,10) + "/" + r.Next(1, 13) + "/" + r.Next(1990, 2019);
+            dt1 = DateTime.ParseExact(in_date1, "dd/M/yyyy", provider);
             Bus b3 = new Bus(r.Next(10000000, 99999999), dt1);
             b3.FUEL = 30;
             busList.Add(b3);
 
             #endregion
 
-            this.cbBus.ItemsSource = busList;
-            this.cbBus.DisplayMemberPath = "B_ID";
-            this.cbBus.SelectedIndex = 0;
+            this.lb_bus.ItemsSource = busList;
+            this.lb_bus.DataContext = busList;
+            this.lb_bus.SelectedIndex = 0;
 
         }
    
 
         private void btn_insertClick(object sender, RoutedEventArgs e) {
+            InsertWin insertWin = new InsertWin(busList);
+            insertWin.ShowDialog();
             
         }
 
+        private void busList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+               
+        }
 
+        private void btnFuel_Click(object sender, RoutedEventArgs e)
+        {
+            Bus selBus = ((Button)sender).DataContext as Bus;
+            selBus.Refueling();
+        }
 
+        private void btnDrive_Click(object sender, RoutedEventArgs e)
+        {
+            Bus selBus = ((Button)sender).DataContext as Bus;
+            Drive driveWin = new Drive(selBus);
+            driveWin.ShowDialog();
+        }
+
+        private void lb_bus_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show(lb_bus.SelectedItem.ToString(), "Bus informations");
+        }
     }
 
 
-    
-        
-        
-    
-}
+        private int fuel_level;
+        public int FUEL
+        {
+            get { return fuel_level; }
+            set { fuel_level = value; }
+        }
+
+            public DateTime lastRefresh;
+            public Bus(int id) { b_id = id; }
+            public Bus(int id, DateTime date)
+            {
+                b_id = id;
+                lastRefresh = date;
+                km_counter = 0;
+                fuel_level = 1200;
+            }
+            enum State { readyToGo, inProgress, onRefueling, inTreatment };
+            private State buState;
+            public void Refueling() // verifier si besoin de remplir le reservoir
+            {
+                   this.FUEL = 1200;
+                //passer de l etat onRefueling a readyToGo
+            }
+
+            public void dateTreatment() // verifier si besoin de tipoul par rap a annee
+            {
+                DateTime d1 = DateTime.Now;
+                DateTime d2 = this.lastRefresh;
+                TimeSpan gap = d1 - d2;
+                if (gap.TotalDays > 365)
+                {
+                    this.lastRefresh = DateTime.Now;
+                }
+            }
+
+            public void kmTreatment(int miles) // verifier si besoin de tipoul par rap a Km 
+            {
+                int total = this.KM_C + miles;
+                if (total > 20000)
+                {
+                    this.KM_C = 0;
+                }
+            }
+            public override string ToString()
+            {
+                string str;
+            CultureInfo provider = CultureInfo.InvariantCulture;
+
+            str = "Bus id: " + this.B_ID+"\n";
+            str += "Date of last refresh: " + this.lastRefresh.ToString("dd/MM/yyyy") + "\n";
+            str += "Kilometrage: " + this.KM_C +"\n";
+            str += "Fuel kilometers: " + this.FUEL;
+            return str;
+            }
+           
+            
+        }
+
+    #endregion
+    //public class 
+
+} 
     
 
     
