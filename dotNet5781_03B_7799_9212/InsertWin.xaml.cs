@@ -20,11 +20,11 @@ namespace dotNet5781_03B_7799_9212
     /// </summary>
     public partial class InsertWin : Window
     {
-        ObservableCollection<Bus> busList = new ObservableCollection<Bus>();
+        ObservableCollection<Bus> busLst = new ObservableCollection<Bus>();
         public InsertWin(ObservableCollection<Bus> in_lst)
         {
             InitializeComponent();
-            busList = in_lst;
+            busLst = in_lst;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,7 +34,7 @@ namespace dotNet5781_03B_7799_9212
             if (insert(id, date))
             {
                 Bus newBus = new Bus(id, date);
-                busList.Add(newBus);
+                busLst.Add(newBus);
                 MessageBox.Show("New bus id = " + newBus.B_ID);
                 
             }

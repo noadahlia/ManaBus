@@ -35,7 +35,6 @@ namespace dotNet5781_03B_7799_9212
             InitializeComponent();
         
 
-        List<Bus> busList = new List<Bus>();
             #region createBus
             /*Create 8 random buses*/
             Random r = new Random();
@@ -94,7 +93,7 @@ namespace dotNet5781_03B_7799_9212
         private void btn_insertClick(object sender, RoutedEventArgs e) {
             InsertWin insertWin = new InsertWin(busList);
             insertWin.ShowDialog();
-            
+
         }
 
         private void busList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -122,9 +121,8 @@ namespace dotNet5781_03B_7799_9212
     }
 
 
-       
 
-    //public class 
+
 
 } 
     
