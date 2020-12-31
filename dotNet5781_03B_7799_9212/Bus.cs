@@ -106,6 +106,17 @@ namespace dotNet5781_03B_7799_9212
             return true;
         }
 
+        public override string ToString()
+        {
+            string str;
+            CultureInfo provider = CultureInfo.InvariantCulture;
+
+            str = "Bus id: " + this.B_ID + "\n";
+            str += "Date of last refresh: " + this.lastRefresh.ToString("dd/MM/yyyy") + "\n";
+            str += "Kilometrage: " + this.KM_C + "\n";
+            str += "Fuel kilometers: " + this.FUEL;
+            return str;
+        }
 
     }
 }
