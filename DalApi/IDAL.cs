@@ -7,7 +7,7 @@ using DO;
 
 namespace DalApi
 {
-    interface IDAL
+   public interface IDAL
     {
         #region Bus Function
         void AddBus(Bus bus);
@@ -45,6 +45,7 @@ namespace DalApi
 
         #endregion
 
-        //Toutes faire?
+       
+
     }
 }

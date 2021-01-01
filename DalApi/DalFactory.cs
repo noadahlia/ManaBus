@@ -8,5 +8,11 @@ namespace DalApi
 {
     public class DalFactory
     {
+        static readonly IDAL instance = new MyDal;
+        static public IDAL GetDAL()
+        {
+            return instance;
+        }
+
     }
 }
