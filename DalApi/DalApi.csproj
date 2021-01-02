@@ -55,6 +55,7 @@
     <Compile Include="DO\Trip.cs" />
     <Compile Include="DO\User.cs" />
     <Compile Include="IDAL.cs" />
+    <Compile Include="MyDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
