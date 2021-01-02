@@ -45,6 +45,17 @@ namespace DalApi
 
         #endregion
 
-        //Toutes faire?
+        #region User Function
+        void AddUser(Bus bus);
+        bool RemoveUser(int license);
+        void UpdateUser(Bus bus);
+        Bus GetUser(int license);
+        IEnumerable<Bus> GetAllUser(Func<Bus, bool> predicat = null);
+
+        #endregion
+
+        //Toutes faire? Surement...on verra bien..
+        
+
     }
 }
