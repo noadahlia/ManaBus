@@ -8,49 +8,49 @@ using DO;
 namespace DalApi
 {
    public interface IDAL
-    {
+   {
         #region Bus Function
         void AddBus(Bus bus);
-        bool RemoveBus(int license);
+        void RemoveBus(int license);
         void UpdateBus(Bus bus);
         Bus GetBus(int license);
-        IEnumerable<Bus> GetAllBus(Func<Bus, bool> predicat = null);
+        IEnumerable<Bus> GetAllBus(Func<Bus, bool> predicate = null);
 
         #endregion
         
         #region Line Function
         void AddLine(Line line);
-        bool RemoveLine(int id);
-        void UpdateBus(Line line);
+        void RemoveLine(int id);
+        void UpdateLine(Line line);
         Line GetLine(int id);
-        IEnumerable<Line> GetAllLine(Func<Line, bool> predicat = null);
+        IEnumerable<Line> GetAllLine(Func<Line, bool> predicate = null);
 
         #endregion
 
         #region Station Function
         void AddStation(Station station);
-        bool RemoveStation(int code);
+        void RemoveStation(int code);
         void UpdateStation(Station station);
         Station GetStation(int code);
-        IEnumerable<Station> GetAllStation(Func<Station, bool> predicat = null);
+        IEnumerable<Station> GetAllStation(Func<Station, bool> predicate = null);
 
         #endregion
 
         #region Trip Function
         void AddTrip(Trip trip);
-        bool RemoveTrip(int id);
+        void RemoveTrip(int id);
         void UpdateTrip(Trip trip );
-        Trip GGetTrip(int id);
-        IEnumerable<Trip> GetAllTrip(Func<Trip, bool> predicat = null);
+        Trip GetTrip(int id);
+        IEnumerable<Trip> GetAllTrip(Func<Trip, bool> predicate = null);
 
         #endregion
 
         #region User Function
-        void AddUser(Bus bus);
-        bool RemoveUser(int license);
-        void UpdateUser(Bus bus);
-        Bus GetUser(int license);
-        IEnumerable<Bus> GetAllUser(Func<Bus, bool> predicat = null);
+        void AddUser(User user);
+        void RemoveUser(string name);
+        void UpdateUser(User user);
+        User GetUser(string name);
+        IEnumerable<User> GetAllUser(Func<User, bool> predicate = null);
 
         #endregion
 

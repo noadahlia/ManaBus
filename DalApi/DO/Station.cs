@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DO
 {
-    class Station
+    public class Station
     {
         public int Code { get; set; }
         public string Name { get; set; }
@@ -14,6 +14,8 @@ namespace DO
         public double Latitude { get; set; }
        
         public string Adress { get; set; }//optionnal
+        public bool IsActive = true;
+
 
         //public override string ToString()
         //{ 

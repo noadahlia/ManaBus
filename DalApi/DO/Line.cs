@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace DO
 {
-    class Line
+    public class Line
     {
         public int Id { get; set; }
         public int Code { get; set; }
         public int FirstStation { get; set; }
         public int LastStation { get; set; }
+        public bool IsActive = true;
+
 
         //public override string ToString()
         //{ 

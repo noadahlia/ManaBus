@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace DO
 {
-    class User
+    public class User
     {
         public string UserName { get; set; }
         public string Password { get; set; }
         public bool Admin;
+        public bool IsActive = true;
+
 
         //public override string ToString()
         //{ 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DO
 {
-    class Trip
+    public class Trip
     {
         public int Id { get; set; }
         public string UserName { get; set; }
@@ -15,6 +15,8 @@ namespace DO
         public TimeSpan InAt { get; set; }
         public int OutStation { get; set; }
         public TimeSpan OutAt { get; set; }
+        public bool IsActive = true;
+
 
         //public override string ToString()
         //{ 

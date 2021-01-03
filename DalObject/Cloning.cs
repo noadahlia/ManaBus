@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Reflection;
 
 
-namespace DalApi
+namespace DAL
 {
     static class Cloning
     {

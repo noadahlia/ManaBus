@@ -3,10 +3,301 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DalApi;
+using DO;
+using DS;
 
-namespace DalObject
+
+namespace DAL
 {
-    public class DalObject
+    sealed class DalObject : IDAL
     {
+        /*
+         * Implementation of CRUD functions
+         * 
+         * Remove Function: In order to keep a history of data, 
+         *                  an object is not deleted but is out of service.
+         */
+        #region Bus Function
+        public void AddBus(Bus bus)
+        {
+            if (DataSource.ListBus.FirstOrDefault(p => p.LicenseNum == bus.LicenseNum) != null)
+                throw new DO.BadBusIdException(bus.LicenseNum, "Duplicate bus ID");
+            DataSource.ListBus.Add(bus.Clone());
+        }
+        public void RemoveBus(int license) 
+        {
+            DO.Bus bus = DataSource.ListBus.Find(b => b.LicenseNum == license);
+
+            if (bus != null)
+            {
+                bus.IsActive = false; 
+            }
+            else
+                throw new DO.BadBusIdException(license, $"bad bus id: {license}");
+        }
+        public void UpdateBus(Bus bus) 
+        {
+            DO.Bus bu = DataSource.ListBus.Find(b => b.LicenseNum == bus.LicenseNum);
+
+            if (bu != null)
+            {
+                DataSource.ListBus.Remove(bu);
+                DataSource.ListBus.Add(bu.Clone());
+            }
+            else
+                throw new DO.BadBusIdException(bus.LicenseNum, $"bad bus id: {bus.LicenseNum}");
+
+        }
+        public DO.Bus GetBus(int license) 
+        {
+            DO.Bus bus = DataSource.ListBus.Find(b => b.LicenseNum == license);
+
+            if (bus != null)
+                return bus.Clone();
+            else
+                throw new DO.BadBusIdException(license, $"bad bus id: {license}");
+        }
+        public IEnumerable<Bus> GetAllBus(Func<Bus, bool> predicate = null) 
+        {
+            if (predicate == null)
+            {
+                return from bus in DataSource.ListBus
+                       select bus.Clone();
+            }
+            else
+            {
+                return from bus in DataSource.ListBus
+                       where predicate(bus)
+                       select bus.Clone();
+            }
+        }
+
+        #endregion
+
+        #region Station Function
+        public void AddStation(Station station)
+        {
+            if (DataSource.ListStation.FirstOrDefault(s => s.Code == station.Code) != null)
+                throw new DO.BadStationIdException(station.Code, "Duplicate station ID");
+            DataSource.ListStation.Add(station.Clone());
+        }
+        public void RemoveStation(int id)
+        {
+            DO.Station station = DataSource.ListStation.Find(s => s.Code == id);
+
+            if (station != null)
+            {
+                station.IsActive = false;
+            }
+            else
+                throw new DO.BadStationIdException(id, $"bad station id: {id}");
+        }
+        public void UpdateStation(Station Station)
+        {
+            DO.Station st = DataSource.ListStation.Find(l => l.Code == Station.Code);
+
+            if (st != null)
+            {
+                DataSource.ListStation.Remove(st);
+                DataSource.ListStation.Add(st.Clone());
+            }
+            else
+                throw new DO.BadStationIdException(Station.Code, $"bad station id: {Station.Code}");
+        }
+        public Station GetStation(int id)
+        {
+            DO.Station station = DataSource.ListStation.Find(s => s.Code == id);
+
+            if (station != null)
+                return station.Clone();
+            else
+                throw new DO.BadStationIdException(id, $"bad station id: {id}");
+        }
+        public IEnumerable<Station> GetAllStation(Func<Station, bool> predicate = null)
+        {
+            if (predicate == null)
+            {
+                return from station in DataSource.ListStation
+                       select station.Clone();
+            }
+            else
+            {
+                return from station in DataSource.ListStation
+                       where predicate(station)
+                       select station.Clone();
+            }
+        }
+
+        #endregion
+
+        #region Line Function
+        public void AddLine(Line line)
+        {
+            if (DataSource.ListLine.FirstOrDefault(l => l.Code == line.Code) != null)
+                throw new DO.BadLineIdException(line.Code, "Duplicate line ID");
+            DataSource.ListLine.Add(line.Clone());
+        }
+        public void RemoveLine(int id)
+        {
+            DO.Line line = DataSource.ListLine.Find(l => l.Code == id);
+
+            if (line != null)
+            {
+                line.IsActive = false;
+            }
+            else
+                throw new DO.BadLineIdException(id, $"bad line id: {id}");
+        }
+        public void UpdateLine(Line line)
+        {
+            DO.Line li = DataSource.ListLine.Find(l => l.Code == line.Code);
+
+            if (li != null)
+            {
+                DataSource.ListLine.Remove(li);
+                DataSource.ListLine.Add(li.Clone());
+            }
+            else
+                throw new DO.BadLineIdException(line.Code, $"bad line id: {line.Code}");
+        }
+        public Line GetLine(int id)
+        {
+            DO.Line line = DataSource.ListLine.Find(l => l.Code == id);
+
+            if (line != null)
+                return line.Clone();
+            else
+                throw new DO.BadLineIdException(id, $"bad line id: {id}");
+        }
+        public IEnumerable<Line> GetAllLine(Func<Line, bool> predicate = null)
+        {
+            if (predicate == null)
+            {
+                return from line in DataSource.ListLine
+                       select line.Clone();
+            }
+            else
+            {
+                return from line in DataSource.ListLine
+                       where predicate(line)
+                       select line.Clone();
+            }
+        }
+
+        #endregion
+
+        #region Trip Function
+        public void AddTrip(Trip trip)
+        {
+            if (DataSource.ListTrip.FirstOrDefault(t => t.Id == trip.Id) != null)
+                throw new DO.BadTripIdException(trip.Id, "Duplicate Trip ID");
+            DataSource.ListTrip.Add(trip.Clone());
+        }
+        public void RemoveTrip(int id)
+        {
+            DO.Trip trip = DataSource.ListTrip.Find(t => t.Id == id);
+
+            if (trip != null)
+            {
+                trip.IsActive = false;
+            }
+            else
+                throw new DO.BadTripIdException(id, $"bad trip id: {id}");
+        }
+        public void UpdateTrip(Trip trip)
+        {
+            DO.Trip li = DataSource.ListTrip.Find(t => t.Id == trip.Id);
+
+            if (li != null)
+            {
+                DataSource.ListTrip.Remove(li);
+                DataSource.ListTrip.Add(li.Clone());
+            }
+            else
+                throw new DO.BadTripIdException(trip.Id, $"bad trip id: {trip.Id}");
+        }
+        public Trip GetTrip(int id)
+        {
+            DO.Trip trip = DataSource.ListTrip.Find(t => t.Id == id);
+
+            if (trip != null)
+                return trip.Clone();
+            else
+                throw new DO.BadTripIdException(id, $"bad trip id: {id}");
+        }
+        public IEnumerable<Trip> GetAllTrip(Func<Trip, bool> predicate = null)
+        {
+            if (predicate == null)
+            {
+                return from trip in DataSource.ListTrip
+                       select trip.Clone();
+            }
+            else
+            {
+                return from trip in DataSource.ListTrip
+                       where predicate(trip)
+                       select trip.Clone();
+            }
+        }
+
+        #endregion
+
+        #region User Function
+        public void AddUser(User user)
+        {
+            if (DataSource.ListUser.FirstOrDefault(u => u.UserName == user.UserName) != null)
+                throw new DO.BadUserIdException(user.UserName, "Duplicate user ID");
+            DataSource.ListUser.Add(user.Clone());
+        }
+        public void RemoveUser(string name)
+        {
+            DO.User user = DataSource.ListUser.Find(u => u.UserName == name);
+
+            if (user != null)
+            {
+                user.IsActive = false;
+            }
+            else
+                throw new DO.BadUserIdException(name, $"bad user name: {name}");
+        }
+        public void UpdateUser(User user)
+        {
+            DO.User us = DataSource.ListUser.Find(u => u.UserName == user.UserName);
+
+            if (us != null)
+            {
+                DataSource.ListUser.Remove(us);
+                DataSource.ListUser.Add(us.Clone());
+            }
+            else
+                throw new DO.BadUserIdException(user.UserName, $"bad user name: {user.UserName}");
+        }
+        public DO.User GetUser(string name)
+        {
+            DO.User user = DataSource.ListUser.Find(u => u.UserName == name);
+
+            if (user != null)
+                return user.Clone();
+            else
+                throw new DO.BadUserIdException(name, $"bad user name: {name}");
+        }
+        public IEnumerable<User> GetAllUser(Func<User, bool> predicate = null)
+        {
+            if (predicate == null)
+            {
+                return from user in DataSource.ListUser
+                       select user.Clone();
+            }
+            else
+            {
+                return from user in DataSource.ListUser
+                       where predicate(user)
+                       select user.Clone();
+            }
+        }
+
+        #endregion
+
     }
 }
