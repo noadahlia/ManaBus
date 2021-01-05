@@ -27,7 +27,7 @@ namespace DAL
         }
         public void RemoveBus(int license) 
         {
-            DO.Bus bus = DataSource.ListBus.Find(b => b.LicenseNum == license);
+            DO.Bus bus = DataSource.ListBus.Find(b => b.LicenseNum == license && b.IsActive==true);
 
             if (bus != null)
             {
@@ -38,7 +38,7 @@ namespace DAL
         }
         public void UpdateBus(Bus bus) 
         {
-            DO.Bus bu = DataSource.ListBus.Find(b => b.LicenseNum == bus.LicenseNum);
+            DO.Bus bu = DataSource.ListBus.Find(b => b.LicenseNum == bus.LicenseNum && b.IsActive == true);
 
             if (bu != null)
             {
@@ -51,7 +51,7 @@ namespace DAL
         }
         public DO.Bus GetBus(int license) 
         {
-            DO.Bus bus = DataSource.ListBus.Find(b => b.LicenseNum == license);
+            DO.Bus bus = DataSource.ListBus.Find(b => b.LicenseNum == license && b.IsActive == true);
 
             if (bus != null)
                 return bus.Clone();
@@ -63,12 +63,16 @@ namespace DAL
             if (predicate == null)
             {
                 return from bus in DataSource.ListBus
+                     where bus.IsActive==true
                        select bus.Clone();
+                   
+                
             }
             else
             {
                 return from bus in DataSource.ListBus
                        where predicate(bus)
+                       where bus.IsActive == true
                        select bus.Clone();
             }
         }
@@ -84,7 +88,7 @@ namespace DAL
         }
         public void RemoveStation(int id)
         {
-            DO.Station station = DataSource.ListStation.Find(s => s.Code == id);
+            DO.Station station = DataSource.ListStation.Find(s => s.Code == id && s.IsActive==true);
 
             if (station != null)
             {
@@ -95,7 +99,7 @@ namespace DAL
         }
         public void UpdateStation(Station Station)
         {
-            DO.Station st = DataSource.ListStation.Find(l => l.Code == Station.Code);
+            DO.Station st = DataSource.ListStation.Find(l => l.Code == Station.Code && s.IsActive == true);
 
             if (st != null)
             {
@@ -107,7 +111,7 @@ namespace DAL
         }
         public Station GetStation(int id)
         {
-            DO.Station station = DataSource.ListStation.Find(s => s.Code == id);
+            DO.Station station = DataSource.ListStation.Find(s => s.Code == id && s.IsActive == true);
 
             if (station != null)
                 return station.Clone();
@@ -119,11 +123,13 @@ namespace DAL
             if (predicate == null)
             {
                 return from station in DataSource.ListStation
+                       where station.IsActive==true
                        select station.Clone();
             }
             else
             {
                 return from station in DataSource.ListStation
+                       where station.IsActive==true
                        where predicate(station)
                        select station.Clone();
             }
@@ -140,7 +146,7 @@ namespace DAL
         }
         public void RemoveLine(int id)
         {
-            DO.Line line = DataSource.ListLine.Find(l => l.Code == id);
+            DO.Line line = DataSource.ListLine.Find(l => l.Code == id && l.IsActive==true);
 
             if (line != null)
             {
@@ -151,7 +157,7 @@ namespace DAL
         }
         public void UpdateLine(Line line)
         {
-            DO.Line li = DataSource.ListLine.Find(l => l.Code == line.Code);
+            DO.Line li = DataSource.ListLine.Find(l => l.Code == line.Code && l.IsActive==true);
 
             if (li != null)
             {
@@ -163,7 +169,7 @@ namespace DAL
         }
         public Line GetLine(int id)
         {
-            DO.Line line = DataSource.ListLine.Find(l => l.Code == id);
+            DO.Line line = DataSource.ListLine.Find(l => l.Code == id && l.IsActive==true);
 
             if (line != null)
                 return line.Clone();
@@ -175,11 +181,13 @@ namespace DAL
             if (predicate == null)
             {
                 return from line in DataSource.ListLine
+                       where line.IsActive==true
                        select line.Clone();
             }
             else
             {
                 return from line in DataSource.ListLine
+                       where line.IsActive==true
                        where predicate(line)
                        select line.Clone();
             }
@@ -196,7 +204,7 @@ namespace DAL
         }
         public void RemoveTrip(int id)
         {
-            DO.Trip trip = DataSource.ListTrip.Find(t => t.Id == id);
+            DO.Trip trip = DataSource.ListTrip.Find(t => t.Id == id && t.IsActive==true);
 
             if (trip != null)
             {
@@ -207,7 +215,7 @@ namespace DAL
         }
         public void UpdateTrip(Trip trip)
         {
-            DO.Trip li = DataSource.ListTrip.Find(t => t.Id == trip.Id);
+            DO.Trip li = DataSource.ListTrip.Find(t => t.Id == trip.Id && t.IsActive==true);
 
             if (li != null)
             {
@@ -219,7 +227,7 @@ namespace DAL
         }
         public Trip GetTrip(int id)
         {
-            DO.Trip trip = DataSource.ListTrip.Find(t => t.Id == id);
+            DO.Trip trip = DataSource.ListTrip.Find(t => t.Id == id && t.IsActive==true);
 
             if (trip != null)
                 return trip.Clone();
@@ -231,11 +239,13 @@ namespace DAL
             if (predicate == null)
             {
                 return from trip in DataSource.ListTrip
+                       where trip.IsActive==true
                        select trip.Clone();
             }
             else
             {
                 return from trip in DataSource.ListTrip
+                       where trip.IsActive==true
                        where predicate(trip)
                        select trip.Clone();
             }
@@ -252,7 +262,7 @@ namespace DAL
         }
         public void RemoveUser(string name)
         {
-            DO.User user = DataSource.ListUser.Find(u => u.UserName == name);
+            DO.User user = DataSource.ListUser.Find(u => u.UserName == name && u.IsActive==true);
 
             if (user != null)
             {
@@ -263,7 +273,7 @@ namespace DAL
         }
         public void UpdateUser(User user)
         {
-            DO.User us = DataSource.ListUser.Find(u => u.UserName == user.UserName);
+            DO.User us = DataSource.ListUser.Find(u => u.UserName == user.UserName && u.IsActive==true);
 
             if (us != null)
             {
@@ -275,7 +285,7 @@ namespace DAL
         }
         public DO.User GetUser(string name)
         {
-            DO.User user = DataSource.ListUser.Find(u => u.UserName == name);
+            DO.User user = DataSource.ListUser.Find(u => u.UserName == name && u.IsActive==true);
 
             if (user != null)
                 return user.Clone();
@@ -287,11 +297,13 @@ namespace DAL
             if (predicate == null)
             {
                 return from user in DataSource.ListUser
+                       where user.IsActive==true
                        select user.Clone();
             }
             else
             {
                 return from user in DataSource.ListUser
+                       where user.IsActive==true
                        where predicate(user)
                        select user.Clone();
             }
