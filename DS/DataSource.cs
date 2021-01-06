@@ -14,6 +14,7 @@ namespace DS
         public static List<Line> ListLine;
         public static List<Trip> ListTrip;
         public static List<User> ListUser;
+        public static List<BusOnTrip> ListBusOnTrip;//Ajoutee 
 
         static DataSource()
         {
@@ -189,6 +190,7 @@ namespace DS
 
             };
             #endregion
+            
             #region ListStation
             ListStation = new List<Station>
             {
@@ -321,8 +323,8 @@ namespace DS
                     Adress="Megilot Dead Sea",
 
                 },
- 
-                new Station 		
+
+                new Station
 
                 {
                     Code =20470,
@@ -332,8 +334,8 @@ namespace DS
                     Adress="Yehuda Hanassi 119",
 
                 },
- 
-                new Station 	
+
+                new Station
 
                 {
                     Code =61412,
@@ -343,8 +345,8 @@ namespace DS
                     Adress="Derech Nachal Kedem 20",
 
                 },
- 
-                new Station  	
+
+                new Station
 
                 {
                     Code =61411,
@@ -354,8 +356,8 @@ namespace DS
                     Adress="Midbar Paran 57",
 
                 },
- 
-                new Station	
+
+                new Station
 
                 {
                     Code =35268,
@@ -364,8 +366,8 @@ namespace DS
                     Latitude =31.846039,
                     Adress= "Hatamar 77",
                 },
- 
-                new Station		
+
+                new Station
 
                 {
                     Code =56376,
@@ -375,8 +377,8 @@ namespace DS
                     Adress="Haneviim 78",
 
                 },
- 
-                new Station 		
+
+                new Station
 
                 {
                     Code =56289,
@@ -386,8 +388,8 @@ namespace DS
                     Adress="Alssad 90",
 
                 },
- 
-                new Station		
+
+                new Station
 
                 {
                     Code =56302,
@@ -397,7 +399,7 @@ namespace DS
                     Adress="Matsada 53",
 
                 },
- 
+
                 new Station
                 {
                     Code =56358 ,
@@ -407,8 +409,8 @@ namespace DS
                     Adress="Hagalil Hatachton 8079",
 
                 },
- 
-                new Station		
+
+                new Station
 
                 {
                     Code =57997 ,
@@ -418,8 +420,8 @@ namespace DS
                     Adress="Messed 9",
 
                 },
- 
-                new Station	
+
+                new Station
 
                 {
                     Code =12492,
@@ -429,8 +431,8 @@ namespace DS
                     Adress="Limonit 6",
 
                 },
- 
-                new Station	
+
+                new Station
                 {
                     Code =12440 ,
                     Name ="Sderot Chita/Nachal Kaziv",
@@ -439,8 +441,8 @@ namespace DS
                     Adress="Sderot Chita 3",
 
                 },
- 
-                new Station	
+
+                new Station
 
 
                 {
@@ -452,7 +454,7 @@ namespace DS
 
                 },
 
-                 new Station		
+                 new Station
                 {
                     Code =61400,
                     Name ="Hagalil/Hayarden",
@@ -462,8 +464,8 @@ namespace DS
                     Adress="Hagalil 88",
 
                 },
- 
-                new Station		
+
+                new Station
 
                 {
                     Code =43510,
@@ -517,8 +519,8 @@ namespace DS
                     Adress="Ein Bokek 70",
 
                 },
- 
-                new Station		
+
+                new Station
 
                 {
                     Code =42612,
@@ -530,7 +532,7 @@ namespace DS
                 },
 
                 new Station
- 
+
                 {
                     Code =42577 ,
                     Name ="Guesher Paz",
@@ -539,8 +541,8 @@ namespace DS
                     Adress="Guesher Paz 12",
 
                 },
- 
-                new Station	
+
+                new Station
 
                 {
                     Code =42530,
@@ -550,8 +552,8 @@ namespace DS
                     Adress="Hakerem 1",
 
                 },
-               
-                new Station	
+
+                new Station
 
                 {
                     Code =42435,
@@ -561,8 +563,8 @@ namespace DS
                     Adress="Harar 20",
 
                 },
-                
-                new Station		
+
+                new Station
 
                 {
                     Code =42159,
@@ -572,7 +574,7 @@ namespace DS
                     Adress="Sderot President Truman",
 
                 },
- 
+
                 new Station
                 {
                     Code =40967,
@@ -582,8 +584,8 @@ namespace DS
                     Adress="Sderot Haagana",
 
                 },
-                
-                new Station 		
+
+                new Station
 
                 {
                     Code =40386,
@@ -593,8 +595,8 @@ namespace DS
                     Adress="Ankor 40",
 
                 },
-                
-                new Station		
+
+                new Station
 
                 {
                     Code =40322,
@@ -604,8 +606,8 @@ namespace DS
                     Adress="Zevulun 70",
 
                 },
-               
-                new Station 		
+
+                new Station
 
                 {
                     Code =40175,
@@ -615,7 +617,7 @@ namespace DS
                     Adress="Ceisaria 651",
 
                 },
-               
+
                 new Station
                 {
                     Code =40096,
@@ -625,7 +627,7 @@ namespace DS
                     Adress="Itshak Ben Tzi 3",
 
                 },
-               
+
                 new Station
 
                 {
@@ -647,7 +649,7 @@ namespace DS
                     Adress="Tshanichowski",
 
                 },
- 
+
                 new Station
                 {
                     Code =39625,
@@ -657,7 +659,7 @@ namespace DS
                     Adress="Tayva 444",
 
                 },
-           
+
                 new Station
 
                 {
@@ -668,7 +670,7 @@ namespace DS
                     Adress="David Pankas",
 
                 },
-                
+
                 new Station
 
                 {
@@ -679,8 +681,8 @@ namespace DS
                     Adress="Iben Yehuda 4",
 
                 },
-                
-                new Station 
+
+                new Station
                 {
                     Code =39301,
                     Name ="Harav Maymon/Moryah",
@@ -689,7 +691,7 @@ namespace DS
                     Adress="Harav Maymon 27",
 
                 },
-                
+
                 new Station
                 {
                     Code =39284,
@@ -702,8 +704,21 @@ namespace DS
 
             };
             #endregion
+           
+            #region ListLine
+            ListLine = new List<Line>
+            {
+                new Line
+                {
+                Id=,
+                Code=,
+                FirstStation=,
+                LastStation=,
+            },
+            };
+            #endregion
 
-        }
+    }
 
     }
 }

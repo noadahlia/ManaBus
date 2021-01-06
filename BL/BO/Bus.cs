@@ -12,6 +12,7 @@ namespace BO
         public DateTime FromDate { get; set; }
         public double TotalTrip { get; set; }
         public double FuelRemain {get;set;}
+        public BusStatus Status { get; set; }
         //public override string ToString()
         //{
         //    return this.ToStringProperty();

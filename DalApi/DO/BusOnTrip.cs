@@ -17,7 +17,9 @@ namespace DO
         public int PrevStation { get; set; }
         public TimeSpan PrevStationAt { get; set; }
         public TimeSpan NextStationAt { get; set; }
-    
+      
+        public bool IsActive = true;
+
         //public override string ToString()
         //{ 
         // return this.ToStringProperty();

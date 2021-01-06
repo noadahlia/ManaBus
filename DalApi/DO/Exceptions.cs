@@ -7,50 +7,50 @@ using System.Threading.Tasks;
 namespace DO
 {
     [Serializable]
+    
+    #region BusException
     public class BadBusIdException : Exception
     {
-        public int ID;
-        public BadBusIdException(int id) : base() => ID = id;
-        public BadBusIdException(int id, string message) :
-            base(message) => ID = id;
-        public BadBusIdException(int id, string message, Exception innerException) :
-            base(message, innerException) => ID = id;
+        public int LICENSE;
+        public BadBusIdException(int LicenseNum) : base() => LICENSE = LicenseNum;
+        public BadBusIdException(int LicenseNum, string message) :
+            base(message) => LICENSE = LicenseNum;
+        public BadBusIdException(int LicenseNum, string message, Exception innerException) :
+            base(message, innerException) => LICENSE = LicenseNum;
 
-        public override string ToString() => base.ToString() + $", bad bus id: {ID}";
+        public override string ToString() => base.ToString() + $", bad license number: {LICENSE}";
     }
-    public class BadLineIdException : Exception
-    {
-        public int ID;
-        public BadLineIdException(int id) : base() => ID = id;
-        public BadLineIdException(int id, string message) :
-            base(message) => ID = id;
-        public BadLineIdException(int id, string message, Exception innerException) :
-            base(message, innerException) => ID = id;
+    #endregion
 
-        public override string ToString() => base.ToString() + $", bad line id: {ID}";
-    }
+    #region StationException
     public class BadStationIdException : Exception
     {
-        public int ID;
-        public BadStationIdException(int id) : base() => ID = id;
-        public BadStationIdException(int id, string message) :
-            base(message) => ID = id;
-        public BadStationIdException(int id, string message, Exception innerException) :
-            base(message, innerException) => ID = id;
+        public int CODE;
+        public BadStationIdException(int Code) : base() => CODE = Code;
+        public BadStationIdException(int Code, string message) :
+            base(message) => CODE = Code;
+        public BadStationIdException(int Code, string message, Exception innerException) :
+            base(message, innerException) => CODE = Code;
 
-        public override string ToString() => base.ToString() + $", bad station id: {ID}";
+        public override string ToString() => base.ToString() + $", bad station code: {CODE}";
     }
-    public class BadTripIdException : Exception
+    #endregion
+
+    #region LineException
+    public class BadLineIdException : Exception
     {
-        public int ID;
-        public BadTripIdException(int id) : base() => ID = id;
-        public BadTripIdException(int id, string message) :
-            base(message) => ID = id;
-        public BadTripIdException(int id, string message, Exception innerException) :
-            base(message, innerException) => ID = id;
+        public int CODE;
+        public BadLineIdException(int code) : base() => CODE = code;
+        public BadLineIdException(int code, string message) :
+            base(message) => CODE = code;
+        public BadLineIdException(int code, string message, Exception innerException) :
+            base(message, innerException) => CODE = code;
 
-        public override string ToString() => base.ToString() + $", bad trip id: {ID}";
+        public override string ToString() => base.ToString() + $", bad line code : {CODE}";
     }
+    #endregion
+
+    #region UserException
     public class BadUserIdException : Exception
     {
         public string ID;
@@ -62,6 +62,52 @@ namespace DO
 
         public override string ToString() => base.ToString() + $", bad user name: {ID}";
     }
+    #endregion
+
+    #region TripException
+    public class BadTripIdException : Exception
+    {
+        public int ID;
+        public BadTripIdException(int id) : base() => ID = id;
+        public BadTripIdException(int id, string message) :
+            base(message) => ID = id;
+        public BadTripIdException(int id, string message, Exception innerException) :
+            base(message, innerException) => ID = id;
+
+        public override string ToString() => base.ToString() + $", bad trip id: {ID}";
+    }
+    #endregion
+
+   //Ajoutee... continuer???
+    #region BusOnTripIdException
+    public class BadBusOnTripIdException : Exception
+    {
+        public int ID;
+        public BadBusOnTripIdException(int Id) : base() => ID = Id;
+        public BadBusOnTripIdException(int Id, string message) :
+            base(message) => ID = Id;
+        public BadBusOnTripIdException(int Id, string message, Exception innerException) :
+            base(message, innerException) => ID = Id;
+
+        public override string ToString() => base.ToString() + $", bad Bus On Trip Id: {ID}";
+    }
+    #endregion
+   
+    #region XmlException
+    public class XMLFileLoadCreateException : Exception
+    {
+        public string xmlFilePath;
+        public XMLFileLoadCreateException(string xmlPath) : base() { xmlFilePath = xmlPath; }
+        public XMLFileLoadCreateException(string xmlPath, string message) :
+            base(message)
+        { xmlFilePath = xmlPath; }
+        public XMLFileLoadCreateException(string xmlPath, string message, Exception innerException) :
+            base(message, innerException)
+        { xmlFilePath = xmlPath; }
+
+        public override string ToString() => base.ToString() + $", fail to load or create xml file: {xmlFilePath}";
+    }
+    #endregion
 
 
 

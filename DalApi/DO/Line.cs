@@ -13,7 +13,9 @@ namespace DO
         public int Code { get; set; }
         public int FirstStation { get; set; }
         public int LastStation { get; set; }
+        
         public bool IsActive = true;
+        public Areas Area { get; set; }
 
 
         //public override string ToString()

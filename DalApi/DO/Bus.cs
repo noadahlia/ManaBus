@@ -13,6 +13,7 @@ namespace DO
         public double TotalTrip { get; set; }
         public double FuelRemain { get; set; }
         public BusStatus Status { get; set; }
+       
         public bool IsActive = true;
         //public override string ToString()
         //{
