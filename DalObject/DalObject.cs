@@ -345,7 +345,7 @@ namespace DAL
         #endregion
 
 
-        //Pas finis
+        //Pas finis 4 class a completer 
 
         #region BusOnTrip Function
         public void AddBusOnTrip(BusOnTrip bus)

@@ -1761,6 +1761,12 @@ namespace DS
                 {
                     Id=100,
                     UserName="",
+                    LineId=1,
+                    InStation=100010,
+                    InAt=new TimeSpan(15,30,00),
+                    OutStation=100050,
+                    OutAt=,
+
 
                 }
             };

@@ -59,7 +59,6 @@ namespace DalApi
 
         #endregion
 
-        //A completer dans DL Object
         #region BusOnTrip Function
         void AddBusOnTrip(BusOnTrip bus);
         void RemoveBusOnTrip(int id);
