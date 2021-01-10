@@ -14,7 +14,7 @@ namespace DS
         public static List<Line> ListLine;
         public static List<Trip> ListTrip;
         public static List<User> ListUser;
-        public static List<BusOnTrip> ListBusOnTrip;//Ajoutee 
+        public static List<BusOnTrip> ListLineTrip;
         public static List<LineStation> ListLineStation;
 
         static DataSource()
@@ -1610,14 +1610,13 @@ namespace DS
             };
             #endregion
 
-            //ListLine code a completer 
             #region ListLine
             ListLine = new List<Line>
             {
                 new Line
                 {
                 Id=1,
-                Code=,
+                Code=111,
                 FirstStation=100000,
                 LastStation=100090,
                 Area=Areas.Jerusalem,
@@ -1626,7 +1625,7 @@ namespace DS
                 new Line
                 {
                 Id=2,
-                Code=,
+                Code=222,
                 FirstStation=100040,
                 LastStation=100160,
                 Area= Areas.Center,
@@ -1635,7 +1634,7 @@ namespace DS
                 new Line
                 {
                 Id=3,
-                Code=,
+                Code=333,
                 FirstStation=100000,
                 LastStation=100250,
                 Area=Areas.North,
@@ -1643,7 +1642,7 @@ namespace DS
                 new Line
                 {
                 Id=4,
-                Code=,
+                Code=444,
                 FirstStation=100300,
                 LastStation=100380,
                 Area=Areas.South,
@@ -1652,7 +1651,7 @@ namespace DS
                 new Line
                 {
                 Id=5,
-                Code=,
+                Code=555,
                 FirstStation=100030,
                 LastStation=100450,
                 Area=Areas.Jerusalem,
@@ -1661,7 +1660,7 @@ namespace DS
                 new Line
                 {
                 Id=6,
-                Code=,
+                Code=666,
                 FirstStation=100440,
                 LastStation=100090,
                 Area=Areas.Center,
@@ -1670,7 +1669,7 @@ namespace DS
                 new Line
                 {
                 Id=7,
-                Code=,
+                Code=777,
                 FirstStation=100040,
                 LastStation=100380,
                 Area=Areas.North,
@@ -1679,7 +1678,7 @@ namespace DS
                 new Line
                 {
                 Id=8,
-                Code=,
+                Code=888,
                 FirstStation=100000,
                 LastStation=100280,
                 Area=Areas.South,
@@ -1688,7 +1687,7 @@ namespace DS
                 new Line
                 {
                 Id=9,
-                Code=,
+                Code=999,
                 FirstStation=100300,
                 LastStation=100440,
                 Area=Areas.Jerusalem,
@@ -1697,7 +1696,7 @@ namespace DS
                 new Line
                 {
                 Id=10,
-                Code=,
+                Code=1010,
                 FirstStation=100450,
                 LastStation=100200,
                 Area=Areas.Center,
@@ -1746,33 +1745,42 @@ namespace DS
             };
             #endregion
 
-            //public int Id { get; set; }
-            //public string UserName { get; set; }
-            //public int LineId { get; set; }
-            //public int InStation { get; set; }
-            //public TimeSpan InAt { get; set; }
-            //public int OutStation { get; set; }
-            //public TimeSpan OutAt { get; set; }
-            //public bool IsActive = true;
             #region ListTrip
             ListTrip = new List<Trip>
             {
                 new Trip
                 {
                     Id=100,
-                    UserName="",
+                    UserName="David",
                     LineId=1,
                     InStation=100010,
                     InAt=new TimeSpan(15,30,00),
                     OutStation=100050,
-                    OutAt=,
+                    OutAt=new TimeSpan(16,00,00),
+                },
 
+                new Trip
+                {
+                    Id=110,
+                    UserName="Sarah",
+                    LineId=7,
+                    InStation=100040,
+                    InAt=new TimeSpan(10,10,00),
+                    OutStation=100370,
+                    OutAt=new TimeSpan(12,05,00),
+                },
 
-                }
+           
             };
             #endregion
 
-        }
+        //public int Id { get; set; }
+        //public int LineId { get; set; }
+        //public TimeSpan StartAt { get; set; }
+        //public TimeSpan Frequency { get; set; }
+        //public TimeSpan FinishAt { get; set; }
+
+    }
 
 
 

@@ -347,68 +347,8 @@ namespace DAL
 
         //Pas finis 4 class a completer 
 
-        #region BusOnTrip Function
-        public void AddBusOnTrip(BusOnTrip bus)
-        {
-            if (DataSource.ListBusOnTrip.FirstOrDefault(b => b.Id == b.Id) != null)
-                throw new DO.BadUserIdException(bus.Id, "Duplicate user ID");
-            DataSource.ListBusOnTrip.Add(bus.Clone());
-        }
 
-        public void RemoveBusOnTrip(int id)
-        {
-            BusOnTrip trip = DataSource.ListBusOnTrip.Find(u => u.Id == id && u.IsActive == true);
 
-            if (trip != null)
-            {
-                trip.IsActive = false;
-            }
-            else
-                throw new DO.BadBusOnTripIdException(id, $"bad user name: {id}");
-        }
-        //public void UpdateBusOnTrip(User user)
-        //{
-        //    DO.BusOnTrip us = DataSource.ListUser.Find(u => u.UserName == user.UserName && u.IsActive == true);
-
-        //    if (us != null)
-        //    {
-        //        DataSource.ListUser.Remove(us);
-        //        DataSource.ListUser.Add(us.Clone());
-        //    }
-        //    else
-        //        throw new DO.BadUserIdException(user.UserName, $"bad user name: {user.UserName}");
-        //}
-        //public DO.User GetUser(string name)
-        //{
-        //    DO.User user = DataSource.ListUser.Find(u => u.UserName == name && u.IsActive == true);
-
-        //    if (user != null)
-        //        return user.Clone();
-        //    else
-        //        throw new DO.BadUserIdException(name, $"bad user name: {name}");
-        //}
-        //public IEnumerable<User> GetAllUser(Func<User, bool> predicate = null)
-        //{
-        //    if (predicate == null)
-        //    {
-        //        return from user in DataSource.ListUser
-        //               where user.IsActive == true
-        //               select user.Clone();
-        //    }
-        //    else
-        //    {
-        //        return from user in DataSource.ListUser
-        //               where user.IsActive == true
-        //               where predicate(user)
-        //               select user.Clone();
-        //    }
-        //}
-        //public IEnumerable<User> GetAllUsers()
-        //{
-        //    return from user in DataSource.ListUser
-        //           select user.Clone();
-        //}
-
-        #endregion
+        
     }
 }
