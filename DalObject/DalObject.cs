@@ -12,13 +12,13 @@ namespace DAL
 {
     sealed class DalObject : IDAL
     {
-        //necessaire???
         #region singelton
         static readonly DalObject instance = new DalObject();
-        static DalObject() { }// static ctor to ensure instance init is done just before first usage
+        static DalObject() { }// static ctor to ensure instance init is done just before first usage
         DalObject() { } // default => private
-        public static DalObject Instance { get => instance; }// The public Instance property to use
+        public static DalObject Instance { get => instance; }// The public Instance property to use
         #endregion
+
 
         /* Implementation of CRUD functions
          * 

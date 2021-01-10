@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLAPI\BLFactory.cs" />
+    <Compile Include="BLAPI\IBL.cs" />
+    <Compile Include="BLImp.cs" />
     <Compile Include="BO\AdjacentStations.cs" />
     <Compile Include="BO\Bus.cs" />
     <Compile Include="BO\BusOnTrip.cs" />
@@ -53,9 +56,14 @@
     <Compile Include="BO\Tools.cs" />
     <Compile Include="BO\Trip.cs" />
     <Compile Include="BO\User.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="DeepCopyUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DalApi\DalApi.csproj">
+      <Project>{bfcd5e90-6454-4326-949c-d7ad3e2c5d8c}</Project>
+      <Name>DalApi</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
