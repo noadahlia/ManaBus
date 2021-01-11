@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    class BusOnTrip
+    public class BusOnTrip
     {
         public int Id { get; set; }
         public int LicenseNum { get; set; }
@@ -17,11 +17,9 @@ namespace BO
         public int PrevStation { get; set; }
         public TimeSpan PrevStationAt { get; set; }
         public TimeSpan NextStationAt { get; set; }
-    
-        //public override string ToString()
-        //{ 
-        // return this.ToStringProperty();
-        //}
+
+        public override string ToString() => this.ToStringProperty();
+
 
 
 

@@ -10,25 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PL
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour Management.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Management : Window
     {
-        public MainWindow()
+        public Management()
         {
             InitializeComponent();
-        }
 
-        private void login_btn1_Click(object sender, RoutedEventArgs e)
-        {
-            Management managementWin = new Management();
-            managementWin.ShowDialog();
         }
     }
 }

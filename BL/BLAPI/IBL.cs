@@ -3,13 +3,62 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using BO;
+using BO;
 
 
 namespace BLAPI
 {
+    /// <summary>
+    /// Definition of CRUD functions
+    /// This constract will be used by PL layer and implemented by BL layer 
+    /// </summary>
     public interface IBL
     {
+
+
+        // La question à se poser c'est "quelles fonctions je vais avoir besoin depuis PL?"
+        #region Bus
+
+        void AddBus(BO.Bus bus);
+        BO.Bus GetBus(int id);
+        IEnumerable<BO.Bus> GetAllBuses();
+
+        IEnumerable<BO.Bus> GetBusesBy(Predicate<BO.Bus> predicate);
+
+        void UpdateBusInfos(BO.Bus bus);
+
+        void DeleteBus(int id);
+
+        #endregion
+
+        #region Line
+        void AddLine(BO.Line Line);
+
+        BO.Line GetLine(int id);
+        IEnumerable<BO.Line> GetAllLines();
+
+        IEnumerable<BO.Line> GetLinesBy(Predicate<BO.Line> predicate);
+
+        void UpdateLineInfos(BO.Line line);
+
+        void DeleteLine(int id);
+
+        #endregion
+
+        #region Station
+        void AddStation(BO.Station station);
+
+        BO.Station GetStation(int id);
+        IEnumerable<BO.Station> GetAllStations();
+
+        IEnumerable<BO.Station> GetStationsBy(Predicate<BO.Station> predicate);
+
+        void UpdateStationInfos(BO.Station station);
+
+        void DeleteStation(int id);
+
+        #endregion
+
 
 
     }

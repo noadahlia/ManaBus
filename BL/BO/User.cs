@@ -12,9 +12,7 @@ namespace BO
         public string Password { get; set; }
         public bool Admin;
 
-        //public override string ToString()
-        //{ 
-        // return this.ToStringProperty();
-        //}
+        public override string ToString() => this.ToStringProperty();
+
     }
 }

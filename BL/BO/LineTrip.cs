@@ -14,9 +14,7 @@ namespace BO
         public TimeSpan Frequency { get; set; }
         public TimeSpan FinishAt { get; set; }
 
-        //public override string ToString()
-        //{ 
-        // return this.ToStringProperty();
-        //}
+        public override string ToString() => this.ToStringProperty();
+
     }
 }

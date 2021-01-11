@@ -15,10 +15,8 @@ namespace BO
        
         public string Adress { get; set; }//optionnal
 
-        //public override string ToString()
-        //{ 
-        // return this.ToStringProperty();
-        //}
+        public override string ToString() => this.ToStringProperty();
+
 
     }
 }

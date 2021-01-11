@@ -13,12 +13,11 @@ namespace BO
         public int Code { get; set; }
         public int FirstStation { get; set; }
         public int LastStation { get; set; }
-
         public Areas Area { get; set; }
+        public IEnumerable<LineStation> ListOfStations { get; set; }
 
-        //public override string ToString()
-        //{ 
-        // return this.ToStringProperty();
-        //}
+
+        public override string ToString() => this.ToStringProperty();
+
     }
 }

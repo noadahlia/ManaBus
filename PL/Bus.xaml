@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="Bus" Height="450" Width="800">
+        Title="Bus" Height="441.006" Width="828.497">
     <Grid>
-        
+        <Button x:Name="applyBus_btn" Content="Apply Changes" HorizontalAlignment="Left" Margin="658,350,0,0" VerticalAlignment="Top" Width="152" Height="50"/>
+        <Button x:Name="delBus_btn" Content="Delete Bus" HorizontalAlignment="Left" Margin="658,10,0,0" VerticalAlignment="Top" Width="152" Height="46" FontWeight="Bold"/>
+        <Button x:Name="refuel_btn" Content="Send to Refueling" HorizontalAlignment="Left" Margin="472,350,0,0" VerticalAlignment="Top" Width="152" Height="50"/>
+        <Button x:Name="refresh_btn" Content="Send to Refresh" HorizontalAlignment="Left" Margin="282,350,0,0" VerticalAlignment="Top" Width="152" Height="50"/>
+
     </Grid>
 </Window>
