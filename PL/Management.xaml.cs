@@ -27,12 +27,18 @@ namespace PL
             InitializeComponent();
             bl = _bl;
             lb_bus.ItemsSource = bl.GetAllBuses();
+            lb_bus.DisplayMemberPath = "LicenseNum";
+            lb_line.ItemsSource = bl.GetAllLines();
+            lb_line.DisplayMemberPath = "Code";
+            lb_station.ItemsSource = bl.GetAllStations();
+            lb_station.DisplayMemberPath = "Code";
+
 
         }
 
         private void addBus_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("coucou elishou");
         }
 
         private void addLine_btn_Click(object sender, RoutedEventArgs e)

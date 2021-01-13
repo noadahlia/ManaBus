@@ -187,7 +187,7 @@ namespace DAL
         }
         public Line GetLine(int id)
         {
-            DO.Line line = DataSource.ListLine.Find(l => l.Code == id && l.IsActive == true);
+            DO.Line line = DataSource.ListLine.Find(l => l.Id == id && l.IsActive == true);
 
             if (line != null)
                 return line.Clone();

@@ -29,7 +29,7 @@ namespace DS
             {
                 new Bus
                 {
-                LicenseNum = 11-101-22,
+                LicenseNum = 1110122,
                 FromDate =DateTime.ParseExact("24.03.16", "dd.MM.yy", null),
                 TotalTrip= 12000,
                 FuelRemain= 1100,
@@ -37,7 +37,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 152-30-655,
+                LicenseNum = 15230655,
                 FromDate =DateTime.ParseExact("18.12.19", "dd.MM.yy", null),
                 TotalTrip= 8000,
                 FuelRemain= 500,
@@ -45,7 +45,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 20-999-34,
+                LicenseNum = 2099934,
                 FromDate =DateTime.ParseExact("12.01.15", "dd.MM.yy", null),
                 TotalTrip= 19000,
                 FuelRemain= 1200,
@@ -53,7 +53,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 59-009-23,
+                LicenseNum = 5900923,
                 FromDate =DateTime.ParseExact("05.05.05", "dd.MM.yy", null),
                 TotalTrip= 16000,
                 FuelRemain= 300,
@@ -61,7 +61,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 111-24-678,
+                LicenseNum = 11124678,
                 FromDate =DateTime.ParseExact("24.03.20", "dd.MM.yy", null),
                 TotalTrip= 17400,
                 FuelRemain= 100,
@@ -69,7 +69,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 303-88-784,
+                LicenseNum = 30388784,
                 FromDate =DateTime.ParseExact("13.11.18", "dd.MM.yy", null),
                 TotalTrip= 6000,
                 FuelRemain= 340,
@@ -77,7 +77,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 45-623-16,
+                LicenseNum = 4562316,
                 FromDate =DateTime.ParseExact("05.09.00", "dd.MM.yy", null),
                 TotalTrip= 13000,
                 FuelRemain=900,
@@ -85,7 +85,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum =23-865-32,
+                LicenseNum =2386532,
                 FromDate =DateTime.ParseExact("24.03.85", "dd.MM.yy", null),
                 TotalTrip= 1460,
                 FuelRemain= 1000,
@@ -93,7 +93,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 911-01-191,
+                LicenseNum = 91101191,
                 FromDate =DateTime.ParseExact("31.05.20", "dd.MM.yy", null),
                 TotalTrip= 17800,
                 FuelRemain= 1200,
@@ -101,7 +101,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 123-45-678,
+                LicenseNum = 12345678,
                 FromDate =DateTime.ParseExact("09.08.19", "dd.MM.yy", null),
                 TotalTrip= 6000,
                 FuelRemain= 670,
@@ -109,7 +109,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 204-43-897,
+                LicenseNum = 20443897,
                 FromDate =DateTime.ParseExact("15.09.20", "dd.MM.yy", null),
                 TotalTrip= 13000,
                 FuelRemain= 430,
@@ -117,7 +117,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 63-223-78,
+                LicenseNum = 6322378,
                 FromDate =DateTime.ParseExact("11.01.01", "dd.MM.yy", null),
                 TotalTrip= 19000,
                 FuelRemain= 790,
@@ -125,7 +125,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 23-444-87,
+                LicenseNum = 2344487,
                 FromDate =DateTime.ParseExact("02.10.10", "dd.MM.yy", null),
                 TotalTrip= 12980,
                 FuelRemain= 160,
@@ -133,7 +133,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 66-372-65,
+                LicenseNum = 6637265,
                 FromDate =DateTime.ParseExact("27.02.13", "dd.MM.yy", null),
                 TotalTrip= 16000,
                 FuelRemain= 300,
@@ -141,7 +141,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 365-89-765,
+                LicenseNum = 36589765,
                 FromDate =DateTime.ParseExact("31.12.20", "dd.MM.yy", null),
                 TotalTrip= 500,
                 FuelRemain= 990,
@@ -149,7 +149,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 444-89-678,
+                LicenseNum = 44489678,
                 FromDate =DateTime.ParseExact("02.01.21", "dd.MM.yy", null),
                 TotalTrip= 100,
                 FuelRemain= 1000,
@@ -157,7 +157,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 67-276-90,
+                LicenseNum = 6727690,
                 FromDate =DateTime.ParseExact("25.01.08", "dd.MM.yy", null),
                 TotalTrip= 14500,
                 FuelRemain= 450,
@@ -165,7 +165,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 769-98-526,
+                LicenseNum = 76998526,
                 FromDate =DateTime.ParseExact("14.02.18", "dd.MM.yy", null),
                 TotalTrip= 13900,
                 FuelRemain= 1670,
@@ -173,7 +173,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 56-890-67,
+                LicenseNum = 5689067,
                 FromDate =DateTime.ParseExact("18.07.06", "dd.MM.yy", null),
                 TotalTrip= 15600,
                 FuelRemain= 890,
@@ -181,7 +181,7 @@ namespace DS
 
                 new Bus
                 {
-                LicenseNum = 34-111-13,
+                LicenseNum = 3411113,
                 FromDate =DateTime.ParseExact("13.03.90", "dd.MM.yy", null),
                 TotalTrip= 4000,
                 FuelRemain= 1980,
@@ -714,7 +714,7 @@ namespace DS
                     LineId = 1,
                     Station = 100000,
                     LineStationIndex = 0,
-                    PrevStation = -1,
+                    PrevStation = 1,
                     NextStation = 100010,
                 },
 
@@ -796,7 +796,7 @@ namespace DS
                     Station = 100090,
                     LineStationIndex = 9,
                     PrevStation = 100080,
-                    NextStation = -2,
+                    NextStation = 2,
                 },
 
                 new LineStation
@@ -804,7 +804,7 @@ namespace DS
                     LineId = 2,
                     Station = 100040,
                     LineStationIndex = 0,
-                    PrevStation = -1,
+                    PrevStation = 1,
                     NextStation = 100050,
                 },
 
@@ -886,7 +886,7 @@ namespace DS
                     Station = 100160,
                     LineStationIndex = 9,
                     PrevStation = 100150,
-                    NextStation = -2,
+                    NextStation = 2,
                 },
 
                 new LineStation
@@ -894,7 +894,7 @@ namespace DS
                     LineId = 3,
                     Station = 100000,
                     LineStationIndex = 0,
-                    PrevStation = -1,
+                    PrevStation = 1,
                     NextStation = 100030,
                 },
 
@@ -976,7 +976,7 @@ namespace DS
                     Station = 100250,
                     LineStationIndex = 9,
                     PrevStation = 100240,
-                    NextStation = -2,
+                    NextStation = 2,
                 },
 
                 new LineStation
@@ -984,7 +984,7 @@ namespace DS
                     LineId = 4,
                     Station = 100300,
                     LineStationIndex = 0,
-                    PrevStation = -1,
+                    PrevStation = 1,
                     NextStation = 100030,
                 },
 
@@ -1066,7 +1066,7 @@ namespace DS
                     Station = 100380,
                     LineStationIndex = 9,
                     PrevStation = 100370,
-                    NextStation = -2,
+                    NextStation = 2,
                 },
 
                 new LineStation
@@ -1074,7 +1074,7 @@ namespace DS
                     LineId = 5,
                     Station = 100030,
                     LineStationIndex = 0,
-                    PrevStation = -1,
+                    PrevStation = 1,
                     NextStation = 100060,
                 },
 
@@ -1156,7 +1156,7 @@ namespace DS
                     Station = 100450,
                     LineStationIndex = 9,
                     PrevStation = 100440,
-                    NextStation = -2,
+                    NextStation = 2,
                 },
 
                 new LineStation
@@ -1164,7 +1164,7 @@ namespace DS
                     LineId = 6,
                     Station = 100440,
                     LineStationIndex = 0,
-                    PrevStation = -1,
+                    PrevStation = 1,
                     NextStation = 100450,
                 },
 
@@ -1246,7 +1246,7 @@ namespace DS
                     Station = 100090,
                     LineStationIndex = 9,
                     PrevStation = 100080,
-                    NextStation = -2,
+                    NextStation = 2,
                 },
 
                 new LineStation
@@ -1254,7 +1254,7 @@ namespace DS
                     LineId = 7,
                     Station = 100040,
                     LineStationIndex = 0,
-                    PrevStation = -1,
+                    PrevStation = 1,
                     NextStation = 100050,
                 },
 
@@ -1336,7 +1336,7 @@ namespace DS
                     Station = 100380,
                     LineStationIndex = 9,
                     PrevStation = 100370,
-                    NextStation = -2,
+                    NextStation = 2,
                 },
 
                 new LineStation
@@ -1344,7 +1344,7 @@ namespace DS
                     LineId = 8,
                     Station = 100000,
                     LineStationIndex = 0,
-                    PrevStation = -1,
+                    PrevStation = 1,
                     NextStation = 100200,
                 },
 
@@ -1426,7 +1426,7 @@ namespace DS
                     Station = 100280,
                     LineStationIndex = 9,
                     PrevStation = 100270,
-                    NextStation = -2,
+                    NextStation = 2,
                 },
 
             new LineStation
@@ -1434,7 +1434,7 @@ namespace DS
                     LineId = 9,
                     Station = 100300,
                     LineStationIndex = 0,
-                    PrevStation = -1,
+                    PrevStation = 1,
                     NextStation = 100030,
                 },
 
@@ -1516,7 +1516,7 @@ namespace DS
                     Station = 100440,
                     LineStationIndex = 9,
                     PrevStation = 100430,
-                    NextStation = -2,
+                    NextStation = 2,
                 },
 
             new LineStation
@@ -1524,7 +1524,7 @@ namespace DS
                     LineId = 10,
                     Station = 100450,
                     LineStationIndex = 0,
-                    PrevStation = -1,
+                    PrevStation = 1,
                     NextStation = 100460,
                 },
 
@@ -1605,7 +1605,7 @@ namespace DS
                     Station = 100200,
                     LineStationIndex = 9,
                     PrevStation = 100330,
-                    NextStation = -2,
+                    NextStation = 2,
                 },
             };
             #endregion
