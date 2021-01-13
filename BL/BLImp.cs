@@ -38,6 +38,7 @@ namespace BL
             bus.CopyPropertiesTo(busDO);
             try
             {
+                //verify the licenseNumber
                 dal.AddBus(busDO);
             }
             catch(DO.BadBusIdException ex)
