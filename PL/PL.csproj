@@ -125,5 +125,11 @@
   <ItemGroup>
     <Resource Include="paysage2.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{c97b66d2-22c3-49b3-ba5c-515d5f571a65}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

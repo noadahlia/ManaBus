@@ -31,13 +31,13 @@
         <ListBox x:Name="lb_bus" HorizontalAlignment="Left" Height="214" Margin="10,138,0,0" VerticalAlignment="Top" Width="244"/>
         <ListBox x:Name="lb_line" HorizontalAlignment="Left" Height="214" Margin="10,138,0,0" VerticalAlignment="Top" Width="244" Grid.Column="1"/>
         <ListBox x:Name="lb_station" HorizontalAlignment="Left" Height="214" Margin="10,138,0,0" VerticalAlignment="Top" Width="244" Grid.Column="2"/>
-        <Button x:Name="addLine_btn" Content="Add" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Width="103" Height="35" RenderTransformOrigin="3.069,0.368" Grid.Column="1" Background="#FF29C167"/>
-        <Button x:Name="addStation_btn" Content="Add" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Width="103" Height="35" Grid.Column="2">
+        <Button x:Name="addLine_btn" Content="Add" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Width="103" Height="35" RenderTransformOrigin="3.069,0.368" Grid.Column="1" Background="#FF29C167" Click="addLine_btn_Click"/>
+        <Button x:Name="addStation_btn" Content="Add" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Width="103" Height="35" Grid.Column="2" Click="addStation_btn_Click">
             <Button.Background>
                 <SolidColorBrush Color="#FF64FFA4" Opacity="0.7"/>
             </Button.Background>
         </Button>
-        <Button x:Name="addBus_btn" Content="Add" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Width="103" Height="35">
+        <Button x:Name="addBus_btn" Content="Add" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Width="103" Height="35" Click="addBus_btn_Click">
             <Button.Background>
                 <SolidColorBrush Color="#FF1E894A" Opacity="0.7"/>
             </Button.Background>

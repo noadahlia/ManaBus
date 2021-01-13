@@ -23,5 +23,15 @@ namespace PL
         {
             InitializeComponent();
         }
+
+        private void applyLine_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void delLine_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

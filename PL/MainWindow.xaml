@@ -27,12 +27,12 @@
         </Rectangle>
         <Label Content="            I'm a worker" HorizontalAlignment="Left" Height="48" Margin="63,70,0,0" VerticalAlignment="Top" Width="278" FontFamily="Felix Titling" FontSize="18"/>
         <Label Content="            I'm a traveler " HorizontalAlignment="Left" Height="48" Margin="63,70,0,0" VerticalAlignment="Top" Width="278" Grid.Column="1" FontFamily="Felix Titling" FontSize="18"/>
-        <TextBox HorizontalAlignment="Left" Height="39" Margin="83,141,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="233"/>
-        <TextBox HorizontalAlignment="Left" Height="39" Margin="83,198,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="233"/>
-        <TextBox HorizontalAlignment="Left" Height="39" Margin="63,141,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="233" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Height="39" Margin="63,198,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="233" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" Height="39" Margin="83,141,0,0" TextWrapping="Wrap" Text="UserName" VerticalAlignment="Top" Width="233" TextChanged="TextBox_TextChanged"/>
+        <TextBox HorizontalAlignment="Left" Height="39" Margin="83,198,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="233" TextChanged="TextBox_TextChanged_1"/>
+        <TextBox HorizontalAlignment="Left" Height="39" Margin="63,141,0,0" TextWrapping="Wrap" Text="UserName" VerticalAlignment="Top" Width="233" Grid.Column="1" TextChanged="TextBox_TextChanged_2"/>
+        <TextBox HorizontalAlignment="Left" Height="39" Margin="63,198,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="233" Grid.Column="1" TextChanged="TextBox_TextChanged_3"/>
         <Button x:Name="login_btn1" Content="Log In" HorizontalAlignment="Left" Margin="241,256,0,0" VerticalAlignment="Top" Width="75" Click="login_btn1_Click"/>
-        <Button x:Name="login_btn2" Content="Log In" HorizontalAlignment="Left" Margin="221,256,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+        <Button x:Name="login_btn2" Content="Log In" HorizontalAlignment="Left" Margin="221,256,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="login_btn2_Click"/>
 
     </Grid>
 </Window>

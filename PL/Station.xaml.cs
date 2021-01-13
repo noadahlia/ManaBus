@@ -23,5 +23,15 @@ namespace PL
         {
             InitializeComponent();
         }
+
+        private void applyStat_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void delStat_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
