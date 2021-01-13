@@ -15,6 +15,8 @@ namespace BO
             base(message) => LICENSE = LicenseNum;
         public BadBusIdException(int LicenseNum, string message, Exception innerException) :
             base(message, innerException) => LICENSE = LicenseNum;
+        public BadBusIdException(string message, Exception innerException) :
+           base(message, innerException) => LICENSE = ((DO.BadBusIdException)innerException).LICENSE;
 
         public override string ToString() => base.ToString() + $", bad license number: {LICENSE}";
     }
@@ -29,7 +31,8 @@ namespace BO
             base(message) => CODE = Code;
         public BadStationIdException(int Code, string message, Exception innerException) :
             base(message, innerException) => CODE = Code;
-
+        public BadStationIdException(string message, Exception innerException) :
+          base(message, innerException) => CODE = ((DO.BadStationIdException)innerException).CODE;
         public override string ToString() => base.ToString() + $", bad station code: {CODE}";
     }
     #endregion
@@ -43,8 +46,10 @@ namespace BO
              base(message) => CODE = code;
          public BadLineIdException(int code, string message, Exception innerException) :
              base(message, innerException) => CODE = code;
+        public BadLineIdException(string message, Exception innerException) :
+           base(message, innerException) => CODE = ((DO.BadLineIdException)innerException).CODE;
 
-         public override string ToString() => base.ToString() + $", bad line code : {CODE}";
+        public override string ToString() => base.ToString() + $", bad line code : {CODE}";
      }
     #endregion
 

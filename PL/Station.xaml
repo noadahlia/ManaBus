@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="Station" Height="253" Width="422">
     <Grid>
-        <Button x:Name="applyStat_btn" Content="Apply Changes" HorizontalAlignment="Left" Margin="309,182,0,0" VerticalAlignment="Top" Width="95" Height="30"/>
-        <Button x:Name="delStat_btn" Content="Delete Station" HorizontalAlignment="Left" Margin="309,10,0,0" VerticalAlignment="Top" Width="95" Height="32" FontWeight="Bold"/>
+        <Button x:Name="applyStat_btn" Content="Apply Changes" HorizontalAlignment="Left" Margin="309,182,0,0" VerticalAlignment="Top" Width="95" Height="30" Click="applyStat_btn_Click"/>
+        <Button x:Name="delStat_btn" Content="Delete Station" HorizontalAlignment="Left" Margin="309,10,0,0" VerticalAlignment="Top" Width="95" Height="32" FontWeight="Bold" Click="delStat_btn_Click"/>
 
     </Grid>
 </Window>

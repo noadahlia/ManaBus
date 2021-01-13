@@ -24,5 +24,20 @@ namespace PL
             InitializeComponent();
 
         }
+
+        private void addBus_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void addLine_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void addStation_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

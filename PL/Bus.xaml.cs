@@ -23,5 +23,25 @@ namespace PL
         {
             InitializeComponent();
         }
+
+        private void refresh_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void refuel_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void applyBus_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void delBus_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
