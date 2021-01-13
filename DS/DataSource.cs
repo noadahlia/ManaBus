@@ -191,7 +191,7 @@ namespace DS
 
             };
             #endregion
-            
+
             #region ListStation
             ListStation = new List<Station>
             {
@@ -1621,7 +1621,7 @@ namespace DS
                 LastStation=100090,
                 Area=Areas.Jerusalem,
                 },
-                
+
                 new Line
                 {
                 Id=2,
@@ -1630,7 +1630,7 @@ namespace DS
                 LastStation=100160,
                 Area= Areas.Center,
                 },
-               
+
                 new Line
                 {
                 Id=3,
@@ -1715,12 +1715,12 @@ namespace DS
             },
 
              new User
-            { 
+            {
                 UserName="Sarah",
                 Password="bbb",
                 Admin=true,
             },
-            
+
             new User
             {
                 UserName="Yonhatan",
@@ -1770,21 +1770,17 @@ namespace DS
                     OutAt=new TimeSpan(12,05,00),
                 },
 
-           
+
             };
             #endregion
 
-        //public int Id { get; set; }
-        //public int LineId { get; set; }
-        //public TimeSpan StartAt { get; set; }
-        //public TimeSpan Frequency { get; set; }
-        //public TimeSpan FinishAt { get; set; }
+        }
 
     }
 
 
 
-    }
+}
 
     
-}
+

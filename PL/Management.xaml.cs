@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BLAPI;
 
 namespace PL
 {
@@ -19,9 +20,13 @@ namespace PL
     /// </summary>
     public partial class Management : Window
     {
-        public Management()
+        IBL bl;
+
+        public Management(IBL _bl)
         {
             InitializeComponent();
+            bl = _bl;
+            lb_bus.ItemsSource = bl.GetAllBuses();
 
         }
 

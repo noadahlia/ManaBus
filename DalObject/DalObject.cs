@@ -336,10 +336,133 @@ namespace DAL
                        select user.Clone();
             }
         }
+        #endregion
+
+        #region A coder
         public IEnumerable<User> GetAllUsers()
         {
             return from user in DataSource.ListUser
                    select user.Clone();
+        }
+
+        public void AddBusOnTrip(BusOnTrip bus)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveBusOnTrip(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateBusOnTrip(BusOnTrip bus)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BusOnTrip GetBusOnTrip(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<BusOnTrip> GetAllBusOnTrip(Func<BusOnTrip, bool> predicate = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<BusOnTrip> GetAllBusOnTrips()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddAdjacentStations(AdjacentStations station)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveAdjacentStationsp(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateAdjacentStations(AdjacentStations station)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AdjacentStations GetAdjacentStations(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<AdjacentStations> GetAllAdjacentStations(Func<AdjacentStations, bool> predicate = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<AdjacentStations> GetAllAdjacentStationss()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddLineTrip(LineTrip station)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveLineTrip(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateLineTrip(LineTrip station)
+        {
+            throw new NotImplementedException();
+        }
+
+        public LineTrip GetLineTrip(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<LineTrip> GetAllLineTrip(Func<LineTrip, bool> predicate = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<LineTrip> GetAllLineTrip()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddLineStation(int lineID, int stationID, int index, int prevID, int nextID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveLineStation(int lineID, int stationID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateLineStation(LineStation station)
+        {
+            throw new NotImplementedException();
+        }
+
+        public LineStation GetLineStationp(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<LineStation> GetAllLineStation(Func<LineStation, bool> predicate = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<LineStation> GetAllLineStation()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -349,6 +472,6 @@ namespace DAL
 
 
 
-        
+
     }
 }
