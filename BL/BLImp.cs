@@ -146,10 +146,16 @@ namespace BL
             try
             {
                 dal.RemoveLine(id);
+                dal.
+
             }
             catch (DO.BadLineIdException ex)
             {
                 throw new BO.BadLineIdException("This line doesn't exist", ex);
+            }
+            catch (DO.BadLineIdStationIDException ex)
+            {
+                throw new BO.BadLineIdStationIDException("This line station doesn't exist", ex);
             }
         }
         public IEnumerable<Line> GetAllLines()
@@ -297,7 +303,32 @@ namespace BL
         #endregion
 
         #region LineStation
+        public void AddLineStation(int linID, int statID, int index, int prev, int next)
+        {
+            try
+            {
+                dal.AddLineStation(linID, statID, index,prev,next);
+            }
+            catch (DO.BadLineIdStationIDException ex)
+            {
+                throw new BO.BadLineIdStationIDException("Line ID and station ID not exist", ex);
+            }
+        }
 
+        
+
+        public void DeleteLineStation(int linID, int statID)
+        {
+            try
+            {
+                dal.RemoveLineStation(linID, statID);
+               
+            }
+            catch (DO.BadLineIdStationIDException ex)
+            {
+                throw new BO.BadLineIdStationIDException("Student ID and Course ID is Not exist", ex);
+            }
+        }
         #endregion
 
     }

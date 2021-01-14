@@ -87,6 +87,7 @@ namespace DAL
         public IEnumerable<Bus> GetAllBuses()
         {
             return from bus in DataSource.ListBus
+                   where bus.IsActive==true
                    select bus.Clone();
         }
 
@@ -150,6 +151,7 @@ namespace DAL
         public IEnumerable<Station> GetAllStations()
         {
             return from station in DataSource.ListStation
+                   where station.IsActive == true
                    select station.Clone();
         }
 
@@ -213,6 +215,7 @@ namespace DAL
         public IEnumerable<Line> GetAllLines()
         {
             return from line in DataSource.ListLine
+                   where line.IsActive == true
                    select line.Clone();
         }
         #endregion
@@ -338,6 +341,48 @@ namespace DAL
         }
         #endregion
 
+        #region LineStation
+        public IEnumerable<DO.LineStation> GetLineStation(Predicate<DO.LineStation> predicate)
+        {
+           
+            return from ls in DataSource.ListLineStation
+                   where predicate(ls)
+                   select ls.Clone();
+        }
+        public void AddLineStation(int linID, int statID, int index, int prev, int next)
+        {
+            if (DataSource.ListLineStation.FirstOrDefault(ls => (ls.LineId == linID && ls.Station == statID)) != null)
+                throw new DO.BadLineIdStationIDException(linID, statID, "line ID already arrives at station ID");
+            DO.LineStation linsta = new DO.LineStation() { LineId = linID, Station = statID, LineStationIndex = index, 
+                                                            PrevStation = prev, NextStation = next  };
+            DataSource.ListLineStation.Add(linsta);
+        }
+
+
+
+        public void RemoveLineStation(int linID, int statID)
+        {
+            DO.LineStation linsta = DataSource.ListLineStation.Find(ls => (ls.LineId == linID && ls.Station == statID));
+
+            if (linsta != null)
+            {
+                DataSource.ListLineStation.Remove(linsta);
+            }
+            else
+                throw new DO.BadLineIdStationIDException(linID, statID, "line ID already arrives at station ID");
+        }
+        public void DeleteLineFromAllStations(int linID)
+        {
+            DataSource.ListLineStation.RemoveAll(p => p.LineId == linID);
+        }
+
+        public void DeleteStationFromAllLines(int statID)
+        {
+            DataSource.ListLineStation.RemoveAll(p => p.Station == statID);
+
+        }
+        #endregion
+
         #region A coder
         public IEnumerable<User> GetAllUsers()
         {
@@ -435,40 +480,13 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public void AddLineStation(int lineID, int stationID, int index, int prevID, int nextID)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void RemoveLineStation(int lineID, int stationID)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void UpdateLineStation(LineStation station)
-        {
-            throw new NotImplementedException();
-        }
-
-        public LineStation GetLineStationp(int code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<LineStation> GetAllLineStation(Func<LineStation, bool> predicate = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<LineStation> GetAllLineStation()
-        {
-            throw new NotImplementedException();
-        }
 
         #endregion
 
 
-        //Pas finis 4 class a completer 
+        //Pas finis 3 class a completer 
 
 
 
