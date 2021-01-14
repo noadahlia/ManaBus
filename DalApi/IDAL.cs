@@ -90,12 +90,15 @@ namespace DalApi
         #endregion
         
         #region LineStation Function
-        void AddLineStationp(LineStation station);
-        void RemoveLineStation(int code);
-        void UpdateLineStation(LineStation station);
-        LineStation GetLineStationp(int code);
-        IEnumerable<LineStation> GetAllLineStation(Func<LineStation, bool> predicate = null);
-        IEnumerable<LineStation> GetAllLineStation();
+        void AddLineStation(int lineID, int stationID, int index, int prevID,int nextID );
+        void RemoveLineStation(int lineID, int stationID);
+        //void UpdateLineStation(LineStation station);
+        //LineStation GetLineStation(int code);
+        void DeleteStationFromAllLines(int statID);
+        void DeleteLineFromAllStations(int linID);
+
+        IEnumerable<LineStation> GetLineStation(Predicate<DO.LineStation> predicate);
+        //IEnumerable<LineStation> GetAllLineStation();
 
         #endregion
 

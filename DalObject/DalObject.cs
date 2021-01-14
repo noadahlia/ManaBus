@@ -87,6 +87,7 @@ namespace DAL
         public IEnumerable<Bus> GetAllBuses()
         {
             return from bus in DataSource.ListBus
+                   where bus.IsActive==true
                    select bus.Clone();
         }
 
@@ -150,6 +151,7 @@ namespace DAL
         public IEnumerable<Station> GetAllStations()
         {
             return from station in DataSource.ListStation
+                   where station.IsActive == true
                    select station.Clone();
         }
 
@@ -187,7 +189,7 @@ namespace DAL
         }
         public Line GetLine(int id)
         {
-            DO.Line line = DataSource.ListLine.Find(l => l.Code == id && l.IsActive == true);
+            DO.Line line = DataSource.ListLine.Find(l => l.Id == id && l.IsActive == true);
 
             if (line != null)
                 return line.Clone();
@@ -213,6 +215,7 @@ namespace DAL
         public IEnumerable<Line> GetAllLines()
         {
             return from line in DataSource.ListLine
+                   where line.IsActive == true
                    select line.Clone();
         }
         #endregion
@@ -336,19 +339,157 @@ namespace DAL
                        select user.Clone();
             }
         }
+        #endregion
+
+        #region LineStation
+        public IEnumerable<DO.LineStation> GetLineStation(Predicate<DO.LineStation> predicate)
+        {
+           
+            return from ls in DataSource.ListLineStation
+                   where predicate(ls)
+                   select ls.Clone();
+        }
+        public void AddLineStation(int linID, int statID, int index, int prev, int next)
+        {
+            if (DataSource.ListLineStation.FirstOrDefault(ls => (ls.LineId == linID && ls.Station == statID)) != null)
+                throw new DO.BadLineIdStationIDException(linID, statID, "line ID already arrives at station ID");
+            DO.LineStation linsta = new DO.LineStation() { LineId = linID, Station = statID, LineStationIndex = index, 
+                                                            PrevStation = prev, NextStation = next  };
+            DataSource.ListLineStation.Add(linsta);
+        }
+
+
+
+        public void RemoveLineStation(int linID, int statID)
+        {
+            DO.LineStation linsta = DataSource.ListLineStation.Find(ls => (ls.LineId == linID && ls.Station == statID));
+
+            if (linsta != null)
+            {
+                DataSource.ListLineStation.Remove(linsta);
+            }
+            else
+                throw new DO.BadLineIdStationIDException(linID, statID, "line ID already arrives at station ID");
+        }
+        public void DeleteLineFromAllStations(int linID)
+        {
+            DataSource.ListLineStation.RemoveAll(p => p.LineId == linID);
+        }
+
+        public void DeleteStationFromAllLines(int statID)
+        {
+            DataSource.ListLineStation.RemoveAll(p => p.Station == statID);
+
+        }
+        #endregion
+
+        #region A coder
         public IEnumerable<User> GetAllUsers()
         {
             return from user in DataSource.ListUser
                    select user.Clone();
         }
 
+        public void AddBusOnTrip(BusOnTrip bus)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveBusOnTrip(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateBusOnTrip(BusOnTrip bus)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BusOnTrip GetBusOnTrip(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<BusOnTrip> GetAllBusOnTrip(Func<BusOnTrip, bool> predicate = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<BusOnTrip> GetAllBusOnTrips()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddAdjacentStations(AdjacentStations station)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveAdjacentStationsp(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateAdjacentStations(AdjacentStations station)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AdjacentStations GetAdjacentStations(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<AdjacentStations> GetAllAdjacentStations(Func<AdjacentStations, bool> predicate = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<AdjacentStations> GetAllAdjacentStationss()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddLineTrip(LineTrip station)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveLineTrip(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateLineTrip(LineTrip station)
+        {
+            throw new NotImplementedException();
+        }
+
+        public LineTrip GetLineTrip(int code)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<LineTrip> GetAllLineTrip(Func<LineTrip, bool> predicate = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<LineTrip> GetAllLineTrip()
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
         #endregion
 
 
-        //Pas finis 4 class a completer 
+        //Pas finis 3 class a completer 
 
 
 
-        
+
     }
 }

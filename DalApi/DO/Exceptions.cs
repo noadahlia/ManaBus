@@ -78,7 +78,23 @@ namespace DO
     }
     #endregion
 
-   //Ajoutee... continuer???
+    public class BadLineIdStationIDException : Exception
+    {
+        public int lineID;
+        public int stationID;
+        public BadLineIdStationIDException(int linID, int statID) : base() { lineID = linID; stationID = statID; }
+        public BadLineIdStationIDException(int linID, int statID, string message) :
+            base(message)
+        { lineID = linID; stationID = statID; }
+        public BadLineIdStationIDException(int linID, int statID, string message, Exception innerException) :
+            base(message, innerException)
+        { lineID = linID; stationID = statID; }
+
+        public override string ToString() => base.ToString() + $", bad line id: {lineID} and station id: {stationID}";
+    }
+
+
+    //Ajoutee... continuer???
     #region BusOnTripIdException
     public class BadBusOnTripIdException : Exception
     {

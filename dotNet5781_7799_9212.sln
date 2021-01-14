@@ -29,6 +29,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{C97B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "PL\PL.csproj", "{3301FBC9-B421-4F9F-BC5F-23916D18A443}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5BCB52F5-12F7-4864-8258-5BA590D3E820}"
+	ProjectSection(SolutionItems) = preProject
+		config.xml = config.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -94,6 +99,7 @@ Global
 		{0EBF0511-99BA-401B-BDF8-6FD2258DAFAD} = {D4F873DA-4CD4-41BE-AB4D-1BAC65DB21EA}
 		{57420E3C-2355-4197-86B3-5531E430E400} = {D4F873DA-4CD4-41BE-AB4D-1BAC65DB21EA}
 		{C97B66D2-22C3-49B3-BA5C-515D5F571A65} = {D4F873DA-4CD4-41BE-AB4D-1BAC65DB21EA}
+		{5BCB52F5-12F7-4864-8258-5BA590D3E820} = {D4F873DA-4CD4-41BE-AB4D-1BAC65DB21EA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {314EBB27-D262-41A5-AECE-DAE40A80B3D1}

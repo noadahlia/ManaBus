@@ -25,7 +25,7 @@ namespace BL
             }
             catch (DO.BadBusIdException ex)
             {
-                throw new BO.BadBusIdException(id,"Bus ID doesn't exist", ex);
+                throw new BO.BadBusIdException("Bus ID doesn't exist", ex);
             }
           
             busDO.CopyPropertiesTo(busBO);          
@@ -47,7 +47,7 @@ namespace BL
             }
             catch(DO.BadBusIdException ex)
             {
-                throw new BO.BadBusIdException(bus.LicenseNum, "This bus already exists", ex);
+                throw new BO.BadBusIdException("This bus already exists", ex);
             }
 
         } //pas totatelment finie //???
@@ -74,7 +74,7 @@ namespace BL
             }
             catch (DO.BadBusIdException ex)
             {
-                throw new BO.BadBusIdException("Student ID and Course ID is Not exist", ex);
+                throw new BO.BadBusIdException("Bus License number doesn't exist", ex);
             }
         }
 
@@ -89,14 +89,16 @@ namespace BL
         {
             return from bus in dal.GetAllBuses()
                    where predicate(busDoBoAdapter(bus))
-                   select bus.Clone();//.......
+                   select busDoBoAdapter(bus);
         }
         
-        public void UpdateBusInfos(DO.Bus bus)
+        public void UpdateBusInfos(BO.Bus bus)
         {
+            DO.Bus busDO = new DO.Bus();
+            bus.CopyPropertiesTo(busDO);
             try
             {
-                dal.UpdateBus(bus);
+                dal.UpdateBus(busDO);
             }
             catch (DO.BadBusIdException ex)
             {
@@ -118,7 +120,7 @@ namespace BL
             }
             catch (DO.BadLineIdException ex)
             {
-                throw new BO.BadLineIdException(id, "Line ID doesn't exist", ex);
+                throw new BO.BadLineIdException("Line ID doesn't exist", ex);
             }
 
             lineDO.CopyPropertiesTo(lineBO);
@@ -135,7 +137,7 @@ namespace BL
             }
             catch (DO.BadLineIdException ex)
             {
-                throw new BO.BadBusIdException(line.Id, "This line already exists", ex);
+                throw new BO.BadBusIdException("This line already exists", ex);
             }
         }
 
@@ -144,10 +146,16 @@ namespace BL
             try
             {
                 dal.RemoveLine(id);
+                dal.
+
             }
             catch (DO.BadLineIdException ex)
             {
                 throw new BO.BadLineIdException("This line doesn't exist", ex);
+            }
+            catch (DO.BadLineIdStationIDException ex)
+            {
+                throw new BO.BadLineIdStationIDException("This line station doesn't exist", ex);
             }
         }
         public IEnumerable<Line> GetAllLines()
@@ -169,18 +177,20 @@ namespace BL
             }
             return LineDoBoAdapter(lineDO);
         }
-        public IEnumerable<Line> GetLinesBy(Func<Line, bool> predicate )// a completer ils l ont laisse vide efrat et dan 
+        public IEnumerable<Line> GetLinesBy(Predicate<Line> predicate )// a completer ils l ont laisse vide efrat et dan 
         {
             return from line in dal.GetAllLines()
                    where predicate(LineDoBoAdapter(line))
-                   select line.Clone();//inadequat
+                   select LineDoBoAdapter(line);//inadequat
 
         }
-        public void UpdateLineInfos(DO.Line line)
+        public void UpdateLineInfos(BO.Line line)
         {
+            DO.Line lineDO = new DO.Line();
+            line.CopyPropertiesTo(lineDO);
             try
             {
-                dal.UpdateLine(line);
+                dal.UpdateLine(lineDO);
             }
             catch (DO.BadLineIdException ex)
             {
@@ -201,7 +211,7 @@ namespace BL
             }
             catch (DO.BadLineIdException ex)
             {
-                throw new BO.BadLineIdException(code, "Station code doesn't exist", ex);
+                throw new BO.BadLineIdException("Station code doesn't exist", ex);
             }
 
             stationDO.CopyPropertiesTo(stationBO);
@@ -219,7 +229,7 @@ namespace BL
             }
             catch (DO.BadStationIdException ex)
             {
-                throw new BO.BadStationIdException(station.Code, "This station already exists", ex);
+                throw new BO.BadStationIdException("This station already exists", ex);
             }
         }
 
@@ -270,16 +280,18 @@ namespace BL
         {
             return from station in dal.GetAllStation()
                    where predicate(StationDoBoAdapter(station))
-                   select station.Clone();//inadequat
+                   select StationDoBoAdapter(station);
         }
 
 
 
-        public void UpdateStationInfos(DO.Station station)
+        public void UpdateStationInfos(BO.Station station)
         {
+            DO.Station stationDO = new DO.Station();
+            station.CopyPropertiesTo(stationDO);
             try
             {
-                dal.UpdateStation(station);
+                dal.UpdateStation(stationDO);
             }
             catch (DO.BadStationIdException ex)
             {
@@ -287,9 +299,37 @@ namespace BL
             }
         }
 
-     
+
         #endregion
 
+        #region LineStation
+        public void AddLineStation(int linID, int statID, int index, int prev, int next)
+        {
+            try
+            {
+                dal.AddLineStation(linID, statID, index,prev,next);
+            }
+            catch (DO.BadLineIdStationIDException ex)
+            {
+                throw new BO.BadLineIdStationIDException("Line ID and station ID not exist", ex);
+            }
+        }
+
+        
+
+        public void DeleteLineStation(int linID, int statID)
+        {
+            try
+            {
+                dal.RemoveLineStation(linID, statID);
+               
+            }
+            catch (DO.BadLineIdStationIDException ex)
+            {
+                throw new BO.BadLineIdStationIDException("Student ID and Course ID is Not exist", ex);
+            }
+        }
+        #endregion
 
     }
 }
