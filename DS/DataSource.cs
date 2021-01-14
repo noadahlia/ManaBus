@@ -185,9 +185,7 @@ namespace DS
                 FromDate =DateTime.ParseExact("13.03.90", "dd.MM.yy", null),
                 TotalTrip= 4000,
                 FuelRemain= 1980,
-                },
-
-
+                }
 
             };
             #endregion
