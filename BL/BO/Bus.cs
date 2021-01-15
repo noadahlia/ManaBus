@@ -13,6 +13,8 @@ namespace BO
         public double TotalTrip { get; set; }
         public double FuelRemain {get;set;}
         public BusStatus Status { get; set; }
+        public IEnumerable<Bus> ListOfBus { get; set; }
+
 
         public override string ToString() => this.ToStringProperty();
 
