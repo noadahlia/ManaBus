@@ -31,6 +31,7 @@ namespace PL
         private void login_btn1_Click(object sender, RoutedEventArgs e)
         {
             Management managementWin = new Management(bl);
+            this.Close();
             managementWin.ShowDialog();
         }
 

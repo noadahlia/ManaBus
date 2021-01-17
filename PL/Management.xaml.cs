@@ -30,11 +30,17 @@ namespace PL
             lb_bus.DisplayMemberPath = "LicenseNum";
             lb_line.ItemsSource = bl.GetAllLines();
             lb_line.DisplayMemberPath = "Code";
-            lb_station.ItemsSource = bl.GetAllStations();
-            lb_station.DisplayMemberPath = "Code";
+            RefreshAllStationsListBox();
 
 
         }
+        void RefreshAllStationsListBox()
+        {
+            lb_station.ItemsSource = bl.GetAllStations();
+            lb_station.DisplayMemberPath = "Code";
+        }
+
+        
 
         private void addBus_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -48,7 +54,9 @@ namespace PL
 
         private void addStation_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            AddStation addStation = new AddStation(bl);
+            addStation.ShowDialog();
+            RefreshAllStationsListBox();
         }
     }
 }
