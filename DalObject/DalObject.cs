@@ -111,17 +111,17 @@ namespace DAL
             else
                 throw new DO.BadStationIdException(id, $"bad station id: {id}");
         }
-        public void UpdateStation(Station Station)
+        public void UpdateStation(Station station)
         {
-            DO.Station st = DataSource.ListStation.Find(l => l.Code == Station.Code && l.IsActive == true);
+            DO.Station st = DataSource.ListStation.Find(l => l.Code == station.Code && l.IsActive == true);
 
             if (st != null)
             {
                 DataSource.ListStation.Remove(st);
-                DataSource.ListStation.Add(st.Clone());
+                DataSource.ListStation.Add(station.Clone());
             }
             else
-                throw new DO.BadStationIdException(Station.Code, $"bad station id: {Station.Code}");
+                throw new DO.BadStationIdException(station.Code, $"bad station id: {station.Code}");
         }
         public Station GetStation(int id)
         {

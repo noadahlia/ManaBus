@@ -26,12 +26,10 @@ namespace PL
         {
             InitializeComponent();
             bl = _bl;
-            lb_bus.ItemsSource = bl.GetAllBuses();
-            lb_bus.DisplayMemberPath = "LicenseNum";
-            lb_line.ItemsSource = bl.GetAllLines();
-            lb_line.DisplayMemberPath = "Code";
-            RefreshAllStationsListBox();
 
+            RefreshAllStationsListBox();
+            RefreshAllBusesListBox();
+            RefreshAllLinesListBox();
 
         }
         void RefreshAllStationsListBox()
@@ -40,7 +38,18 @@ namespace PL
             lb_station.DisplayMemberPath = "Code";
         }
 
-        
+        void RefreshAllBusesListBox()
+        {
+            lb_bus.ItemsSource = bl.GetAllBuses();
+            lb_bus.DisplayMemberPath = "LicenseNum";
+        }
+        void RefreshAllLinesListBox()
+        {
+            lb_line.ItemsSource = bl.GetAllLines();
+            lb_line.DisplayMemberPath = "Code";
+        }
+
+
 
         private void addBus_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -57,6 +66,15 @@ namespace PL
             AddStation addStation = new AddStation(bl);
             addStation.ShowDialog();
             RefreshAllStationsListBox();
+        }
+
+        private void lb_station_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            BO.Station curStat = (lb_station.SelectedItem as BO.Station);
+            Station statWin = new Station(bl,curStat);
+            statWin.ShowDialog();
+            RefreshAllStationsListBox();
+
         }
     }
 }

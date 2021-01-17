@@ -24,9 +24,9 @@ namespace PL
         public Bus()
         {
             InitializeComponent();
-            this.lb_bus.ItemsSource = BO.ListOfBus;//rattacher a notre BusOfList de BL
-            this.lb_bus.DataContext = ListOfBus;
-            this.lb_bus.SelectedIndex = 0;
+            //this.lb_bus.ItemsSource = BO.ListOfBus;//rattacher a notre BusOfList de BL
+            //this.lb_bus.DataContext = ListOfBus;
+            //this.lb_bus.SelectedIndex = 0;
         }
         private void delBus_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -42,6 +42,20 @@ namespace PL
                 //No delete
             }
         }
-        
+
+        private void applyBus_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void refuel_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void refresh_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

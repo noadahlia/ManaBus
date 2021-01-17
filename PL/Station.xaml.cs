@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLAPI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,19 +20,36 @@ namespace PL
     /// </summary>
     public partial class Station : Window
     {
-        public Station()
+        IBL bl;
+        BO.Station curStat;
+        public Station(IBL _bl, BO.Station _curStat)
         {
             InitializeComponent();
+            bl = _bl;
+            curStat = _curStat;
+            statDetails.DataContext = curStat;
         }
 
         private void applyStat_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            statDetails.DataContext = curStat;
+            try
+            {
+                bl.UpdateStationInfos(curStat);
+                MessageBox.Show("Saved!");
+                this.Close();
+            }
+            catch (BO.BadStationIdException ex)
+            {
+                MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void delStat_btn_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
+       
     }
 }
