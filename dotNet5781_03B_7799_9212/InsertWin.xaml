@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="New Bus Informations" Height="233.212" Width="285.949">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
         <Label x:Name="lbl1" Content="Select the date of commencement activity:" HorizontalAlignment="Left" Height="26" Margin="11,10,0,0" VerticalAlignment="Top" Width="255" Visibility="Visible"/>
         <Label x:Name="lbl2" Content="Enter the bus license" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible" Margin="11,74,0,0"/>

@@ -91,77 +91,77 @@ namespace DL
                    where predicate(bus1)
                    select bus1;
         }
-        public void AddBus(DO.Bus bus)
-        {
-            XElement busRootElem = XMLTools.LoadListFromXMLElement(busPath);
+//        public void AddBus(DO.Bus bus)
+//        {
+//            XElement busRootElem = XMLTools.LoadListFromXMLElement(busPath);
 
-            XElement bus1 = (from b in busRootElem.Elements()
-                             where int.Parse(b.Element("LicenseNum").Value) == bus.LicenseNum
-                             select b).FirstOrDefault();
+//            XElement bus1 = (from b in busRootElem.Elements()
+//                             where int.Parse(b.Element("LicenseNum").Value) == bus.LicenseNum
+//                             select b).FirstOrDefault();
 
-            if (bus1 != null)
-                throw new DO.BadBusIdException(bus.LicenseNum, "Duplicate bus License Number");
+//            if (bus1 != null)
+//                throw new DO.BadBusIdException(bus.LicenseNum, "Duplicate bus License Number");
 
-            XElement personElem = new XElement("Bus",
-                                   new XElement("LicenseNum", bus.LicenseNum),
-                                   new XElement("Name", person.Name),// reprendre d ici 
-                                   new XElement("Street", person.Street),
-                                   new XElement("HouseNumber", person.HouseNumber.ToString()),
-                                   new XElement("City", person.City),
-                                   new XElement("BirthDate", person.BirthDate),
-                                   new XElement("PersonalStatus", person.PersonalStatus.ToString()));
+//            XElement personElem = new XElement("Bus",
+//                                   new XElement("LicenseNum", bus.LicenseNum),
+//                                   new XElement("Name", person.Name),// reprendre d ici 
+//                                   new XElement("Street", person.Street),
+//                                   new XElement("HouseNumber", person.HouseNumber.ToString()),
+//                                   new XElement("City", person.City),
+//                                   new XElement("BirthDate", person.BirthDate),
+//                                   new XElement("PersonalStatus", person.PersonalStatus.ToString()));
 
-            personsRootElem.Add(personElem);
+//            personsRootElem.Add(personElem);
 
-            XMLTools.SaveListToXMLElement(personsRootElem, personsPath);
-        }
+//            XMLTools.SaveListToXMLElement(personsRootElem, personsPath);
+//        }
 
-        public void DeletePerson(int id)
-        {
-            XElement personsRootElem = XMLTools.LoadListFromXMLElement(personsPath);
+//        public void DeletePerson(int id)
+//        {
+//            XElement personsRootElem = XMLTools.LoadListFromXMLElement(personsPath);
 
-            XElement per = (from p in personsRootElem.Elements()
-                            where int.Parse(p.Element("ID").Value) == id
-                            select p).FirstOrDefault();
+//            XElement per = (from p in personsRootElem.Elements()
+//                            where int.Parse(p.Element("ID").Value) == id
+//                            select p).FirstOrDefault();
 
-            if (per != null)
-            {
-                per.Remove();
-                XMLTools.SaveListToXMLElement(personsRootElem, personsPath);
-            }
-            else
-                throw new DO.BadPersonIdException(id, $"bad person id: {id}");
-        }
+//            if (per != null)
+//            {
+//                per.Remove();
+//                XMLTools.SaveListToXMLElement(personsRootElem, personsPath);
+//            }
+//            else
+//                throw new DO.BadPersonIdException(id, $"bad person id: {id}");
+//        }
 
-        public void UpdatePerson(DO.Person person)
-        {
-            XElement personsRootElem = XMLTools.LoadListFromXMLElement(personsPath);
+//        public void UpdatePerson(DO.Person person)
+//        {
+//            XElement personsRootElem = XMLTools.LoadListFromXMLElement(personsPath);
 
-            XElement per = (from p in personsRootElem.Elements()
-                            where int.Parse(p.Element("ID").Value) == person.ID
-                            select p).FirstOrDefault();
+//            XElement per = (from p in personsRootElem.Elements()
+//                            where int.Parse(p.Element("ID").Value) == person.ID
+//                            select p).FirstOrDefault();
 
-            if (per != null)
-            {
-                per.Element("ID").Value = person.ID.ToString();
-                per.Element("Name").Value = person.Name;
-                per.Element("Street").Value = person.Street;
-                per.Element("HouseNumber").Value = person.HouseNumber.ToString();
-                per.Element("City").Value = person.City;
-                per.Element("BirthDate").Value = person.BirthDate.ToString();
-                per.Element("PersonalStatus").Value = person.PersonalStatus.ToString();
+//            if (per != null)
+//            {
+//                per.Element("ID").Value = person.ID.ToString();
+//                per.Element("Name").Value = person.Name;
+//                per.Element("Street").Value = person.Street;
+//                per.Element("HouseNumber").Value = person.HouseNumber.ToString();
+//                per.Element("City").Value = person.City;
+//                per.Element("BirthDate").Value = person.BirthDate.ToString();
+//                per.Element("PersonalStatus").Value = person.PersonalStatus.ToString();
 
-                XMLTools.SaveListToXMLElement(personsRootElem, personsPath);
-            }
-            else
-                throw new DO.BadPersonIdException(person.ID, $"bad person id: {person.ID}");
-        }
+//                XMLTools.SaveListToXMLElement(personsRootElem, personsPath);
+//            }
+//            else
+//                throw new DO.BadPersonIdException(person.ID, $"bad person id: {person.ID}");
+//        }
 
-        public void UpdatePerson(int id, Action<DO.Person> update)
-        {
-            throw new NotImplementedException();
-        }
+//        public void UpdatePerson(int id, Action<DO.Person> update)
+//        {
+//            throw new NotImplementedException();
+//        }
 
-        #endregion Bus
-    }
-}
+//        #endregion Bus
+//    }
+//}
