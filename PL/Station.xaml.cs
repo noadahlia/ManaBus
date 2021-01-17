@@ -47,6 +47,26 @@ namespace PL
 
         private void delStat_btn_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult res = MessageBox.Show("Delete selected station?", "Verification", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.No)
+                return;
+            try
+            {
+                if (curStat != null)
+                {
+                    bl.DeleteStation(curStat.Code);
+                    this.Close();
+                    
+                }
+            }
+            catch (BO.BadStationIdException ex)
+            {
+                MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (BO.BadLineIdStationIDException ex)
+            {
+                MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
         }
 

@@ -241,6 +241,7 @@ namespace BL
             try
             {
                 dal.RemoveStation(code);
+                dal.DeleteStationFromAllLines(code);
             }
             catch (DO.BadStationIdException ex)
             {
