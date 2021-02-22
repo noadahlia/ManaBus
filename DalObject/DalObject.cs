@@ -44,6 +44,29 @@ namespace DAL
             else
                 throw new DO.BadBusIdException(license, $"bad bus id: {license}");
         }
+
+        public void RefuelBus(Bus bus)
+        {
+            DO.Bus bu = DataSource.ListBus.Find(b => b.LicenseNum == bus.LicenseNum && b.IsActive == true);
+            if (bu != null)
+            {
+                bu.FuelRemain = 1200;
+            }
+            else
+                throw new DO.BadBusIdException(bus.LicenseNum, $"bad bus id: {bus.LicenseNum}");
+        }
+       public void RefreshBus(Bus bus)
+        {
+            DO.Bus bu = DataSource.ListBus.Find(b => b.LicenseNum == bus.LicenseNum && b.IsActive == true);
+            if (bu != null)
+            {
+                bu.FromDate = DateTime.Now;
+                bu.TotalTrip = 0;
+            }
+            else
+                throw new DO.BadBusIdException(bus.LicenseNum, $"bad bus id: {bus.LicenseNum}");
+        }
+
         public void UpdateBus(Bus bus)
         {
             DO.Bus bu = DataSource.ListBus.Find(b => b.LicenseNum == bus.LicenseNum && b.IsActive == true);
@@ -51,7 +74,7 @@ namespace DAL
             if (bu != null)
             {
                 DataSource.ListBus.Remove(bu);
-                DataSource.ListBus.Add(bu.Clone());
+                DataSource.ListBus.Add(bus.Clone());
             }
             else
                 throw new DO.BadBusIdException(bus.LicenseNum, $"bad bus id: {bus.LicenseNum}");
@@ -338,7 +361,22 @@ namespace DAL
                        where predicate(user)
                        select user.Clone();
             }
+
         }
+            public bool LogInVerify(User user)
+            {
+            DO.User us = DataSource.ListUser.Find(u => u.UserName == user.UserName);
+            if (us != null)
+            {
+                if (us.Password == user.Password)
+                    return true;
+                else
+                    throw new DO.BadUserIdException(user.Password, $"wrong password:{user.UserName}");
+            }
+            else
+                throw new DO.BadUserIdException(user.UserName, $"bad user id: {user.UserName}");
+            }
+        
         #endregion
 
         #region LineStation

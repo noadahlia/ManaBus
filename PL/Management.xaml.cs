@@ -53,13 +53,12 @@ namespace PL
 
         private void addBus_btn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("coucou elishou");
+         AddBus addBus = new AddBus(bl);
+         addBus.ShowDialog();
+         RefreshAllBusesListBox();
         }
 
-        private void addLine_btn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
 
         private void addStation_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -68,12 +67,24 @@ namespace PL
             RefreshAllStationsListBox();
         }
 
+     
+
         private void lb_station_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             BO.Station curStat = (lb_station.SelectedItem as BO.Station);
             Station statWin = new Station(bl,curStat);
             statWin.ShowDialog();
             RefreshAllStationsListBox();
+
+        }
+
+        private void lb_bus_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+            BO.Bus curBus = (lb_bus.SelectedItem as BO.Bus);
+            Bus busWin = new Bus(bl, curBus);
+            busWin.ShowDialog();
+            RefreshAllBusesListBox();
 
         }
     }

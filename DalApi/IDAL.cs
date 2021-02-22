@@ -16,6 +16,8 @@ namespace DalApi
         Bus GetBus(int license);
         IEnumerable<Bus> GetAllBuses(Func<Bus, bool> predicate = null);
         IEnumerable<Bus> GetAllBuses();
+        void RefuelBus(Bus bus);
+        void RefreshBus(Bus bus);
 
         #endregion
 
@@ -56,6 +58,7 @@ namespace DalApi
         User GetUser(string name);
         IEnumerable<User> GetAllUser(Func<User, bool> predicate = null);
         IEnumerable<User> GetAllUsers();
+        bool LogInVerify(User user);
 
         #endregion
 

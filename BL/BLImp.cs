@@ -91,7 +91,32 @@ namespace BL
                    where predicate(busDoBoAdapter(bus))
                    select busDoBoAdapter(bus);
         }
-        
+        public void RefuelBus(BO.Bus bus)
+        {
+            DO.Bus busDO = new DO.Bus();
+            bus.CopyPropertiesTo(busDO);
+            try
+            {
+                dal.RefuelBus(busDO);
+            }
+            catch (DO.BadBusIdException ex)
+            {
+                throw new BO.BadBusIdException("This bus doesn't exist", ex);
+            }
+        }
+        public void RefreshBus(Bus bus)
+        {
+            DO.Bus busDO = new DO.Bus();
+            bus.CopyPropertiesTo(busDO);
+            try
+            {
+                dal.RefreshBus(busDO);
+            }
+            catch (DO.BadBusIdException ex)
+            {
+                throw new BO.BadBusIdException("This bus doesn't exist", ex);
+            }
+        }
         public void UpdateBusInfos(BO.Bus bus)
         {
             DO.Bus busDO = new DO.Bus();
@@ -330,6 +355,116 @@ namespace BL
                 throw new BO.BadLineIdStationIDException("Student ID and Course ID is Not exist", ex);
             }
         }
+        #endregion
+
+        #region User
+
+        BO.User userDoBoAdapter(DO.User userDO)
+        {
+            BO.User userBO = new BO.User();
+            string Pseudo = userDO.UserName;
+            try
+            {
+                userDO = dal.GetUser(Pseudo);
+            }
+            catch (DO.BadUserIdException ex)
+            {
+                throw new BO.BadUserIdException("Bus ID doesn't exist", ex);
+            }
+
+            userDO.CopyPropertiesTo(userBO);
+
+            return userBO;
+        }
+
+        // Je vais verifier si y a 8 chiffres en supposant que les nouveaux bus seront recents et non d'avant 2018
+        // A noter qu'au moment de l'affichage dans le PL essayer de mettre au format xxx-xx-xxx
+        public void AddUser(User user)
+        {
+            DO.User userDO = new DO.User();
+            user.CopyPropertiesTo(userDO);
+            try
+            {
+                dal.AddUser(userDO);
+                
+            }
+            catch (DO.BadUserIdException ex)
+            {
+                throw new BO.BadUserIdException("This user already exists", ex);
+            }
+
+        } 
+
+        public User GetUser(string pseudo)
+        {
+            DO.User userDO;
+            try
+            {
+                userDO = dal.GetUser(pseudo);
+            }
+            catch (DO.BadUserIdException ex)
+            {
+                throw new BO.BadUserIdException("This user doesn't exist", ex);
+            }
+            return userDoBoAdapter(userDO);
+        }
+
+        public void DeleteUser(string pseudo)
+        {
+            try
+            {
+                dal.RemoveUser(pseudo);
+            }
+            catch (DO.BadUserIdException ex)
+            {
+                throw new BO.BadUserIdException("User UserName doesn't exist", ex);
+            }
+        }
+
+        public IEnumerable<User> GetAllUsers()
+        {
+            return from userDO in dal.GetAllUser()
+                   orderby userDO.UserName
+                   select userDoBoAdapter(userDO);
+        }
+
+        public IEnumerable<User> GetUserBy(Predicate<User> predicate)// Ils ont pas ete memamesh mais a completer si on le veut 
+        {
+            return from user in dal.GetAllUser()
+                   where predicate(userDoBoAdapter(user))
+                   select userDoBoAdapter(user);
+        }
+ 
+        public void UpdateUserInfos(BO.User user)
+        {
+            DO.User userDO = new DO.User();
+            user.CopyPropertiesTo(userDO);
+            try
+            {
+                dal.UpdateUser(userDO);
+            }
+            catch (DO.BadUserIdException ex)
+            {
+                throw new BO.BadUserIdException("This user doesn't exist", ex);
+            }
+        }
+
+        public bool LogInVerify(BO.User user)
+        {
+            DO.User userDO = new DO.User();
+            user.CopyPropertiesTo(userDO);
+            try
+            {
+                dal.LogInVerify(userDO);
+                return true;
+            }
+            catch (BO.BadUserIdException ex)
+            {
+                MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+
         #endregion
 
     }

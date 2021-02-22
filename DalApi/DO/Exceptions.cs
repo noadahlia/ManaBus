@@ -78,6 +78,7 @@ namespace DO
     }
     #endregion
 
+    #region LineSation
     public class BadLineIdStationIDException : Exception
     {
         public int lineID;
@@ -92,7 +93,7 @@ namespace DO
 
         public override string ToString() => base.ToString() + $", bad line id: {lineID} and station id: {stationID}";
     }
-
+    #endregion
 
     //Ajoutee... continuer???
     #region BusOnTripIdException

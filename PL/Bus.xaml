@@ -1,31 +1,51 @@
-﻿<Window x:Class="PL.Bus"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
+        xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.Bus"
         mc:Ignorable="d"
-        Title="Bus" Height="441.006" Width="828.497">
-    <Grid>
+        Title="Bus" Height="441.006" Width="828.497" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="busViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Bus}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource busViewSource}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="637*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="applyBus_btn" Content="Apply Changes" HorizontalAlignment="Left" Margin="658,350,0,0" VerticalAlignment="Top" Width="152" Height="50" Click="applyBus_btn_Click" Grid.ColumnSpan="2"/>
-        <Button x:Name="delBus_btn" Content="Delete Bus" HorizontalAlignment="Left" Margin="658,10,0,0" VerticalAlignment="Top" Width="152" Height="46" FontWeight="Bold" Click="delBus_btn_Click" Grid.ColumnSpan="2"/>
-        <Button x:Name="refuel_btn" Content="Send to Refueling" HorizontalAlignment="Left" Margin="472,350,0,0" VerticalAlignment="Top" Width="152" Height="50" Click="refuel_btn_Click" Grid.ColumnSpan="2"/>
-        <Button x:Name="refresh_btn" Content="Send to Refresh" HorizontalAlignment="Left" Margin="282,350,0,0" VerticalAlignment="Top" Width="152" Height="50" Click="refresh_btn_Click" Grid.ColumnSpan="2"/>
-        <ListBox x:Name="lb_bus" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="324" Margin="24,14,0,0" VerticalAlignment="Top" Width="610" RenderTransformOrigin="0.5,0.5" 
-               ItemsSource="{Binding}" >
-            <ListBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.396"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </ListBox.RenderTransform>
-        </ListBox>
+        <Button x:Name="applyBus_btn" Content="Apply Changes" HorizontalAlignment="Left" Margin="636.667,350,0,0" VerticalAlignment="Top" Width="152" Height="50" Click="applyBus_btn_Click" Grid.Column="2"/>
+        <Button x:Name="delBus_btn" Content="Delete Bus" HorizontalAlignment="Left" Margin="636.667,10,0,0" VerticalAlignment="Top" Width="152" Height="46" FontWeight="Bold" Click="delBus_btn_Click" Grid.Column="2"/>
+        <Button x:Name="refuel_btn" Content="Send to Refueling" HorizontalAlignment="Left" Margin="435.667,350,0,0" VerticalAlignment="Top" Width="152" Height="50" Click="refuel_btn_Click" Grid.Column="2"/>
+        <Button x:Name="refresh_btn" Content="Send to Refresh" HorizontalAlignment="Left" Margin="234.667,350,0,0" VerticalAlignment="Top" Width="152" Height="50" Click="refresh_btn_Click" Grid.Column="2"/>
+        <Grid x:Name="busDetails" Grid.Column="2" HorizontalAlignment="Left" Margin="51.667,53,0,0" VerticalAlignment="Top" Height="254" Width="536" RenderTransformOrigin="0.501,0.514">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="46.667"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="License Num:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,1.333" Grid.Row="0" VerticalAlignment="Bottom" FontSize="20" Height="37" Width="127"/>
+            <DatePicker x:Name="fromDateDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="0,10,0,5.333" Grid.Row="2" SelectedDate="{Binding FromDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" FontSize="20" Height="32" Width="148"/>
+            <Label Content="Fuel Remain:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,3.667,0,11" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Height="36" Width="121"/>
+            <TextBox x:Name="fuelRemainTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="3,9.667,0,9" Grid.Row="3" Text="{Binding FuelRemain, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150" FontSize="20"/>
+            <Label Content="From date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,8,0,7.333" Grid.Row="2" VerticalAlignment="Center" FontSize="20" Height="32" Width="105"/>
+            <TextBox x:Name="licenseNumTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="34" Margin="0,16,0,0" Text="{Binding LicenseNum, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150" FontSize="20" IsEnabled="False" RenderTransformOrigin="0.526,0.804"/>
+            <Label Content="Status:" HorizontalAlignment="Left" Margin="0,10.667,0,5" Grid.Row="1" VerticalAlignment="Center" FontSize="20" Height="37" Width="68"/>
+
+            <Label Content="Total Trip:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,6.333,0,6.667" Grid.Row="5" VerticalAlignment="Center" FontSize="20" Height="37" Width="94"/>
+            <TextBox x:Name="totalTripTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="33" Margin="3,14.333,0,2.667" Grid.Row="5" Text="{Binding TotalTrip, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150" FontSize="20"/>
+            <ComboBox x:Name="cbStatus" Grid.Column="1" HorizontalAlignment="Left" Margin="0,11.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="148" Height="37" SelectedItem="{Binding Status}"  />
+
+        </Grid>
 
     </Grid>
 </Window>

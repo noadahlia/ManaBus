@@ -1709,35 +1709,35 @@ namespace DS
             {
                 UserName="David",
                 Password="aaa",
-                Admin=true,
+                Worker=true,
             },
 
              new User
             {
                 UserName="Sarah",
                 Password="bbb",
-                Admin=true,
+                Worker=true,
             },
 
             new User
             {
                 UserName="Yonhatan",
                 Password="ccc",
-                Admin=false,
+                Worker=false,
             },
 
             new User
             {
                 UserName="Noa",
                 Password="ddd",
-                Admin=false,
+                Worker=false,
             },
 
             new User
             {
                 UserName="Daniel",
                 Password="eee",
-                Admin=false,
+                Worker=false,
             }
 
             };

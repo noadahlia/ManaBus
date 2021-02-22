@@ -29,7 +29,7 @@
         <Label Content="            I'm a traveler " HorizontalAlignment="Left" Height="48" Margin="63,70,0,0" VerticalAlignment="Top" Width="278" Grid.Column="1" FontFamily="Felix Titling" FontSize="18" FontWeight="Bold"/>
         <TextBox HorizontalAlignment="Left" Height="34" Margin="83,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="233"  />
         <TextBox HorizontalAlignment="Left" Height="34" Margin="63.333,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="233" Grid.Column="1" />
-        <Button x:Name="login_btn1" Content="Log In" HorizontalAlignment="Left" Margin="241,256,0,0" VerticalAlignment="Top" Width="75" Click="login_btn1_Click"/>
+        <Button x:Name="login_btn1" Content="Log In" HorizontalAlignment="Left" Margin="216,242,0,0" VerticalAlignment="Top" Width="75" Click="login_btn1_Click"/>
         <Button x:Name="login_btn2" Content="Log In" HorizontalAlignment="Left" Margin="221,256,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" />
         <PasswordBox HorizontalAlignment="Left" Margin="83,206,0,0" VerticalAlignment="Top" Width="233" Height="31" PasswordChar="*" />
         <PasswordBox HorizontalAlignment="Left" Margin="63.333,206,0,0" VerticalAlignment="Top" Width="233" Height="31" PasswordChar="*" Grid.Column="1" />

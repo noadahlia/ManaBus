@@ -20,6 +20,8 @@ namespace BLAPI
         #region Bus
 
         void AddBus(BO.Bus bus);
+        void RefuelBus(BO.Bus bus);
+        void RefreshBus(BO.Bus bus);
         BO.Bus GetBus(int id);
         IEnumerable<BO.Bus> GetAllBuses();
 
@@ -59,7 +61,16 @@ namespace BLAPI
 
         #endregion
 
+        #region User Function
+        void AddUser(User user);
+        void DeleteUser(string name);
+        void UpdateUserInfos(User user);
+        User GetUser(string name);
+        IEnumerable<User> GetUserBy(Predicate<User> predicate);
+        IEnumerable<User> GetAllUsers();
+        bool LogInVerify(User user);
 
+        #endregion
 
     }
 }

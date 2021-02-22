@@ -1,5 +1,4 @@
-﻿using BLAPI;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,42 +11,45 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BLAPI;
 
 namespace PL
 {
     /// <summary>
-    /// Logique d'interaction pour AddStation.xaml
+    /// Interaction logic for AddBus.xaml
     /// </summary>
-    public partial class AddStation : Window
+    public partial class AddBus : Window
     {
         IBL bl;
-        public AddStation(IBL _bl)
+        public AddBus(IBL _bl)
         {
             InitializeComponent();
             bl = _bl;
+            cbStatus.ItemsSource = Enum.GetValues(typeof(BO.BusStatus));
+           
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {          
+        {
             try
             {
-                BO.Station newStat = new BO.Station();
-                newStat.Code = int.Parse(code_tbx.Text);
-                newStat.Name = name_tbx.Text;
-                newStat.Longitude = double.Parse(long_tbx.Text);
-                newStat.Latitude= double.Parse(lat_tbx.Text);
-                newStat.Adress = adress_tbx.Text;
-                bl.AddStation(newStat);
+                BO.Bus newBus = new BO.Bus();
+                newBus.LicenseNum = int.Parse(license_tbx.Text);
+                newBus.FromDate = (DateTime)date.SelectedDate;
+                newBus.Status = (BO.BusStatus)cbStatus.SelectedIndex;
+                newBus.FuelRemain = int.Parse(fuelRemain_tbx.Text);
+                newBus.TotalTrip = int.Parse(totalTrip_tbx.Text);
+                bl.AddBus(newBus);
                 this.Close();
             }
-            catch (BO.BadStationIdException ex)
+            catch (BO.BadBusIdException ex)
             {
                 MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
-                
+
 
             }
         }
-
-      
     }
 }
+

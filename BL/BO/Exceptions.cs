@@ -48,7 +48,17 @@ namespace BO
         public override string ToString() => base.ToString() + $", bad student id: {lineID} and course ID: {stationID}";
     }
 
+    [Serializable]
+    public class BadUserIdException : Exception
+    {
+        public string Pseudo;
+        public BadUserIdException(string message, Exception innerException) :
+            base(message, innerException) => Pseudo = ((DO.BadUserIdException)innerException).ID;
+        public override string ToString() => base.ToString() + $", bad user id: {Pseudo}";
+    }
 }
+
+
 
 
 
