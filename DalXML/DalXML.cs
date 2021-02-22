@@ -362,6 +362,21 @@ namespace DL
         {
             throw new NotImplementedException();
         }
+
+        public void RefuelBus(Bus bus)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RefreshBus(Bus bus)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool LogInVerify(User user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
         #endregion

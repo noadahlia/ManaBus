@@ -23,47 +23,47 @@ namespace PL
     {
         IBL bl = BLFactory.GetBL("1");
         BO.User curUser;
-        public MainWindow(IBL _bl, BO.User _curUser)
+        public MainWindow()
         {
             InitializeComponent();
-            bl = _bl;
-            curUser = _curUser;
+           // bl = _bl;
+            //curUser = _curUser;
            
 
         }
-      
-        //private void login_btn1_Click(object sender, RoutedEventArgs e)
-        //{
-        //    bool verification;
 
-        //    try 
-        //    {
-        //        verification=bl.LogInVerify(curUser);
-        //        if(verification==true)
-        //        {
-        //            if(curUser.Worker==true)
-        //            {
-        //                Management managementWin = new Management(bl);
-        //                this.Close();
-        //                managementWin.ShowDialog();
-        //            }
-        //            else
-        //            {
+        private void login_btn1_Click(object sender, RoutedEventArgs e)
+        {
+            //    bool verification;
 
-        //            }
-               
-        //        // verifier si User existe
-        //        // verifier si bon password
-        //        //verifier si worker page 1 sinon page 2
-        //    }
-        //    catch (DO.BadUserIdException ex)
-        //    {
-        //        throw new BO.BadUserIdException("", ex);
-        //    }
-        //    //Management managementWin = new Management(bl);
-        //    //this.Close();
-        //    //managementWin.ShowDialog();
-        //}
+            //    try 
+            //    {
+            //        verification=bl.LogInVerify(curUser);
+            //        if(verification==true)
+            //        {
+            //            if(curUser.Worker==true)
+            //            {
+            //                Management managementWin = new Management(bl);
+            //                this.Close();
+            //                managementWin.ShowDialog();
+            //            }
+            //            else
+            //            {
+
+            //            }
+
+            //        // verifier si User existe
+            //        // verifier si bon password
+            //        //verifier si worker page 1 sinon page 2
+            //    }
+            //    catch (DO.BadUserIdException ex)
+            //    {
+            //        throw new BO.BadUserIdException("", ex);
+            //    }
+            Management managementWin = new Management(bl);
+            this.Close();
+            managementWin.ShowDialog();
+        }
 
     }
 }

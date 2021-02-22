@@ -60,7 +60,21 @@ namespace PL
          RefreshAllBusesListBox();
         }
 
-      
+        private void lb_bus_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+            BO.Bus curBus = (lb_bus.SelectedItem as BO.Bus);
+            Bus busWin = new Bus(bl, curBus);
+            busWin.ShowDialog();
+            RefreshAllBusesListBox();
+
+        }
+
+        private void addLine_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
 
         private void addStation_btn_Click(object sender, RoutedEventArgs e)
         {

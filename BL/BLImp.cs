@@ -486,12 +486,15 @@ namespace BL
             try
             {
                 dal.LogInVerify(userDO);
-                return true;
             }
             catch (BO.BadUserIdException ex)
             {
-                MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+                // on peut pas mettre de messagebox ici c BL
+                throw new BO.BadUserIdException("This user doesn't exist", ex);
+
             }
+            return true;
 
         }
 
