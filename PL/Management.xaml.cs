@@ -27,8 +27,10 @@ namespace PL
             InitializeComponent();
             bl = _bl;
 
+
             RefreshAllStationsListBox();
             RefreshAllBusesListBox();
+
             RefreshAllLinesListBox();
 
         }
@@ -75,6 +77,14 @@ namespace PL
             statWin.ShowDialog();
             RefreshAllStationsListBox();
 
+        }
+
+        private void lb_line_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            BO.Line curLine = (lb_line.SelectedItem as BO.Line);
+            Line lineWin = new Line(bl, curLine);
+            lineWin.ShowDialog();
+            RefreshAllLinesListBox();
         }
     }
 }

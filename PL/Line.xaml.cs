@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLAPI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,16 @@ namespace PL
     /// </summary>
     public partial class Line : Window
     {
-        public Line()
+        IBL bl;
+        BO.Line curLine;
+        public Line(IBL _bl, BO.Line _curLine)
         {
             InitializeComponent();
+            bl = _bl;
+            curLine = _curLine;
+            lineDetails.DataContext = curLine;
+            lineStationDataGrid.DataContext = bl.GetAllStationsPerLine(curLine.Id);
+            
         }
 
         private void applyLine_btn_Click(object sender, RoutedEventArgs e)
@@ -33,5 +41,9 @@ namespace PL
         {
 
         }
+
+
+
+
     }
 }

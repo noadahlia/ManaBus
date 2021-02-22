@@ -57,6 +57,8 @@ namespace BLAPI
 
         void DeleteStation(int id);
 
+        IEnumerable<BO.LineStation> GetAllStationsPerLine(int id);
+
         #endregion
 
 

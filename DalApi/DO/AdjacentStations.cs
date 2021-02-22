@@ -13,6 +13,8 @@ namespace DO
         public double Distance { get; set; }
         public TimeSpan Time { get; set; }
 
+        public bool IsActive = true;
+
         //public override string ToString()
         //{ 
         // return this.ToStringProperty();
