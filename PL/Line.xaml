@@ -1,16 +1,73 @@
-﻿<Window x:Class="PL.Line"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
+        xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.Line"
         mc:Ignorable="d"
-        Title="Line" Height="343" Width="582">
+        Title="Line" Height="489.786" Width="908.524" WindowStartupLocation="CenterScreen">
+
     <Grid>
-        <Button x:Name="applyLine_btn" Content="Apply Changes" HorizontalAlignment="Left" Margin="454,271,0,0" VerticalAlignment="Top" Width="110" Height="31" Click="applyLine_btn_Click"/>
-        <Button x:Name="delLine_btn" Content="Delete Line" HorizontalAlignment="Left" Margin="456,10,0,0" VerticalAlignment="Top" Width="108" Height="31" FontWeight="Bold" Click="delLine_btn_Click"/>
-        <ListBox x:Name="busStat_lb" HorizontalAlignment="Left" Height="185" Margin="10,117,0,0" VerticalAlignment="Top" Width="429"/>
-        <Label Content="List of stations : " HorizontalAlignment="Left" Height="27" Margin="10,90,0,0" VerticalAlignment="Top" Width="181"/>
+        <Button x:Name="applyLine_btn" Content="Apply Changes" HorizontalAlignment="Left" Margin="764,344,0,0" VerticalAlignment="Top" Width="110" Height="31" Click="applyLine_btn_Click"/>
+        <Button x:Name="delLine_btn" Content="Delete Line" HorizontalAlignment="Left" Margin="764,23,0,0" VerticalAlignment="Top" Width="108" Height="31" FontWeight="Bold" Click="delLine_btn_Click"/>
+        <Label Content="List of stations : " HorizontalAlignment="Left" Height="27" Margin="10,128,0,0" VerticalAlignment="Top" Width="181"/>
+
+        <Grid x:Name="lineDetails" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Label Content="Area:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox x:Name="areaTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding Area, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Line N°:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBox x:Name="codeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox x:Name="idTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" IsEnabled="False"/>
+        </Grid>
+
+        <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" 
+                  EnableRowVirtualization="True" ItemsSource="{Binding}" 
+                  Margin="15,163,344,17" RowDetailsVisibilityMode="VisibleWhenSelected" 
+                  RenderTransformOrigin="0.5,0.5" ColumnWidth="Auto">
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.691"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-1.424"/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="iDColumn" Binding="{Binding Code}" Header="Code" Width="Auto"/>
+                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="Auto"/>
+                <DataGridTextColumn x:Name="distanceColumn" Binding="{Binding Distance}" Header="Distance to Next" Width="Auto"/>
+                <DataGridTextColumn x:Name="timeColumn" Binding="{Binding Time}" Header="Time to Next" Width="Auto"/>
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="updateDistance_btn" Content="Update Distance" ToolTip="Update distance and time for selected station, to the next station in this line"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="deleteStation_btn" Content="Delete" ToolTip="Delete selected station from this line"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>

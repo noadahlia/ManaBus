@@ -10,6 +10,7 @@ namespace BL
 {
     static class DeepCopyUtilities
     {
+
         //we have to use this function and not Cloning because cloning is when we want to 
         //copy an object from a class to the same class 
         //but here we have to copy from a class to a new class (from DO entities to Bo entities)
@@ -32,6 +33,13 @@ namespace BL
             return to;
         }
 
-        // ici ils ont mis CopyToStudentCourse on verra ça sert a quoi chez nous
+        public static BO.LineStation CopyToLineStation(this DO.Station station, DO.LineStation linsta)
+        {
+            BO.LineStation result = (BO.LineStation)station.CopyPropertiesToNew(typeof(BO.LineStation));
+            // propertys' names changed? copy them here...
+            result.NextStation = linsta.NextStation;
+            
+            return result;
+        }
     }
 }

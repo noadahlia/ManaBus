@@ -11,7 +11,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="paysage1.jpg"/>
         </Grid.Background>
-        <TextBox x:Name="tbKM" HorizontalAlignment="Left" Height="34" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Margin="10,43,0,0" KeyDown="tbKM_KeyDown" Grid.ColumnSpan="3" TextChanged="tbKM_TextChanged"/>
+        <TextBox x:Name="tbKM" HorizontalAlignment="Left" Height="34" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Margin="10,43,0,0" KeyDown="tbKM_KeyDown" Grid.ColumnSpan="3" />
         <Label Content="Enter the km of the travel:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Width="159"/>
 
     </Grid>

@@ -72,15 +72,7 @@ namespace DalApi
 
         #endregion
 
-        #region AdjacentStations Function
-        void AddAdjacentStations(AdjacentStations station);
-        void RemoveAdjacentStationsp(int code);
-        void UpdateAdjacentStations(AdjacentStations station);
-        AdjacentStations GetAdjacentStations(int code);
-        IEnumerable<AdjacentStations> GetAllAdjacentStations(Func<AdjacentStations, bool> predicate = null);
-        IEnumerable<AdjacentStations> GetAllAdjacentStationss();
-
-        #endregion
+     
 
         #region LineTrip Function
         void AddLineTrip(LineTrip station);
@@ -102,6 +94,11 @@ namespace DalApi
 
         IEnumerable<LineStation> GetLineStation(Predicate<DO.LineStation> predicate);
         //IEnumerable<LineStation> GetAllLineStation();
+
+        #endregion
+        #region AdjacentStation
+        IEnumerable<DO.AdjacentStations> GetAllAdjStation(Predicate<DO.AdjacentStations> predicate);
+        AdjacentStations GetAdjacentStations(int station1, int station2);
 
         #endregion
 

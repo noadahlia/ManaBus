@@ -10,12 +10,14 @@ namespace DS
     public static class DataSource
     {
         public static List<Bus> ListBus;
+        
         public static List<Station> ListStation;
         public static List<Line> ListLine;
         public static List<Trip> ListTrip;
         public static List<User> ListUser;
         public static List<BusOnTrip> ListLineTrip;
         public static List<LineStation> ListLineStation;
+        public static List<AdjacentStations> ListAdjacentStations;
 
         static DataSource()
         {
@@ -703,6 +705,7 @@ namespace DS
 
             };
             #endregion
+
 
             #region ListLineStation
             ListLineStation = new List<LineStation>
@@ -1607,7 +1610,7 @@ namespace DS
                 },
             };
             #endregion
-
+          
             #region ListLine
             ListLine = new List<Line>
             {
@@ -1701,6 +1704,29 @@ namespace DS
                 },
             };
             #endregion
+
+            #region ListAdjacentStations
+            ListAdjacentStations = new List<AdjacentStations>();
+            Random r = new Random();
+
+
+            for (int i = 0; i < ListLineStation.Count; i++)
+            {
+                if (ListLineStation[i].LineId == ListLineStation[i + 1].LineId)
+                {
+                    AdjacentStations adjStat = new AdjacentStations
+                    {
+                        Station1 = ListLineStation[i].Station,
+                        Station2 = ListLineStation[i + 1].Station,
+                        Distance = r.Next(100, 500),
+                        Time = TimeSpan.FromMinutes(r.Next(15))
+                    };
+                    ListAdjacentStations.Add(adjStat);
+                }
+            }
+
+            #endregion
+
 
             #region ListUser 
             ListUser = new List<User>

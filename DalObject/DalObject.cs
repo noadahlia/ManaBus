@@ -110,7 +110,7 @@ namespace DAL
         public IEnumerable<Bus> GetAllBuses()
         {
             return from bus in DataSource.ListBus
-                   where bus.IsActive==true
+                   where bus.IsActive == true
                    select bus.Clone();
         }
 
@@ -382,7 +382,7 @@ namespace DAL
         #region LineStation
         public IEnumerable<DO.LineStation> GetLineStation(Predicate<DO.LineStation> predicate)
         {
-           
+
             return from ls in DataSource.ListLineStation
                    where predicate(ls)
                    select ls.Clone();
@@ -391,8 +391,8 @@ namespace DAL
         {
             if (DataSource.ListLineStation.FirstOrDefault(ls => (ls.LineId == linID && ls.Station == statID)) != null)
                 throw new DO.BadLineIdStationIDException(linID, statID, "line ID already arrives at station ID");
-            DO.LineStation linsta = new DO.LineStation() { LineId = linID, Station = statID, LineStationIndex = index, 
-                                                            PrevStation = prev, NextStation = next  };
+            DO.LineStation linsta = new DO.LineStation() { LineId = linID, Station = statID, LineStationIndex = index,
+                PrevStation = prev, NextStation = next };
             DataSource.ListLineStation.Add(linsta);
         }
 
@@ -416,7 +416,26 @@ namespace DAL
 
         public void DeleteStationFromAllLines(int statID)
         {
+            //Passer kav kav si j'ai la stat dans le kav alors je regarde qui est son prev et je maj le pointeur
             DataSource.ListLineStation.RemoveAll(p => p.Station == statID);
+
+
+        }
+        #endregion
+
+        #region AdjacentStation Functions
+        public IEnumerable<DO.AdjacentStations> GetAllAdjStation(Predicate<DO.AdjacentStations> predicate)
+        {
+            return from adjs in DataSource.ListAdjacentStations
+                   where predicate(adjs)
+                   select adjs.Clone();
+
+        }
+
+        public AdjacentStations GetAdjacentStations(int station1, int station2)
+        {
+            DO.AdjacentStations adjs = DataSource.ListAdjacentStations.Find(ads => ads.Station1 == station1 && ads.Station2 == station2 && ads.IsActive );
+            return adjs;
 
         }
         #endregion
@@ -458,35 +477,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public void AddAdjacentStations(AdjacentStations station)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void RemoveAdjacentStationsp(int code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateAdjacentStations(AdjacentStations station)
-        {
-            throw new NotImplementedException();
-        }
-
-        public AdjacentStations GetAdjacentStations(int code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<AdjacentStations> GetAllAdjacentStations(Func<AdjacentStations, bool> predicate = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<AdjacentStations> GetAllAdjacentStationss()
-        {
-            throw new NotImplementedException();
-        }
 
         public void AddLineTrip(LineTrip station)
         {
@@ -517,6 +508,7 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
+
 
 
 

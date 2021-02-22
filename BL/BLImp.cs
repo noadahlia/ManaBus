@@ -150,6 +150,15 @@ namespace BL
 
             lineDO.CopyPropertiesTo(lineBO);
 
+            lineBO.ListOfStations = from ls in dal.GetLineStation(ls => ls.LineId == id)
+                                    let stat = dal.GetStation(ls.Station)
+                                    select stat.CopyToLineStation(ls);
+            //foreach (LineStation ls in lineBO.ListOfStations)
+            //{
+            //    ls.TimetoNext = dal.GetAdjacentStations(ls.Code, ls.NextStation).Time;
+            //    ls.DistancetoNext = dal.GetAdjacentStations(ls.Code, ls.NextStation).Distance;
+            //}
+
             return lineBO;
         }
         public void AddLine(Line line)
@@ -158,11 +167,14 @@ namespace BL
             line.CopyPropertiesTo(lineDO);
             try
             {
-              dal.AddLine(lineDO);
+                dal.AddLine(lineDO);
+                //adds all LineStations where the LineId == to the new line we want to add, to the ListOfStation of the new line
+                //line.ListOfStations = dal.GetLineStation(p => p.LineId == line.Id);
+
             }
             catch (DO.BadLineIdException ex)
             {
-                throw new BO.BadBusIdException("This line already exists", ex);
+                throw new BO.BadLineIdException("This line already exists", ex);
             }
         }
 
@@ -180,7 +192,7 @@ namespace BL
             }
             catch (DO.BadLineIdStationIDException ex)
             {
-                throw new BO.BadLineIdStationIDException("This line station doesn't exist", ex);
+                throw new BO.BadLineIdStationIDException("This line-station doesn't exist", ex);
             }
         }
         public IEnumerable<Line> GetAllLines()
@@ -251,6 +263,7 @@ namespace BL
             try
             {
                 dal.AddStation(stationDO);
+
             }
             catch (DO.BadStationIdException ex)
             {
@@ -267,12 +280,22 @@ namespace BL
             {
                 dal.RemoveStation(code);
                 dal.DeleteStationFromAllLines(code);
+                //Je dois absolument changer les pointers sinon ils pointront sur null
+                //Passer sur chaque lin eet voir si il passe par la station et si oui 
+                //foreach (item in dal.GetALLineStation)
+                //    item.prev=item.next
+                //        item.delete
+                    //Update la station prev et chnager son next
             }
             catch (DO.BadStationIdException ex)
             {
                 throw new BO.BadStationIdException("This station doesn't exist", ex);
             }
         }
+
+        //Ce'st ici qu'on voit le zman entre deux stations
+
+        //Je dois avoir une fonction 
 
 
 
@@ -324,11 +347,18 @@ namespace BL
                 throw new BO.BadStationIdException("This station doesn't exist", ex);
             }
         }
+        public IEnumerable<BO.LineStation> GetAllStationsPerLine(int id)
+        {
+            return from ls in dal.GetLineStation(ls => ls.LineId == id)
+                   let station = dal.GetStation(ls.Station)
+                   select station.CopyToLineStation(ls);
+        }
 
 
         #endregion
 
-        #region LineStation
+        #region LineStation     
+
         public void AddLineStation(int linID, int statID, int index, int prev, int next)
         {
             try

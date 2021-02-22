@@ -27,8 +27,10 @@ namespace PL
             InitializeComponent();
             bl = _bl;
 
+
             RefreshAllStationsListBox();
             RefreshAllBusesListBox();
+
             RefreshAllLinesListBox();
 
         }
@@ -78,14 +80,12 @@ namespace PL
 
         }
 
-        private void lb_bus_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void lb_line_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
-            BO.Bus curBus = (lb_bus.SelectedItem as BO.Bus);
-            Bus busWin = new Bus(bl, curBus);
-            busWin.ShowDialog();
-            RefreshAllBusesListBox();
-
+            BO.Line curLine = (lb_line.SelectedItem as BO.Line);
+            Line lineWin = new Line(bl, curLine);
+            lineWin.ShowDialog();
+            RefreshAllLinesListBox();
         }
     }
 }
