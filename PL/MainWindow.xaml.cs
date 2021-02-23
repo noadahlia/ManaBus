@@ -46,9 +46,10 @@ namespace PL
             bool verification;
 
 
-            verification = bl.LogInVerify(curUser);
             try
             {
+                verification = bl.LogInVerify(curUser);
+
                 if (verification == true)
                 {
                     verification = bl.isWorker(curUser);
