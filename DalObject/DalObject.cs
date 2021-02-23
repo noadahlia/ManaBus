@@ -159,9 +159,16 @@ namespace DAL
         {
             if (predicate == null)
             {
-                return from station in DataSource.ListStation
-                       where station.IsActive == true
-                       select station.Clone();
+                List<Station> jenaimarre = new List<Station>();
+                foreach(Station stat in DataSource.ListStation)
+                {
+                    if (stat.IsActive == true)
+                        jenaimarre.Add(stat);
+                }
+                //return from station in DataSource.ListStation
+                //       where station.IsActive == true
+                //       select station.Clone();
+                return jenaimarre;
             }
             else
             {
@@ -443,10 +450,12 @@ namespace DAL
 
         }
 
-        public AdjacentStations GetAdjacentStations(int station1, int station2)
+        public AdjacentStations     GetAdjacentStations(int station1, int station2)
         {
-            DO.AdjacentStations adjs = DataSource.ListAdjacentStations.Find(ads => ads.Station1 == station1 && ads.Station2 == station2 && ads.IsActive );
-            return adjs;
+            
+                DO.AdjacentStations adjs = DataSource.ListAdjacentStations.Find(ads => ads.Station1 == station1 && ads.Station2 == station2 && ads.IsActive);
+                return adjs;
+    
 
         }
         #endregion

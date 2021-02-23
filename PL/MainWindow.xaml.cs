@@ -38,6 +38,7 @@ namespace PL
         BO.User curUser = new User();
         private void login_btn2_Click(object sender, RoutedEventArgs e)
         {
+            //    bool verification;
 
             curUser.UserName = userN.Text;
             curUser.Password = (string)password2.Password;

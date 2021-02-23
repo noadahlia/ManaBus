@@ -9,8 +9,7 @@ namespace DS
 {
     public static class DataSource
     {
-        public static List<Bus> ListBus;
-        
+        public static List<Bus> ListBus;      
         public static List<Station> ListStation;
         public static List<Line> ListLine;
         public static List<Trip> ListTrip;
@@ -18,7 +17,6 @@ namespace DS
         public static List<BusOnTrip> ListLineTrip;
         public static List<LineStation> ListLineStation;
         public static List<AdjacentStations> ListAdjacentStations;
-
         static DataSource()
         {
             InitAllLists();
@@ -1193,42 +1191,42 @@ namespace DS
                     Station = 100470,
                     LineStationIndex = 3,
                     PrevStation = 100460,
-                    NextStation = 100480,
-                },
-
-                new LineStation
-                {
-                    LineId = 6,
-                    Station = 100480,
-                    LineStationIndex = 4,
-                    PrevStation = 100470,
-                    NextStation = 100490,
-                },
-
-                new LineStation
-                {
-                    LineId = 6,
-                    Station = 100490,
-                    LineStationIndex = 5,
-                    PrevStation = 100480,
-                    NextStation = 100500,
-                },
-
-                new LineStation
-                {
-                    LineId = 6,
-                    Station = 100500,
-                    LineStationIndex = 6,
-                    PrevStation = 100490,
                     NextStation = 100070,
                 },
+
+               // new LineStation
+               // {
+               //     LineId = 6,
+               //     Station = 100480,
+               //     LineStationIndex = 4,
+               //     PrevStation = 100470,
+               //     NextStation = 100490,
+               // },
+
+               // new LineStation
+               // {
+               //     LineId = 6,
+               //     Station = 100490,
+               //     LineStationIndex = 5,
+               //     PrevStation = 100480,
+               //     NextStation = 100500,
+               // },
+
+                //new LineStation
+                //{
+                //    LineId = 6,
+                //    Station = 100500,
+                //    LineStationIndex = 6,
+                //    PrevStation = 100470,
+                //    NextStation = 100070,
+                //},
 
                 new LineStation
                 {
                     LineId = 6,
                     Station = 100070,
                     LineStationIndex = 7,
-                    PrevStation = 100060,
+                    PrevStation = 100470,
                     NextStation = 100080,
                 },
 
@@ -1544,41 +1542,41 @@ namespace DS
                     Station = 100470,
                     LineStationIndex = 2,
                     PrevStation = 100460,
-                    NextStation = 100480,
-                },
-            new LineStation
-            {
-                    LineId = 10,
-                    Station = 100480,
-                    LineStationIndex = 3,
-                    PrevStation = 100470,
-                    NextStation = 100490,
-                },
-
-            new LineStation
-            {
-                    LineId = 10,
-                    Station = 100490,
-                    LineStationIndex = 4,
-                    PrevStation = 100480,
-                    NextStation = 100500,
-                },
-
-            new LineStation
-            {
-                    LineId = 10,
-                    Station = 100500,
-                    LineStationIndex = 5,
-                    PrevStation = 100490,
                     NextStation = 100000,
                 },
+            //new LineStation
+            //{
+            //        LineId = 10,
+            //        Station = 100480,
+            //        LineStationIndex = 3,
+            //        PrevStation = 100470,
+            //        NextStation = 100490,
+            //    },
+
+            //new LineStation
+            //{
+            //        LineId = 10,
+            //        Station = 100490,
+            //        LineStationIndex = 4,
+            //        PrevStation = 100480,
+            //        NextStation = 100500,
+            //    },
+
+            //new LineStation
+            //{
+            //        LineId = 10,
+            //        Station = 100500,
+            //        LineStationIndex = 5,
+            //        PrevStation = 100470,
+            //        NextStation = 100000,
+            //    },
 
             new LineStation
             {
                     LineId = 10,
                     Station = 100000,
                     LineStationIndex = 6,
-                    PrevStation = 100500,
+                    PrevStation = 100470,
                     NextStation = 100110,
                 },
 
@@ -1710,7 +1708,7 @@ namespace DS
             Random r = new Random();
 
 
-            for (int i = 0; i < ListLineStation.Count-2; i++)
+            for (int i = 0; i < ListLineStation.Count-1; i++)
             {
                 if (ListLineStation[i].LineId == ListLineStation[i + 1].LineId)
                 {
@@ -1718,8 +1716,8 @@ namespace DS
                     {
                         Station1 = ListLineStation[i].Station,
                         Station2 = ListLineStation[i + 1].Station,
-                        Distance = r.Next(100, 500),
-                        Time = TimeSpan.FromMinutes(r.Next(15))
+                        Distance = r.Next(100, 1000),
+                        Time = TimeSpan.FromMinutes(r.Next(4,15))
                     };
                     ListAdjacentStations.Add(adjStat);
                 }

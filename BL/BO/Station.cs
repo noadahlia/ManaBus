@@ -14,6 +14,8 @@ namespace BO
         public double Latitude { get; set; }
        
         public string Adress { get; set; }//optionnal
+        public IEnumerable<Line> ListOfLines { get; set; }
+
 
         public override string ToString() => this.ToStringProperty();
 

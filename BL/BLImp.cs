@@ -153,11 +153,7 @@ namespace BL
             lineBO.ListOfStations = from ls in dal.GetLineStation(ls => ls.LineId == id)
                                     let stat = dal.GetStation(ls.Station)
                                     select stat.CopyToLineStation(ls);
-            //foreach (LineStation ls in lineBO.ListOfStations)
-            //{
-            //    ls.TimetoNext = dal.GetAdjacentStations(ls.Code, ls.NextStation).Time;
-            //    ls.DistancetoNext = dal.GetAdjacentStations(ls.Code, ls.NextStation).Distance;
-            //}
+           
 
             return lineBO;
         }
@@ -349,9 +345,19 @@ namespace BL
         }
         public IEnumerable<BO.LineStation> GetAllStationsPerLine(int id)
         {
-            return from ls in dal.GetLineStation(ls => ls.LineId == id)
-                   let station = dal.GetStation(ls.Station)
-                   select station.CopyToLineStation(ls);
+            var ListOfStations = from ls in dal.GetLineStation(ls => ls.LineId == id)
+                                 let station = dal.GetStation(ls.Station)
+                                 select station.CopyToLineStation(ls);
+            foreach (LineStation ls in ListOfStations)
+            {
+                if (ls.NextStation != 2)
+                {
+                    ls.TimetoNext = dal.GetAdjacentStations(ls.Code, ls.NextStation).Time;
+                    ls.DistancetoNext = dal.GetAdjacentStations(ls.Code, ls.NextStation).Distance;
+                }
+
+            }
+            return ListOfStations;
         }
 
 

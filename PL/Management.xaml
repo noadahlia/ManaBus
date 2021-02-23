@@ -29,7 +29,7 @@
             </Label.Background>
         </Label>
         <ListBox x:Name="lb_bus" HorizontalAlignment="Left" Height="214" Margin="10,138,0,0" VerticalAlignment="Top" Width="244" ItemsSource="{Binding}" MouseDoubleClick="lb_bus_MouseDoubleClick"/>
-        <ListBox x:Name="lb_line" HorizontalAlignment="Left" Height="214" Margin="10,138,0,0" VerticalAlignment="Top" Width="244" Grid.Column="1"/>
+        <ListBox x:Name="lb_line" HorizontalAlignment="Left" Height="214" Margin="10,138,0,0" VerticalAlignment="Top" Width="244" Grid.Column="1" MouseDoubleClick="lb_line_MouseDoubleClick"/>
         <ListBox x:Name="lb_station" HorizontalAlignment="Left" Height="214" Margin="10,138,0,0" VerticalAlignment="Top" Width="244" Grid.Column="2" MouseDoubleClick="lb_station_MouseDoubleClick"/>
         <Button x:Name="addLine_btn" Content="Add" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Width="103" Height="35" RenderTransformOrigin="3.069,0.368" Grid.Column="1" Background="#FF29C167" Click="addLine_btn_Click"/>
         <Button x:Name="addStation_btn" Content="Add" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Width="103" Height="35" Grid.Column="2" Click="addStation_btn_Click">
