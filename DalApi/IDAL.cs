@@ -29,6 +29,7 @@ namespace DalApi
         IEnumerable<Line> GetAllLine(Func<Line, bool> predicate = null);
         IEnumerable<Line> GetAllLines();
 
+
         #endregion
 
         #region Station Function

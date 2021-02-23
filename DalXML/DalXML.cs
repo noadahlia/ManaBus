@@ -11,7 +11,7 @@ using DO;
 
 
 namespace DL
-{ 
+{
     sealed class DLXML : IDAL    //internal
     {
         #region singelton
@@ -160,323 +160,528 @@ namespace DL
             else
                 throw new DO.BadBusIdException(bus1.LicenseNum, $"bad bus license: {bus1.LicenseNum}");
         }
+        //public void RefuelBus(Bus bus1)
+        //{
+        //    XElement busRootElem = XMLTools.LoadListFromXMLElement(busPath);
+
+        //    XElement bus = (from b in busRootElem.Elements()
+        //                    where int.Parse(b.Element("ID").Value) == bus1.LicenseNum
+        //                    select b).FirstOrDefault();
+        //    if (bus != null)
+        //    {
+        //        bus.Element("FuelRemain").Value = 
+        //    }
+        //    else
+        //        throw new DO.BadBusIdException(bus1.LicenseNum, $"bad bus license: {bus1.LicenseNum}");
+        //}
+        //public void RefreshBus(Bus bus)
+        //{
+        //    DO.Bus bu = DataSource.ListBus.Find(b => b.LicenseNum == bus.LicenseNum && b.IsActive == true);
+        //    if (bu != null)
+        //    {
+        //        bu.FromDate = DateTime.Now;
+        //        bu.TotalTrip = 0;
+        //    }
+        //    else
+        //        throw new DO.BadBusIdException(bus.LicenseNum, $"bad bus id: {bus.LicenseNum}");
+        //}
+
+        #endregion
+
+        #region Line
+
+        public void AddLine(Line line)
+        {
+            List<Line> ListLine = XMLTools.LoadListFromXMLSerializer<Line>(linePath);
+            if (ListLine.FirstOrDefault(l => l.Id == line.Id) != null)
+                throw new DO.BadLineIdException(line.Id, "Duplicate Line ID");
 
 
+            if (GetLine(line.Id) == null)
+                throw new DO.BadLineIdException(line.Id, "Missing Line ID");
 
+            ListLine.Add(line); //no need to Clone()
 
+            XMLTools.SaveListToXMLSerializer(ListLine, linePath);
 
-                #endregion
-
-                public void AddLine(Line line)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void RemoveLine(int id)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void UpdateLine(Line line)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public Line GetLine(int id)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public IEnumerable<Line> GetAllLine(Func<Line, bool> predicate = null)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public IEnumerable<Line> GetAllLines()
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void AddStation(Station station)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void RemoveStation(int code)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void UpdateStation(Station station)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public Station GetStation(int code)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public IEnumerable<Station> GetAllStation(Func<Station, bool> predicate = null)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public IEnumerable<Station> GetAllStations()
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void AddTrip(Trip trip)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void RemoveTrip(int id)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void UpdateTrip(Trip trip)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public Trip GetTrip(int id)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public IEnumerable<Trip> GetAllTrip(Func<Trip, bool> predicate = null)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public IEnumerable<Trip> GetAlTrips()
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void AddUser(User user)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void RemoveUser(string name)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void UpdateUser(User user)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public User GetUser(string name)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public IEnumerable<User> GetAllUser(Func<User, bool> predicate = null)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public IEnumerable<User> GetAllUsers()
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void AddBusOnTrip(BusOnTrip bus)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void RemoveBusOnTrip(int id)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void UpdateBusOnTrip(BusOnTrip bus)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public BusOnTrip GetBusOnTrip(int id)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public IEnumerable<BusOnTrip> GetAllBusOnTrip(Func<BusOnTrip, bool> predicate = null)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public IEnumerable<BusOnTrip> GetAllBusOnTrips()
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void AddAdjacentStations(AdjacentStations station)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void RemoveAdjacentStationsp(int code)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void UpdateAdjacentStations(AdjacentStations station)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public AdjacentStations GetAdjacentStations(int code)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public IEnumerable<AdjacentStations> GetAllAdjacentStations(Func<AdjacentStations, bool> predicate = null)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public IEnumerable<AdjacentStations> GetAllAdjacentStationss()
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void AddLineTrip(LineTrip station)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void RemoveLineTrip(int code)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void UpdateLineTrip(LineTrip station)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public LineTrip GetLineTrip(int code)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public IEnumerable<LineTrip> GetAllLineTrip(Func<LineTrip, bool> predicate = null)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public IEnumerable<LineTrip> GetAllLineTrip()
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void AddLineStation(int lineID, int stationID, int index, int prevID, int nextID)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void RemoveLineStation(int lineID, int stationID)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void DeleteStationFromAllLines(int statID)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void DeleteLineFromAllStations(int linID)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public IEnumerable<LineStation> GetLineStation(Predicate<LineStation> predicate)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public IEnumerable<AdjacentStations> GetAllAdjStation(Predicate<AdjacentStations> predicate)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public AdjacentStations GetAdjacentStations(int station1, int station2)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void RefuelBus(Bus bus)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public void RefreshBus(Bus bus)
-                {
-                    throw new NotImplementedException();
-                }
-
-                public bool LogInVerify(User user)
-                {
-                    throw new NotImplementedException();
-                }
-            
         }
-//#endregion
+
+        public void RemoveLine(int id)
+        {
+            List<Line> ListLine = XMLTools.LoadListFromXMLSerializer<Line>(linePath);
+
+            DO.Line line = ListLine.Find(l => l.Id == id);
+            if (line != null)
+                ListLine.Remove(line);
+            else
+                throw new DO.BadLineIdException(id, $"bad line id: {id}");
+
+            XMLTools.SaveListToXMLSerializer(ListLine, linePath);
+
+        }
+
+        public void UpdateLine(Line line)
+        {
+            List<Line> ListLine = XMLTools.LoadListFromXMLSerializer<Line>(linePath);
+
+            DO.Line line1 = ListLine.Find(l => l.Id == line.Id);
+            if (line1 != null)
+            {
+                ListLine.Remove(line1);
+                ListLine.Add(line);
+            }
+            else
+                throw new DO.BadLineIdException(line.Id, "Missing Line ID");
+
+            XMLTools.SaveListToXMLSerializer(ListLine, linePath);
+        }
 
 
-//        public void DeletePerson(int id)
-//        {
-//            XElement personsRootElem = XMLTools.LoadListFromXMLElement(personsPath);
 
-//            XElement per = (from p in personsRootElem.Elements()
-//                            where int.Parse(p.Element("ID").Value) == id
-//                            select p).FirstOrDefault();
+        public Line GetLine(int id)
+        {
 
-//            if (per != null)
-//            {
-//                per.Remove();
-//                XMLTools.SaveListToXMLElement(personsRootElem, personsPath);
-//            }
-//            else
-//                throw new DO.BadPersonIdException(id, $"bad person id: {id}");
-//        }
+            List<Line> ListLine = XMLTools.LoadListFromXMLSerializer<Line>(linePath);
 
-//        public void UpdatePerson(DO.Person person)
-//        {
-//            XElement personsRootElem = XMLTools.LoadListFromXMLElement(personsPath);
+            DO.Line line = ListLine.Find(l => l.Id == id);
+            if (line != null)
+                return line; //no need to Clone()
+            else
+                throw new DO.BadLineIdException(id, $"bad line id: {id}");
+        }
 
-//            XElement per = (from p in personsRootElem.Elements()
-//                            where int.Parse(p.Element("ID").Value) == person.ID
-//                            select p).FirstOrDefault();
 
-//            if (per != null)
-//            {
-//                per.Element("ID").Value = person.ID.ToString();
-//                per.Element("Name").Value = person.Name;
-//                per.Element("Street").Value = person.Street;
-//                per.Element("HouseNumber").Value = person.HouseNumber.ToString();
-//                per.Element("City").Value = person.City;
-//                per.Element("BirthDate").Value = person.BirthDate.ToString();
-//                per.Element("PersonalStatus").Value = person.PersonalStatus.ToString();
+        public IEnumerable<Line> GetAllLine(Func<Line, bool> predicate = null)
+        {
+            List<Line> ListLine = XMLTools.LoadListFromXMLSerializer<Line>(linePath);
 
-//                XMLTools.SaveListToXMLElement(personsRootElem, personsPath);
-//            }
-//            else
-//                throw new DO.BadPersonIdException(person.ID, $"bad person id: {person.ID}");
-//        }
+            return from line in ListLine
+                   where predicate(line)
+                   select line; //no need to Clone()
+        }
 
-//        public void UpdatePerson(int id, Action<DO.Person> update)
-//        {
-//            throw new NotImplementedException();
-//        }
+        public IEnumerable<Line> GetAllLines()
+        {
+            List<Line> ListLine = XMLTools.LoadListFromXMLSerializer<Line>(linePath);
 
-//#endregion Bus
-//    }
+            return from line in ListLine
+                   select line; //no need to Clone()
+        }
+        #endregion
+        #region Station
+        public void AddStation(Station station)
+        {
+            List<Station> ListStation = XMLTools.LoadListFromXMLSerializer<Station>(stationPath);
+            if (ListStation.FirstOrDefault(l => l.Code == station.Code) != null)
+                throw new DO.BadStationIdException(station.Code, "Duplicate Station Code");
+
+
+            if (GetStation(station.Code) == null)
+                throw new DO.BadStationIdException(station.Code, "Missing Station Code");
+
+            ListStation.Add(station); //no need to Clone()
+
+            XMLTools.SaveListToXMLSerializer(ListStation, stationPath);
+        }
+
+        public void RemoveStation(int code)
+        {
+            List<Station> ListStation = XMLTools.LoadListFromXMLSerializer<Station>(stationPath);
+
+            DO.Station station = ListStation.Find(s => s.Code == code);
+            if (station != null)
+                ListStation.Remove(station);
+            else
+                throw new DO.BadStationIdException(code, $"bad station id: {code}");
+
+            XMLTools.SaveListToXMLSerializer(ListStation, stationPath);
+        }
+
+        public void UpdateStation(Station station)
+        {
+            List<Station> ListStation = XMLTools.LoadListFromXMLSerializer<Station>(stationPath);
+
+            DO.Station station1 = ListStation.Find(s => s.Code == station.Code);
+            if (station1 != null)
+            {
+                ListStation.Remove(station1);
+                ListStation.Add(station);
+            }
+            else
+                throw new DO.BadStationIdException(station.Code, "Missing Station Code");
+
+            XMLTools.SaveListToXMLSerializer(ListStation, stationPath);
+        }
+
+        public Station GetStation(int code)
+        {
+            List<Station> ListStation = XMLTools.LoadListFromXMLSerializer<Station>(stationPath);
+
+            DO.Station station = ListStation.Find(s => s.Code == code);
+            if (station != null)
+                return station; //no need to Clone()
+            else
+                throw new DO.BadStationIdException(code, $"bad station code: {code}");
+        }
+
+        public IEnumerable<Station> GetAllStation(Func<Station, bool> predicate = null)
+        {
+            List<Station> ListStation = XMLTools.LoadListFromXMLSerializer<Station>(stationPath);
+
+            return from station in ListStation
+                   where predicate(station)
+                   select station; //no need to Clone()
+        }
+
+        public IEnumerable<Station> GetAllStations()
+        {
+            List<Station> ListStation = XMLTools.LoadListFromXMLSerializer<Station>(stationPath);
+
+            return from station in ListStation
+                   select station; //no need to Clone()
+        }
+        #endregion
+
+        #region Trip
+        public void AddTrip(Trip trip)
+        {
+            List<Trip> ListTrip = XMLTools.LoadListFromXMLSerializer<Trip>(tripPath);
+            if (ListTrip.FirstOrDefault(t => t.Id == trip.Id) != null)
+                throw new DO.BadTripIdException(trip.Id, "Duplicate Trip Id");
+
+
+            if (GetTrip(trip.Id) == null)
+                throw new DO.BadTripIdException(trip.Id, "Missing Trip Id");
+
+            ListTrip.Add(trip); //no need to Clone()
+
+            XMLTools.SaveListToXMLSerializer(ListTrip, tripPath);
+        }
+
+        public void RemoveTrip(int id)
+        {
+            List<Trip> ListTrip = XMLTools.LoadListFromXMLSerializer<Trip>(tripPath);
+
+            DO.Trip trip = ListTrip.Find(t => t.Id == id);
+            if (trip != null)
+                ListTrip.Remove(trip);
+            else
+                throw new DO.BadTripIdException(id, $"bad station id: {id}");
+
+            XMLTools.SaveListToXMLSerializer(ListTrip, tripPath);
+        }
+
+        public void UpdateTrip(Trip trip)
+        {
+            List<Trip> ListTrip = XMLTools.LoadListFromXMLSerializer<Trip>(tripPath);
+
+            DO.Trip trip1 = ListTrip.Find(t => t.Id == trip.Id);
+            if (trip1 != null)
+            {
+                ListTrip.Remove(trip1);
+                ListTrip.Add(trip);
+            }
+            else
+                throw new DO.BadTripIdException(trip.Id, "Missing Trip Id");
+
+            XMLTools.SaveListToXMLSerializer(ListTrip, tripPath);
+        }
+
+        public Trip GetTrip(int id)
+        {
+            List<Trip> ListTrip = XMLTools.LoadListFromXMLSerializer<Trip>(tripPath);
+
+            DO.Trip trip = ListTrip.Find(t => t.Id == id);
+            if (trip != null)
+                return trip; //no need to Clone()
+            else
+                throw new DO.BadTripIdException(id, $"bad station code: {id}");
+        }
+
+        public IEnumerable<Trip> GetAllTrip(Func<Trip, bool> predicate = null)
+        {
+            List<Trip> ListTrip = XMLTools.LoadListFromXMLSerializer<Trip>(tripPath);
+
+            return from trip in ListTrip
+                   where predicate(trip)
+                   select trip; //no need to Clone()
+        }
+
+        public IEnumerable<Trip> GetAlTrips()
+        {
+            List<Trip> ListTrip = XMLTools.LoadListFromXMLSerializer<Trip>(tripPath);
+
+            return from trip in ListTrip
+                   select trip; //no need to Clone()
+        }
+        #endregion
+
+        #region User    
+        public void AddUser(User user)
+        {
+            List<User> ListUser = XMLTools.LoadListFromXMLSerializer<User>(userPath);
+            if (ListUser.FirstOrDefault(u => u.UserName == user.UserName) != null)
+                throw new DO.BadUserIdException(user.UserName, "Duplicate User UserName");
+
+
+            if (GetUser(user.UserName) == null)
+                throw new DO.BadUserIdException(user.UserName, "Missing User UserName");
+
+            ListUser.Add(user); //no need to Clone()
+
+            XMLTools.SaveListToXMLSerializer(ListUser, userPath);
+        }
+
+        public void RemoveUser(string name)
+        {
+            List<User> ListUser = XMLTools.LoadListFromXMLSerializer<User>(userPath);
+
+            DO.User user = ListUser.Find(u => u.UserName == name);
+            if (user != null)
+                ListUser.Remove(user);
+            else
+                throw new DO.BadUserIdException(name, $"bad user userName: {name}");
+
+            XMLTools.SaveListToXMLSerializer(ListUser, userPath);
+        }
+
+        public void UpdateUser(User user)
+        {
+            List<User> ListUser = XMLTools.LoadListFromXMLSerializer<User>(userPath);
+
+            DO.User user1 = ListUser.Find(u => u.UserName == user.UserName);
+            if (user1 != null)
+            {
+                ListUser.Remove(user1);
+                ListUser.Add(user1);
+            }
+            else
+                throw new DO.BadUserIdException(user.UserName, "Missing User UserName");
+
+            XMLTools.SaveListToXMLSerializer(ListUser, userPath);
+        }
+
+        public User GetUser(string name)
+        {
+            List<User> ListUser = XMLTools.LoadListFromXMLSerializer<User>(userPath);
+
+            DO.User user = ListUser.Find(u => u.UserName == name);
+            if (user != null)
+                return user; //no need to Clone()
+            else
+                throw new DO.BadUserIdException(name, $"bad station code: {name}");
+        }
+
+        public IEnumerable<User> GetAllUser(Func<User, bool> predicate = null)
+        {
+            List<User> ListUser = XMLTools.LoadListFromXMLSerializer<User>(userPath);
+
+            return from user in ListUser
+                   where predicate(user)
+                   select user; //no need to Clone()
+        }
+
+        public IEnumerable<User> GetAllUsers()
+        {
+            List<User> ListUser = XMLTools.LoadListFromXMLSerializer<User>(userPath);
+
+            return from user in ListUser
+                   select user; //no need to Clone()
+        }
+        #endregion
+
+        //    #region A
+        //    public void AddBusOnTrip(BusOnTrip bus)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public void RemoveBusOnTrip(int id)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public void UpdateBusOnTrip(BusOnTrip bus)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public BusOnTrip GetBusOnTrip(int id)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public IEnumerable<BusOnTrip> GetAllBusOnTrip(Func<BusOnTrip, bool> predicate = null)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public IEnumerable<BusOnTrip> GetAllBusOnTrips()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public void AddAdjacentStations(AdjacentStations station)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public void RemoveAdjacentStationsp(int code)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public void UpdateAdjacentStations(AdjacentStations station)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public AdjacentStations GetAdjacentStations(int code)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public IEnumerable<AdjacentStations> GetAllAdjacentStations(Func<AdjacentStations, bool> predicate = null)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public IEnumerable<AdjacentStations> GetAllAdjacentStationss()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public void AddLineTrip(LineTrip station)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public void RemoveLineTrip(int code)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public void UpdateLineTrip(LineTrip station)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public LineTrip GetLineTrip(int code)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public IEnumerable<LineTrip> GetAllLineTrip(Func<LineTrip, bool> predicate = null)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public IEnumerable<LineTrip> GetAllLineTrip()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public void AddLineStation(int lineID, int stationID, int index, int prevID, int nextID)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public void RemoveLineStation(int lineID, int stationID)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public void DeleteStationFromAllLines(int statID)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public void DeleteLineFromAllStations(int linID)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public IEnumerable<LineStation> GetLineStation(Predicate<LineStation> predicate)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public IEnumerable<AdjacentStations> GetAllAdjStation(Predicate<AdjacentStations> predicate)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public AdjacentStations GetAdjacentStations(int station1, int station2)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public void RefuelBus(Bus bus)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public void RefreshBus(Bus bus)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public bool LogInVerify(User user)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //}
+        //#endregion
+
+
+        //        public void DeletePerson(int id)
+        //        {
+        //            XElement personsRootElem = XMLTools.LoadListFromXMLElement(personsPath);
+
+        //            XElement per = (from p in personsRootElem.Elements()
+        //                            where int.Parse(p.Element("ID").Value) == id
+        //                            select p).FirstOrDefault();
+
+        //            if (per != null)
+        //            {
+        //                per.Remove();
+        //                XMLTools.SaveListToXMLElement(personsRootElem, personsPath);
+        //            }
+        //            else
+        //                throw new DO.BadPersonIdException(id, $"bad person id: {id}");
+        //        }
+
+        //        public void UpdatePerson(DO.Person person)
+        //        {
+        //            XElement personsRootElem = XMLTools.LoadListFromXMLElement(personsPath);
+
+        //            XElement per = (from p in personsRootElem.Elements()
+        //                            where int.Parse(p.Element("ID").Value) == person.ID
+        //                            select p).FirstOrDefault();
+
+        //            if (per != null)
+        //            {
+        //                per.Element("ID").Value = person.ID.ToString();
+        //                per.Element("Name").Value = person.Name;
+        //                per.Element("Street").Value = person.Street;
+        //                per.Element("HouseNumber").Value = person.HouseNumber.ToString();
+        //                per.Element("City").Value = person.City;
+        //                per.Element("BirthDate").Value = person.BirthDate.ToString();
+        //                per.Element("PersonalStatus").Value = person.PersonalStatus.ToString();
+
+        //                XMLTools.SaveListToXMLElement(personsRootElem, personsPath);
+        //            }
+        //            else
+        //                throw new DO.BadPersonIdException(person.ID, $"bad person id: {person.ID}");
+        //        }
+
+        //        public void UpdatePerson(int id, Action<DO.Person> update)
+        //        {
+        //            throw new NotImplementedException();
+        //        }
+
+        //#endregion Bus
+        //    }
+    }
 }

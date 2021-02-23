@@ -6,7 +6,16 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="UserArea" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="0,0,0.333,-0.333">
         <Button Content="Disconnect" Click="Button_Click" Margin="696,10,10.333,381.667" />
+        <ListBox x:Name="lb_Station" HorizontalAlignment="Left" Height="294" Margin="26,94,0,0" VerticalAlignment="Top" Width="311" SelectionChanged="lb_Station_SelectionChanged"/>
+        <ListBox x:Name="lb_LineBus" HorizontalAlignment="Left" Height="133" Margin="455,255,0,0" VerticalAlignment="Top" Width="308"/>
+        <Label Content="Stations" HorizontalAlignment="Left" Margin="26,48,0,0" VerticalAlignment="Top" Height="41" Width="103" FontSize="20"/>
+        <Label Content="LinesBus" HorizontalAlignment="Left" Margin="455,209,0,0" VerticalAlignment="Top" Width="103" Height="41"  FontSize="20"/>
+
+
+        <Button  Content="Start" HorizontalAlignment="Left" Margin="532,10,0,0" VerticalAlignment="Top" Width="101" Height="29" Click="start_btn" />
+        <TextBox x:Name="tb_timer"  HorizontalAlignment="Left" Height="110" Margin="455,94,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="308"/>
+
     </Grid>
 </Window>

@@ -498,7 +498,7 @@ namespace BL
             catch (DO.BadUserIdException ex)
             {
                 
-                throw new BO.BadUserIdException("This user doesn't exist", ex);
+                throw new BO.BadUserIdException("Wrong User or Password", ex);
 
             }
             return true;

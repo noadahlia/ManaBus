@@ -16,6 +16,7 @@ namespace DO
         
         public bool IsActive = true;
         public Areas Area { get; set; }
+        public IEnumerable<LineStation> ListOfStations { get; set; }
 
 
         //public override string ToString()

@@ -61,7 +61,7 @@ namespace PL
                     }
                     else
                     {
-                        UserArea userAreaWin = new UserArea(bl);
+                        UserArea userAreaWin = new UserArea (bl);
                         this.Close();
                         userAreaWin.ShowDialog();
 
