@@ -28,7 +28,7 @@ namespace PL
             bl = _bl;
             curLine = _curLine;
             lineDetails.DataContext = curLine;
-            lineStationDataGrid.DataContext = bl.GetAllStationsPerLine(curLine.Id);
+            lineStationDataGrid.DataContext = bl.GetLine(curLine.Id).ListOfStations;
             
         }
 

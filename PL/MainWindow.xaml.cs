@@ -34,32 +34,33 @@ namespace PL
 
         private void login_btn1_Click(object sender, RoutedEventArgs e)
         {
-            //    bool verification;
+            //bool verification;
 
-            //    try 
+            //try
+            //{
+            //    verification = bl.LogInVerify(curUser);
+            //    if (verification == true)
             //    {
-            //        verification=bl.LogInVerify(curUser);
-            //        if(verification==true)
+            //        if (curUser.Worker == true)
             //        {
-            //            if(curUser.Worker==true)
-            //            {
-            //                Management managementWin = new Management(bl);
-            //                this.Close();
-            //                managementWin.ShowDialog();
-            //            }
-            //            else
-            //            {
+            //            Management managementWin = new Management(bl);
+            //            this.Close();
+            //            managementWin.ShowDialog();
+            //        }
+            //        else
+            //        {
 
-            //            }
+            //        }
 
             //        // verifier si User existe
             //        // verifier si bon password
             //        //verifier si worker page 1 sinon page 2
             //    }
-            //    catch (DO.BadUserIdException ex)
-            //    {
-            //        throw new BO.BadUserIdException("", ex);
-            //    }
+            //}
+            //catch (BO.BadUserIdException ex)
+            //{
+            //    throw new BO.BadUserIdException("", ex);
+            //}
             Management managementWin = new Management(bl);
             this.Close();
             managementWin.ShowDialog();

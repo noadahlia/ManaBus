@@ -35,10 +35,16 @@ namespace BL
 
         public static BO.LineStation CopyToLineStation(this DO.Station station, DO.LineStation linsta)
         {
+            DalApi.IDAL dal = DalApi.DalFactory.GetDal();
+
             BO.LineStation result = (BO.LineStation)station.CopyPropertiesToNew(typeof(BO.LineStation));
             // propertys' names changed? copy them here...
             result.NextStation = linsta.NextStation;
-            
+            if(result.NextStation != 2)
+            {
+                result.TimetoNext = dal.GetAdjacentStations(result.Code, result.NextStation).Time;
+                result.DistancetoNext = dal.GetAdjacentStations(result.Code, result.NextStation).Distance;
+            }
             return result;
         }
     }

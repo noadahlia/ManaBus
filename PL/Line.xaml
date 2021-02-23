@@ -48,8 +48,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="iDColumn" Binding="{Binding Code}" Header="Code" Width="Auto"/>
                 <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="Auto"/>
-                <DataGridTextColumn x:Name="distanceColumn" Binding="{Binding Distance}" Header="Distance to Next" Width="Auto"/>
-                <DataGridTextColumn x:Name="timeColumn" Binding="{Binding Time}" Header="Time to Next" Width="Auto"/>
+                <DataGridTextColumn x:Name="distanceColumn" Binding="{Binding DistancetoNext}" Header="Distance to Next" Width="Auto"/>
+                <DataGridTextColumn x:Name="timeColumn" Binding="{Binding TimetoNext}" Header="Time to Next" Width="Auto"/>
 
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
