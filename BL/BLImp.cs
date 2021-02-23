@@ -150,7 +150,7 @@ namespace BL
 
             lineDO.CopyPropertiesTo(lineBO);
 
-            lineBO.ListOfStations = from ls in dal.GetLineStation(ls => ls.LineId == id)
+            lineBO.ListOfStations = from ls in dal.GetLineStation(ls => ls.LineId == id&&ls.IsActive)
                                     let stat = dal.GetStation(ls.Station)
                                     select stat.CopyToLineStation(ls);
            
@@ -224,6 +224,7 @@ namespace BL
             try
             {
                 dal.UpdateLine(lineDO);
+                line = LineDoBoAdapter(lineDO);
             }
             catch (DO.BadLineIdException ex)
             {
@@ -278,14 +279,16 @@ namespace BL
         {
             try
             {
-                dal.RemoveStation(code);
+
                 dal.DeleteStationFromAllLines(code);
-                //Je dois absolument changer les pointers sinon ils pointront sur null
-                //Passer sur chaque lin eet voir si il passe par la station et si oui 
-                //foreach (item in dal.GetALLineStation)
-                //    item.prev=item.next
-                //        item.delete
-                    //Update la station prev et chnager son next
+                dal.RemoveStation(code);
+
+                foreach (Line line in GetAllLines())
+                {
+                    UpdateLineInfos(line);
+                }
+
+                
             }
             catch (DO.BadStationIdException ex)
             {
@@ -293,9 +296,7 @@ namespace BL
             }
         }
 
-        //Ce'st ici qu'on voit le zman entre deux stations
 
-        //Je dois avoir une fonction 
 
 
 

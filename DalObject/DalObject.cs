@@ -159,16 +159,11 @@ namespace DAL
         {
             if (predicate == null)
             {
-                List<Station> jenaimarre = new List<Station>();
-                foreach(Station stat in DataSource.ListStation)
-                {
-                    if (stat.IsActive == true)
-                        jenaimarre.Add(stat);
-                }
-                //return from station in DataSource.ListStation
-                //       where station.IsActive == true
-                //       select station.Clone();
-                return jenaimarre;
+
+                return from station in DataSource.ListStation
+                       where station.IsActive == true
+                       select station.Clone();
+
             }
             else
             {
@@ -428,14 +423,14 @@ namespace DAL
 
         public void RemoveLineStation(int linID, int statID)
         {
-            DO.LineStation linsta = DataSource.ListLineStation.Find(ls => (ls.LineId == linID && ls.Station == statID));
+            DO.LineStation linsta = DataSource.ListLineStation.Find(ls => (ls.LineId == linID && ls.Station == statID&&ls.IsActive));
 
             if (linsta != null)
             {
-                DataSource.ListLineStation.Remove(linsta);
+                linsta.IsActive = false;
             }
             else
-                throw new DO.BadLineIdStationIDException(linID, statID, "line ID already arrives at station ID");
+                throw new DO.BadLineIdStationIDException(linID, statID, "Not found LineStation ID");
         }
         public void DeleteLineFromAllStations(int linID)
         {
@@ -445,19 +440,32 @@ namespace DAL
         public void DeleteStationFromAllLines(int statID)
         {
             //Passer kav kav si j'ai la stat dans le kav alors je regarde qui est son prev et je maj le pointeur
-            DataSource.ListLineStation.RemoveAll(p => p.Station == statID);
-            Station delStat = GetStation(statID);
             foreach(Line line in DataSource.ListLine)
             {
                 foreach(LineStation ls in DataSource.ListLineStation)
                 {
                     if (ls.LineId==line.Id && ls.Station == statID)
                     {
-                        if (ls.PrevStation == 1) { 
+                        if (ls.PrevStation == 1) {
                             //if it's a departure station
+                            LineStation next = GetLS(line.Id, ls.NextStation);
+                            next.PrevStation = 1;
+                            RemoveAdjacentStation(ls.PrevStation, ls.Station);
+                            RemoveAdjacentStation(ls.Station, ls.NextStation);
+                            AddAdjacentStation(1,next.Station);
+                            line.FirstStation = next.Station;
+
                         }
                         else if (ls.NextStation == 2) {
                             //if it's an arrival station
+                            LineStation prev = GetLS(line.Id, ls.PrevStation);
+                            prev.NextStation = 2;
+                            RemoveAdjacentStation(ls.PrevStation, ls.Station);
+                            RemoveAdjacentStation(ls.Station, ls.NextStation);
+                            RemoveLineStation(ls.LineId, ls.Station);
+                            AddAdjacentStation(prev.Station,2);
+                            line.LastStation = prev.Station;
+
                         }
                         else
                         {
@@ -465,6 +473,11 @@ namespace DAL
                             prev.NextStation = ls.NextStation;
                             LineStation next = GetLS(line.Id, ls.NextStation);
                             next.PrevStation = ls.PrevStation;
+                            RemoveAdjacentStation(ls.PrevStation, ls.Station);
+                            RemoveAdjacentStation(ls.Station, ls.NextStation);
+                            RemoveLineStation(ls.LineId, ls.Station);
+                            AddAdjacentStation(prev.Station, next.Station);
+
                         }
                     }
                 }
@@ -474,6 +487,19 @@ namespace DAL
         #endregion
 
         #region AdjacentStation Functions
+
+        public void AddAdjacentStation(int station1, int station2)
+        {
+            Random r = new Random();
+            AdjacentStations adjStat = new AdjacentStations
+            {
+                Station1 =station1,
+                Station2 = station2,
+                Distance = r.Next(100, 1000),
+                Time = TimeSpan.FromMinutes(r.Next(4, 15))
+            };
+            DataSource.ListAdjacentStations.Add(adjStat);
+        }
         public IEnumerable<DO.AdjacentStations> GetAllAdjStation(Predicate<DO.AdjacentStations> predicate)
         {
             return from adjs in DataSource.ListAdjacentStations
@@ -482,13 +508,18 @@ namespace DAL
 
         }
 
-        public AdjacentStations     GetAdjacentStations(int station1, int station2)
+        public AdjacentStations GetAdjacentStations(int station1, int station2)
         {
             
                 DO.AdjacentStations adjs = DataSource.ListAdjacentStations.Find(ads => ads.Station1 == station1 && ads.Station2 == station2 && ads.IsActive);
                 return adjs;
     
+        }
 
+        public void RemoveAdjacentStation(int station1, int station2)
+        {
+            DO.AdjacentStations adjs = DataSource.ListAdjacentStations.Find(ads => ads.Station1 == station1 && ads.Station2 == station2 && ads.IsActive);
+            adjs.IsActive = false;
         }
         #endregion
 
