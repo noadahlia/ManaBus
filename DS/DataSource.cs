@@ -1710,7 +1710,7 @@ namespace DS
             Random r = new Random();
 
 
-            for (int i = 0; i < ListLineStation.Count; i++)
+            for (int i = 0; i < ListLineStation.Count-2; i++)
             {
                 if (ListLineStation[i].LineId == ListLineStation[i + 1].LineId)
                 {
@@ -1731,41 +1731,46 @@ namespace DS
             #region ListUser 
             ListUser = new List<User>
             {
-            new User
-            {
-                UserName="David",
-                Password="aaa",
-                Worker=true,
-            },
-
-             new User
-            {
-                UserName="Sarah",
-                Password="bbb",
-                Worker=true,
-            },
-
-            new User
-            {
-                UserName="Yonhatan",
-                Password="ccc",
-                Worker=false,
-            },
-
-            new User
-            {
-                UserName="Noa",
-                Password="ddd",
-                Worker=false,
-            },
-
-            new User
-            {
-                UserName="Daniel",
-                Password="eee",
-                Worker=false,
-            }
-
+                 new User
+                 {
+                      UserName="David",
+                     Password="aaa",
+                     Worker=true,
+                     IsActive = true,
+                 },
+                
+                 new User
+                 {
+                     UserName="Sarah",
+                     Password="bbb",
+                     Worker=true,
+                     IsActive = true,
+                 },
+                
+                 new User
+                 {
+                     UserName="Yonhatan",
+                     Password="ccc",
+                     Worker=false,
+                     IsActive = true,
+                 },
+                
+                 new User
+                 {
+                     UserName="Noa",
+                     Password="ddd",
+                     Worker=false,
+                     IsActive = true,
+                 },
+                
+                 new User
+                 {
+                     UserName="Daniel",
+                     Password="eee",
+                     Worker=false,
+                     IsActive = true,
+                 },
+                
             };
             #endregion
 

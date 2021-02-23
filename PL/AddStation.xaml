@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="AddStation" Height="232.832" Width="356.022">
+        Title="AddStation"  Height="232.832" Width="356.022">
     <Grid>
         <Label Content="Code : " HorizontalAlignment="Left" Height="23" Margin="10,17,0,0" VerticalAlignment="Top" Width="104" FontFamily="Constantia"/>
         <Label Content="Adress : " HorizontalAlignment="Left" Height="22" Margin="10,130,0,0" VerticalAlignment="Top" Width="104" FontFamily="Constantia"/>

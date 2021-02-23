@@ -59,6 +59,7 @@ namespace DalApi
         IEnumerable<User> GetAllUser(Func<User, bool> predicate = null);
         IEnumerable<User> GetAllUsers();
         bool LogInVerify(User user);
+        bool isWorker(User user);
 
         #endregion
 

@@ -16,14 +16,16 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="637*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="applyBus_btn" Content="Apply Changes" HorizontalAlignment="Left" Margin="636.667,350,0,0" VerticalAlignment="Top" Width="152" Height="50" Click="applyBus_btn_Click" Grid.Column="2"/>
-        <Button x:Name="delBus_btn" Content="Delete Bus" HorizontalAlignment="Left" Margin="636.667,10,0,0" VerticalAlignment="Top" Width="152" Height="46" FontWeight="Bold" Click="delBus_btn_Click" Grid.Column="2"/>
-        <Button x:Name="refuel_btn" Content="Send to Refueling" HorizontalAlignment="Left" Margin="435.667,350,0,0" VerticalAlignment="Top" Width="152" Height="50" Click="refuel_btn_Click" Grid.Column="2"/>
-        <Button x:Name="refresh_btn" Content="Send to Refresh" HorizontalAlignment="Left" Margin="234.667,350,0,0" VerticalAlignment="Top" Width="152" Height="50" Click="refresh_btn_Click" Grid.Column="2"/>
+        <Button x:Name="applyBus_btn" Content="Apply Changes" HorizontalAlignment="Left" Margin="636.667,257,0,0" VerticalAlignment="Top" Width="152" Height="50" Click="applyBus_btn_Click" Grid.Column="2"/>
+        <Button x:Name="delBus_btn" Content="Delete Bus" HorizontalAlignment="Left" Margin="636.667,30,0,0" VerticalAlignment="Top" Width="152" Height="45" FontWeight="Bold" Click="delBus_btn_Click" Grid.Column="2"/>
+        <Button x:Name="refuel_btn" Content="Send to Refueling" HorizontalAlignment="Left" Margin="636.667,104,0,0" VerticalAlignment="Top" Width="152" Height="50" Click="refuel_btn_Click" Grid.Column="2"/>
+        <Button x:Name="refresh_btn" Content="Send to Refresh" HorizontalAlignment="Left" Margin="636.667,184,0,0" VerticalAlignment="Top" Width="152" Height="50" Click="refresh_btn_Click" Grid.Column="2"/>
         <Grid x:Name="busDetails" Grid.Column="2" HorizontalAlignment="Left" Margin="51.667,53,0,0" VerticalAlignment="Top" Height="254" Width="536" RenderTransformOrigin="0.501,0.514">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="154*"/>
+                <ColumnDefinition Width="261*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -33,17 +35,17 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="License Num:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,1.333" Grid.Row="0" VerticalAlignment="Bottom" FontSize="20" Height="37" Width="127"/>
-            <DatePicker x:Name="fromDateDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="0,10,0,5.333" Grid.Row="2" SelectedDate="{Binding FromDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" FontSize="20" Height="32" Width="148"/>
-            <Label Content="Fuel Remain:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,3.667,0,11" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Height="36" Width="121"/>
-            <TextBox x:Name="fuelRemainTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="3,9.667,0,9" Grid.Row="3" Text="{Binding FuelRemain, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150" FontSize="20"/>
-            <Label Content="From date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,8,0,7.333" Grid.Row="2" VerticalAlignment="Center" FontSize="20" Height="32" Width="105"/>
-            <TextBox x:Name="licenseNumTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="34" Margin="0,16,0,0" Text="{Binding LicenseNum, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150" FontSize="20" IsEnabled="False" RenderTransformOrigin="0.526,0.804"/>
-            <Label Content="Status:" HorizontalAlignment="Left" Margin="0,10.667,0,5" Grid.Row="1" VerticalAlignment="Center" FontSize="20" Height="37" Width="68"/>
+            <Label Content="License Num:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,1.667" Grid.Row="0" VerticalAlignment="Bottom" FontSize="20" Height="37" Width="127" Grid.ColumnSpan="3"/>
+            <DatePicker x:Name="fromDateDatePicker" Grid.Column="2" HorizontalAlignment="Left" Margin="10.667,8.667,0,6.667" Grid.Row="2" SelectedDate="{Binding FromDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" FontSize="20" Height="32" Width="150" Grid.ColumnSpan="2"/>
+            <Label Content="Fuel Remain:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,3.333,0,10.667" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Height="36" Width="121"/>
+            <TextBox x:Name="fuelRemainTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="33" Margin="11.667,9.333,0,8.667" Grid.Row="3" Text="{Binding FuelRemain, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150" FontSize="20" Grid.ColumnSpan="3"/>
+            <Label Content="From date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,8.667,0,6.667" Grid.Row="2" VerticalAlignment="Center" FontSize="20" Height="32" Width="105"/>
+            <TextBox x:Name="licenseNumTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="34" Margin="10.667,16,0,0.667" Text="{Binding LicenseNum, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150" FontSize="20" IsEnabled="False" RenderTransformOrigin="0.526,0.804" Grid.ColumnSpan="2"/>
+            <Label Content="Status:" HorizontalAlignment="Left" Margin="0,11.333,0,6.333" Grid.Row="1" VerticalAlignment="Center" FontSize="20" Height="37" Width="68"/>
 
-            <Label Content="Total Trip:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,6.333,0,6.667" Grid.Row="5" VerticalAlignment="Center" FontSize="20" Height="37" Width="94"/>
-            <TextBox x:Name="totalTripTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="33" Margin="3,14.333,0,2.667" Grid.Row="5" Text="{Binding TotalTrip, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150" FontSize="20"/>
-            <ComboBox x:Name="cbStatus" Grid.Column="1" HorizontalAlignment="Left" Margin="0,11.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="148" Height="37" SelectedItem="{Binding Status}"  />
+            <Label Content="Total Trip:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,7.333,0,7" Grid.Row="5" VerticalAlignment="Center" FontSize="20" Height="37" Width="94"/>
+            <TextBox x:Name="totalTripTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="33" Margin="11.667,15.333,0,3" Grid.Row="5" Text="{Binding TotalTrip, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150" FontSize="20" Grid.ColumnSpan="3"/>
+            <ComboBox x:Name="cbStatus" Grid.Column="2" HorizontalAlignment="Left" Margin="10.667,11.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" Height="37" SelectedItem="{Binding Status}" Grid.ColumnSpan="2"  />
 
         </Grid>
 

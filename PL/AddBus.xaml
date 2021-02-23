@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="AddBus" Height="348.043" Width="434.966">
+        Title="AddBus"  Height="240.165" Width="360.022">
     <Grid Margin="0,0,3,1.667">
-        <Label Content="License Num : " HorizontalAlignment="Left" Height="34" Margin="10,17,0,0" VerticalAlignment="Top" FontFamily="Constantia" FontSize="15" Width="109"/>
-        <Label Content="Status : " HorizontalAlignment="Left" Height="32" Margin="10,56,0,0" VerticalAlignment="Top" FontFamily="Constantia" FontSize="15" Width="71"/>
-        <Label Content="From date : " HorizontalAlignment="Left" Height="28" Margin="10,99,0,0" VerticalAlignment="Top"  FontFamily="Constantia" FontSize="15" Width="92"/>
-        <Label Content="Fuel Remain : " HorizontalAlignment="Left" Height="33" Margin="10,133,0,0" VerticalAlignment="Top"  FontFamily="Constantia" FontSize="15" Width="92"/>
-        <Label Content="Total Trip : " HorizontalAlignment="Left" Height="33" Margin="10,166,0,0" VerticalAlignment="Top" FontFamily="Constantia" FontSize="15"/>
-        <TextBox x:Name="license_tbx" HorizontalAlignment="Left" Height="34" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="146" Margin="124,17,0,0"/>
-        <TextBox x:Name="totalTrip_tbx" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="146" Margin="124,171,0,0"/>
-        <TextBox x:Name="fuelRemain_tbx" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="146" Margin="124,138,0,0"/>
-        <Button Content="OK" HorizontalAlignment="Left" Margin="284,236,0,0" VerticalAlignment="Top" Width="111" Height="34" FontSize="20" Click="Button_Click"/>
-        <DatePicker x:Name="date" HorizontalAlignment="Left" Margin="124,99,0,0" VerticalAlignment="Top" Width="146" Height="34" SelectedDate="{Binding fromDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-        <ComboBox x:Name="cbStatus" HorizontalAlignment="Left" Margin="124,60,0,0" VerticalAlignment="Top" Width="146" Height="32" SelectedItem="{Binding Status}" />
+        <Label Content="License Num : " HorizontalAlignment="Left" Height="23" Margin="10,17,0,0" VerticalAlignment="Top" FontFamily="Constantia"  Width="104"/>
+        <Label Content="Status : " HorizontalAlignment="Left" Height="23" Margin="10,47,0,0" VerticalAlignment="Top" FontFamily="Constantia" Width="104"/>
+        <Label Content="From date : " HorizontalAlignment="Left" Height="23" Margin="10,79,0,0" VerticalAlignment="Top"  FontFamily="Constantia"  Width="104"/>
+        <Label Content="Fuel Remain : " HorizontalAlignment="Left" Height="23" Margin="10,108,0,0" VerticalAlignment="Top"  FontFamily="Constantia"  Width="104"/>
+        <Label Content="Total Trip : " HorizontalAlignment="Left" Height="23" Margin="10,141,0,0" VerticalAlignment="Top" FontFamily="Constantia"  Width="104"/>
+        <TextBox x:Name="license_tbx" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104" Margin="124,17,0,0"/>
+        <TextBox x:Name="totalTrip_tbx" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104" Margin="124,140,0,0"/>
+        <TextBox x:Name="fuelRemain_tbx" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104" Margin="124,109,0,0"/>
+        <Button Content="OK" HorizontalAlignment="Left" Margin="232,173,0,0" VerticalAlignment="Top"  Height="23"  Click="Button_Click" Width="104"/>
+        <DatePicker x:Name="date" HorizontalAlignment="Left" Margin="124,79,0,0" VerticalAlignment="Top" Width="104" Height="23" SelectedDate="{Binding fromDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+        <ComboBox x:Name="cbStatus" HorizontalAlignment="Left" Margin="124,47,0,0" VerticalAlignment="Top" Width="104" Height="23" SelectedItem="{Binding Status}" />
 
     </Grid>
 </Window>

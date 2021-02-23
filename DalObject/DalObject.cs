@@ -369,14 +369,25 @@ namespace DAL
             if (us != null)
             {
                 if (us.Password == user.Password)
-                    return true;
+                {
+                   
+                    return true; 
+                }
                 else
                     throw new DO.BadUserIdException(user.Password, $"wrong password:{user.UserName}");
             }
             else
                 throw new DO.BadUserIdException(user.UserName, $"bad user id: {user.UserName}");
             }
-        
+
+        public bool isWorker(User user)
+        {
+            bool worker;
+            DO.User us = DataSource.ListUser.Find(u => u.UserName == user.UserName);
+            worker = us.Worker;
+            return worker;
+        }
+
         #endregion
 
         #region LineStation

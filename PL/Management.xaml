@@ -45,7 +45,11 @@
         <Label Content="List of all buses :" HorizontalAlignment="Left" Margin="0,107,0,0" VerticalAlignment="Top" Width="185"/>
         <Label Content="List of all lines : " HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Width="185" Grid.Column="1"/>
         <Label Content="List of all station:" HorizontalAlignment="Left" Margin="0,107,0,0" VerticalAlignment="Top" Width="185" Grid.Column="2"/>
-        <Label Grid.ColumnSpan="2" Content="Welcome, " HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="528" FontSize="24"/>
+
+        <Button Content="Disconnect" Click="Button_Click" Margin="160.667,10,10.333,381.667" Grid.Column="2" />
+        <Button Content="Close" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="98" Height="29" Click="Button_Click_1"/>
+
+
 
     </Grid>
 </Window>

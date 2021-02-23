@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BLAPI;
+using BO;
 
 namespace PL
 {
@@ -22,48 +23,69 @@ namespace PL
     public partial class MainWindow : Window
     {
         IBL bl = BLFactory.GetBL("1");
-        BO.User curUser;
+
         public MainWindow()
         {
             InitializeComponent();
-           // bl = _bl;
-            //curUser = _curUser;
-           
+
+
 
         }
 
+
+
+
+        BO.User curUser = new User();
+        private void login_btn2_Click(object sender, RoutedEventArgs e)
+        {
+
+            curUser.UserName = userN.Text;
+            curUser.Password = (string)password2.Password;
+            
+            bool verification;
+
+
+            verification = bl.LogInVerify(curUser);
+            try
+            {
+                if (verification == true)
+                {
+                    verification = bl.isWorker(curUser);
+                    if (verification==true)
+                    {
+                        Management managementWin = new Management(bl);
+                        this.Close();
+                        managementWin.ShowDialog();
+                    }
+                    else
+                    {
+                        UserArea userAreaWin = new UserArea(bl);
+                        this.Close();
+                        userAreaWin.ShowDialog();
+
+                    }
+
+                    // verifier si User existe
+                    // verifier si bon password
+                    //verifier si worker page 1 sinon page 2
+                }
+            }
+            catch (BO.BadUserIdException ex)
+            {
+                MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+        }
         private void login_btn1_Click(object sender, RoutedEventArgs e)
         {
-            //    bool verification;
-
-            //    try 
-            //    {
-            //        verification=bl.LogInVerify(curUser);
-            //        if(verification==true)
-            //        {
-            //            if(curUser.Worker==true)
-            //            {
-            //                Management managementWin = new Management(bl);
-            //                this.Close();
-            //                managementWin.ShowDialog();
-            //            }
-            //            else
-            //            {
-
-            //            }
-
-            //        // verifier si User existe
-            //        // verifier si bon password
-            //        //verifier si worker page 1 sinon page 2
-            //    }
-            //    catch (DO.BadUserIdException ex)
-            //    {
-            //        throw new BO.BadUserIdException("", ex);
-            //    }
             Management managementWin = new Management(bl);
             this.Close();
             managementWin.ShowDialog();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

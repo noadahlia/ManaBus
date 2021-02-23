@@ -82,6 +82,9 @@
     <Compile Include="Station.xaml.cs">
       <DependentUpon>Station.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserArea.xaml.cs">
+      <DependentUpon>UserArea.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddBus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -121,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Station.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserArea.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

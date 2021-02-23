@@ -479,26 +479,35 @@ namespace BL
             }
         }
 
-        public bool LogInVerify(BO.User user)
+        public bool LogInVerify(User user)
         {
             DO.User userDO = new DO.User();
             user.CopyPropertiesTo(userDO);
+
             try
             {
                 dal.LogInVerify(userDO);
+               
             }
-            catch (BO.BadUserIdException ex)
+            catch (DO.BadUserIdException ex)
             {
-                //MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
-                // on peut pas mettre de messagebox ici c BL
+                
                 throw new BO.BadUserIdException("This user doesn't exist", ex);
 
             }
             return true;
 
         }
+        public bool isWorker(User user)
+        {
+            bool check;
+            DO.User userDO = new DO.User();
+            user.CopyPropertiesTo(userDO);
+            check=dal.isWorker(userDO);
+            return check;
+        }
 
-        #endregion
+            #endregion
 
     }
 }

@@ -21,7 +21,12 @@ namespace PL
     public partial class Management : Window
     {
         IBL bl;
+        public Management()
+        {
+            InitializeComponent();
+            
 
+        }
         public Management(IBL _bl)
         {
             InitializeComponent();
@@ -101,5 +106,19 @@ namespace PL
             lineWin.ShowDialog();
             RefreshAllLinesListBox();
         }
+       
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWin = new MainWindow();
+            this.Close();
+            mainWin.ShowDialog();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
+
 }

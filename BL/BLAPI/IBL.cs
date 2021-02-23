@@ -71,8 +71,10 @@ namespace BLAPI
         IEnumerable<User> GetUserBy(Predicate<User> predicate);
         IEnumerable<User> GetAllUsers();
         bool LogInVerify(User user);
+        bool isWorker(User user);
+      
 
-        #endregion
+            #endregion
 
-    }
+        }
 }
