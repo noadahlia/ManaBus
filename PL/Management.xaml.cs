@@ -77,7 +77,9 @@ namespace PL
 
         private void addLine_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            AddLine addLine = new AddLine(bl);
+            addLine.ShowDialog();
+            RefreshAllStationsListBox();
         }
 
 

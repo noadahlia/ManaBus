@@ -12,9 +12,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Threading;
-using BLAPI;
-using BO;
+using System.ComponentModel;
 using System.Diagnostics;
+using BO;
+using BL;
+using BLAPI;
+using PO;
+
 
 namespace PL
 {
@@ -22,133 +26,97 @@ namespace PL
     /// Interaction logic for UserArea.xaml
     /// </summary>
     public partial class UserArea : Window
-    {  //{
-       //    IBL bl;
-       //    BO.User curUser;
-       //    public UserArea()
-       //    {
-       //        InitializeComponent();
-       //    }
+    {
+        IBL bl;
+        //static P pl = new P();
+
+        //BO.Station station;
+        //IEnumerable<IGrouping<TimeSpan, PO.LineTime>> listTest;
+        //TimeSpan startHour;
+
+        //private Stopwatch stopwatch;
+        //BackgroundWorker timing;
+        public UserArea()
+        {
+            InitializeComponent();
+        }
         public UserArea(IBL _bl)
         {
             InitializeComponent();
             bl = _bl;
-            //curBus = _curBus;
-            //busDetails.DataContext = curBus;
-            //cbStatus.ItemsSource = Enum.GetValues(typeof(BO.BusStatus));
-
-
         }
 
-        IBL bl;
-    private Stopwatch stopWatch;
-    private bool isTimerRun;
-    private Thread timerThread;
-    private TimeSpan start = TimeSpan.Zero;
-     public UserArea()
-    {
-        InitializeComponent();
-    }
-        public UserArea(IBL _bl, BO.Station _curStat)
+        //        public UserArea(BO.Station station, IBL _bl)
+        //    {
+        //        InitializeComponent();
+        //        Title = " Schedule Stations" + station.Code + " - " + station.Name;
+        //        bl = _bl;
+        //        stopwatch = new Stopwatch();
+        //        timing = new BackgroundWorker();
+        //        timing.DoWork += Timing_DoWork;
+        //        timing.ProgressChanged += Timing_ProgressChanged;
+        //        timing.RunWorkerCompleted += Timing_RunWorkerCompleted;
+
+        //        timing.WorkerReportsProgress = true;
+        //        timing.WorkerSupportsCancellation = true;
+
+        //        stopwatch.Restart();
+        //        timing.RunWorkerAsync(station);
+        //    }
+
+        //    private void Timing_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        //    {
+
+        //    }
+
+        //    private void Timing_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        //    {
+        //        string timerText = (startHour + TimeSpan.FromTicks(stopwatch.Elapsed.Ticks * 60)).ToString();
+        //        timerText = timerText.Substring(0, 8);
+        //        TimerTextBlock.Text = timerText;
+
+        //        StationTimingDg.ItemsSource = listTest;
+
+        //    }
+
+        //    private void Timing_DoWork(object sender, DoWorkEventArgs e)
+        //    {
+        //        station = e.Argument as BO.Station;
+        //        try
+        //        {
+        //            startHour = DateTime.Now.TimeOfDay;
+        //            while (timing.CancellationPending == false)
+        //            {
+        //                TimeSpan simulatedHourNow = startHour + TimeSpan.FromTicks(stopwatch.Elapsed.Ticks * 60);
+        //                listTest = pl.BoPoLineTimingAdapter(bl.StationTiming(station, simulatedHourNow), simulatedHourNow);
+        //                timing.ReportProgress(1);
+        //                Thread.Sleep(1);
+        //            }
+        //            e.Result = 1;
+        //        }
+        //        catch (BadLineIdException ex)
+        //        {
+        //            MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        }
+        //    }
+
+
+
+        //    private void Window_Closing(object sender, CancelEventArgs e)
+        //    {
+        //        timing.CancelAsync();
+        //    }
+        //}
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
-            bl = _bl;
-        
-        }
-
-    private void Window_Loaded(object sender, RoutedEventArgs e)
-    {
-        stopWatch = new Stopwatch();
-            tb_timer.Text = stopWatch.Elapsed.ToString();
-
-            lb_LineBus.ItemsSource = from station in bl.GetAllBusStations()
-                                     select " תחנה " + station.BusStationKey + " : " + station.StationName;
-        }
-
-    private void StartClock()
-    {
-        if (!isTimerRun)
-        {
-            stopWatch.Restart();
-            isTimerRun = true;
-
-            timerThread = new Thread(RunTimer);
-            timerThread.Start();
-        }
-    }
-
-    private void RunTimer()
-    {
-        while (isTimerRun)
-        {
-            string timerText = (start + stopWatch.Elapsed).ToString();
-            timerText = timerText.Substring(0, 8);
-
-            SetTimer(timerText);
-            Thread.Sleep(1000);
-        }
-    }
-
-    void SetText(string text)
-    {
-            tb_timer.Text = text;
-    }
-
-    void SetTimer(string timerText)
-    {
-        if (!CheckAccess())
-        {
-            Action<string> d = SetText;
-            Dispatcher.BeginInvoke(d, timerText);
-        }
-        else
-        {
-                tb_timer.Text = timerText;
-        }
-    }
-
-    private void start_btn(object sender, RoutedEventArgs e)
-    {
-            tb_timer.Text = start.ToString();
-        start = new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
-        StartClock();
-    }
-    private void lbStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        
-    }
-
-    private void Window_Closed(object sender, EventArgs e)
-    {
-        Environment.Exit(Environment.ExitCode);
-    }
-
-    private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
             MainWindow mainWin = new MainWindow();
             this.Close();
             mainWin.ShowDialog();
         }
 
-        private void lb_Station_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ListBox lb = sender as ListBox;
-            if (lb.SelectedIndex != -1)
-            {
-                string station = lb.SelectedItem as string;
-                //lb_LineBus.ItemsSource = from line in bl.GetAllLines()
-                //                      where line.ListOfStations.Contains(station.Substring(6, 5))
-                //                      select "line: " + line.BusLineNumber;
-                UpdateLayout();
-            }
-        }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
-
-       
     }
-}
+    }

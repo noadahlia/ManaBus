@@ -517,7 +517,64 @@ namespace BL
             return check;
         }
 
-            #endregion
+        #endregion
+        //public IEnumerable<LineTime> ListArrivalOfLine(int lineId, TimeSpan hour, int stationKey)
+        //{
+        //    //Calcul of TravelTime between first station of line and our station
+            
 
+
+
+        //    List<LineTime> listTiming = new List<LineTime>(); //initialize list of all timing for the specified line
+           
+
+        //}
+
+        //internal TimeSpan CalculateTimeOfArrival(TimeSpan startOfTRavel, TimeSpan durationOfTravel)
+        //{
+        //    return startOfTRavel + durationOfTravel;
+        //}
+
+        //internal TimeSpan DurationOfTravel(BO.Line line, int stationKey)
+        //{
+        //    int rankOfStation = dl.GetLineStation(line.Id, stationKey).RankInLine;
+        //    IEnumerable<DO.LineStation> stations = (from lineStat in dl.GetAllLineStationsBy(l => l.LineId == line.Id).ToList()
+        //                                            where lineStat.RankInLine <= rankOfStation
+        //                                            select lineStat).ToList();
+
+        //    TimeSpan travelDuration = new TimeSpan();
+        //    for (int i = 0; i < stations.Count() - 1; i++)
+        //    {
+        //        DO.Station station1 = StationBoDoAdapter(GetStation(stations.ElementAt(i).LineId));
+        //        DO.Station station2 = StationBoDoAdapter(GetStation(stations.ElementAt(i + 1).LineId));
+
+        //        travelDuration += ;
+        //    }
+
+        //    return travelDuration;
+        //}
+
+        //public IEnumerable<IGrouping<TimeSpan, LineTime>> StationTiming(BO.Station station, TimeSpan hour)
+        //{
+        //    //if (station.LinesThatPass == null)
+        //    //    throw new BO.InexistantLineTripException("לא נמצעו נסיעות בשעות אלו עבור הקו המבוקש");
+        //    try
+        //    {
+        //        List<LineTime> timing = new List<LineTime>();
+        //        foreach (int lineId in station.LinesThatPass)
+        //        {
+        //            foreach (var item in ListArrivalOfLine(lineId, hour, station.BusStationKey))
+        //                timing.Add(item);
+        //        }
+
+        //        return from item in timing
+        //               group item by item.ExpectedTimeTillArrive;
+        //    }
+        //    catch (DO. ex)
+        //    {
+        //        throw new BO.("לא נמצעו נסיעות בשעות אלו עבור הקו המבוקש", ex);
+        //    }
+
+        //}
     }
 }

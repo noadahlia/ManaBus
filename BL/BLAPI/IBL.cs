@@ -72,9 +72,11 @@ namespace BLAPI
         IEnumerable<User> GetAllUsers();
         bool LogInVerify(User user);
         bool isWorker(User user);
-      
 
-            #endregion
 
-        }
+        #endregion
+        //IEnumerable<Line> ListArrivalOfLine(int lineId, TimeSpan hour, int stationKey);
+        //IEnumerable<IGrouping<TimeSpan, LineTime>> StationTiming(BO.Station station, TimeSpan hour);
+
+    }
 }
