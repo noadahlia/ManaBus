@@ -98,6 +98,7 @@ namespace PL
             Station statWin = new Station(bl,curStat);
             statWin.ShowDialog();
             RefreshAllStationsListBox();
+            RefreshAllLinesListBox();
 
         }
 
@@ -107,8 +108,10 @@ namespace PL
             Line lineWin = new Line(bl, curLine);
             lineWin.ShowDialog();
             RefreshAllLinesListBox();
+            RefreshAllStationsListBox();
+
         }
-       
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

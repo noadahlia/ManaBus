@@ -57,6 +57,7 @@ namespace PL
                 if (curStat != null)
                 {
                     bl.DeleteStation(curStat.Code);
+                    
                     this.Close();
                     
                 }
