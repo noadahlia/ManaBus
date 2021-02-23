@@ -414,6 +414,16 @@ namespace DAL
             DataSource.ListLineStation.Add(linsta);
         }
 
+        public LineStation GetLS(int lineID, int stationID)
+        {
+            DO.LineStation linsta = DataSource.ListLineStation.Find(ls => ls.LineId == lineID && ls.Station == stationID && ls.IsActive == true);
+
+            if (linsta != null)
+                return linsta.Clone();
+            else
+                throw new DO.BadLineIdStationIDException(lineID,stationID);
+        }
+
 
 
         public void RemoveLineStation(int linID, int statID)
@@ -436,7 +446,29 @@ namespace DAL
         {
             //Passer kav kav si j'ai la stat dans le kav alors je regarde qui est son prev et je maj le pointeur
             DataSource.ListLineStation.RemoveAll(p => p.Station == statID);
-
+            Station delStat = GetStation(statID);
+            foreach(Line line in DataSource.ListLine)
+            {
+                foreach(LineStation ls in DataSource.ListLineStation)
+                {
+                    if (ls.LineId==line.Id && ls.Station == statID)
+                    {
+                        if (ls.PrevStation == 1) { 
+                            //if it's a departure station
+                        }
+                        else if (ls.NextStation == 2) {
+                            //if it's an arrival station
+                        }
+                        else
+                        {
+                            LineStation prev = GetLS(line.Id, ls.PrevStation);
+                            prev.NextStation = ls.NextStation;
+                            LineStation next = GetLS(line.Id, ls.NextStation);
+                            next.PrevStation = ls.PrevStation;
+                        }
+                    }
+                }
+            }
 
         }
         #endregion

@@ -28,6 +28,8 @@ namespace PL
             bl = _bl;
             curStat = _curStat;
             statDetails.DataContext = curStat;
+            lineListDataGrid.DataContext = curStat.ListOfLines;
+            lineListDataGrid.IsReadOnly = true;
         }
 
         private void applyStat_btn_Click(object sender, RoutedEventArgs e)

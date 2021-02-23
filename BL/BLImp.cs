@@ -249,6 +249,10 @@ namespace BL
 
             stationDO.CopyPropertiesTo(stationBO);
 
+            stationBO.ListOfLines = from linsta in dal.GetLineStation(ls => ls.Station == code)
+                                    let line = dal.GetLine(linsta.LineId)
+                                    select LineDoBoAdapter(line);
+
             return stationBO;
         }
 
