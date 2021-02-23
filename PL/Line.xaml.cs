@@ -39,7 +39,27 @@ namespace PL
 
         private void delLine_btn_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult res = MessageBox.Show("Delete selected line?", "Verification", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.No)
+                return;
+            try
+            {
+                if (curLine != null)
+                {
+                    bl.DeleteLine(curLine.Id);
+                    MessageBox.Show("Deletion", "The line have been deletes succesfully ");
+                    this.Close();
 
+                }
+            }
+            catch (BO.BadLineIdException ex)
+            {
+                MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (BO.BadLineIdStationIDException ex)
+            {
+                MessageBox.Show(ex.Message, "Operation Failure", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
 

@@ -181,8 +181,8 @@ namespace BL
         {
             try
             {
-                dal.RemoveLine(id);
                 dal.DeleteLineFromAllStations(id);
+                dal.RemoveLine(id);
 
             }
             catch (DO.BadLineIdException ex)

@@ -191,7 +191,7 @@ namespace DAL
         }
         public void RemoveLine(int id)
         {
-            DO.Line line = DataSource.ListLine.Find(l => l.Code == id && l.IsActive == true);
+            DO.Line line = DataSource.ListLine.Find(l => l.Id == id && l.IsActive == true);
 
             if (line != null)
             {
@@ -414,7 +414,7 @@ namespace DAL
             DO.LineStation linsta = DataSource.ListLineStation.Find(ls => ls.LineId == lineID && ls.Station == stationID && ls.IsActive == true);
 
             if (linsta != null)
-                return linsta.Clone();
+                return linsta;
             else
                 throw new DO.BadLineIdStationIDException(lineID,stationID);
         }
@@ -434,7 +434,11 @@ namespace DAL
         }
         public void DeleteLineFromAllStations(int linID)
         {
-            DataSource.ListLineStation.RemoveAll(p => p.LineId == linID);
+            foreach(LineStation ls in DataSource.ListLineStation)
+            {
+                if (ls.LineId == linID)
+                    RemoveLineStation(ls.LineId, ls.Station); ;
+            }
         }
 
         public void DeleteStationFromAllLines(int statID)
