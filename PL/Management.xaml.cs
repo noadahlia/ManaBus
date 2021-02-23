@@ -79,7 +79,7 @@ namespace PL
         {
             AddLine addLine = new AddLine(bl);
             addLine.ShowDialog();
-            RefreshAllStationsListBox();
+            RefreshAllLinesListBox();
         }
 
 
