@@ -11,6 +11,9 @@
         <CollectionViewSource x:Key="busViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Bus}, CreateList=True}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource busViewSource}">
+        <Grid.Background>
+            <ImageBrush ImageSource="bus-731317_640.jpg" Opacity="0.4"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="*"/>

@@ -87,7 +87,7 @@ namespace DalApi
         #endregion
         
         #region LineStation Function
-        void AddLineStation(int lineID, int stationID, int index, int prevID,int nextID );
+        void AddLineStation(int lineID, int stationID,int prevID,int nextID );
         void RemoveLineStation(int lineID, int stationID);
         //void UpdateLineStation(LineStation station);
         //LineStation GetLineStation(int code);
@@ -101,6 +101,7 @@ namespace DalApi
         #region AdjacentStation
         IEnumerable<DO.AdjacentStations> GetAllAdjStation(Predicate<DO.AdjacentStations> predicate);
         AdjacentStations GetAdjacentStations(int station1, int station2);
+        void UpdateAdjacentStations(int station1, int station2, double distance);
 
         #endregion
 

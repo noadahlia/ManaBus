@@ -1,0 +1,26 @@
+﻿<Window x:Class="PL.Distance"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="Distance" Height="170.803" Width="212.044">
+    <Grid Height="140" VerticalAlignment="Bottom">
+        <Grid.Background>
+            <ImageBrush ImageSource="road-210913_640.jpg" Opacity="0.4"/>
+        </Grid.Background>
+        <TextBox x:Name="tb_value" HorizontalAlignment="Left" Height="30" Margin="34,55,0,0" TextWrapping="Wrap" Text="ex:1234" VerticalAlignment="Top" Width="126" GotFocus="tb_value_GotFocus">
+            <TextBox.Background>
+                <SolidColorBrush Color="White" Opacity="0.4"/>
+            </TextBox.Background>
+        </TextBox>
+        <Label Content="Enter the new distance:" HorizontalAlignment="Left" Height="35" Margin="34,20,0,0" VerticalAlignment="Top" Width="185"/>
+        <Button Content="Update" HorizontalAlignment="Left" Height="26" Margin="60,104,0,0" VerticalAlignment="Top" Width="61" Click="Button_Click">
+            <Button.Background>
+                <SolidColorBrush Color="#FFDDDDDD" Opacity="0.7"/>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>

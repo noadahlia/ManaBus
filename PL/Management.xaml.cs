@@ -60,9 +60,9 @@ namespace PL
 
         private void addBus_btn_Click(object sender, RoutedEventArgs e)
         {
-         AddBus addBus = new AddBus(bl);
-         addBus.ShowDialog();
-         RefreshAllBusesListBox();
+            AddBus addBus = new AddBus(bl);
+            addBus.ShowDialog();
+            RefreshAllBusesListBox();
         }
 
         private void lb_bus_MouseDoubleClick(object sender, MouseButtonEventArgs e)

@@ -579,7 +579,7 @@ namespace DL
             throw new NotImplementedException();
         }
 
-        public void AddLineStation(int lineID, int stationID, int index, int prevID, int nextID)
+        public void AddLineStation(int lineID, int stationID,int prevID, int nextID)
         {
             throw new NotImplementedException();
         }
@@ -610,6 +610,11 @@ namespace DL
         }
 
         public AdjacentStations GetAdjacentStations(int station1, int station2)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateAdjacentStations(int station1, int station2, double distance)
         {
             throw new NotImplementedException();
         }
