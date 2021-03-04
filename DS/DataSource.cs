@@ -1717,9 +1717,11 @@ namespace DS
                     {
                         Station1 = ListLineStation[i].Station,
                         Station2 = ListLineStation[i + 1].Station,
-                        Distance = r.Next(100, 1000),
-                        Time = TimeSpan.FromMinutes(r.Next(4,15))
+                        Distance = r.Next(3000, 10000),
                     };
+                    //time=distance/speed
+                    //if we determine the speed to be 70km/h --> 1160 m/min
+                    adjStat.Time = TimeSpan.FromMinutes(adjStat.Distance /1160 );
                     ListAdjacentStations.Add(adjStat);
                 }
             }

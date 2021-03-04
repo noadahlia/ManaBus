@@ -57,7 +57,8 @@ namespace PL
                 if (curStat != null)
                 {
                     bl.DeleteStation(curStat.Code);
-                    
+                    MessageBox.Show("The station have been deletes succesfully ", "Deletion");
+
                     this.Close();
                     
                 }

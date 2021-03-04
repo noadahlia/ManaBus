@@ -79,6 +79,9 @@
     <Compile Include="AddStation.xaml.cs">
       <DependentUpon>AddStation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Distance.xaml.cs">
+      <DependentUpon>Distance.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PO\LineTime.cs" />
     <Compile Include="Management.xaml.cs">
       <DependentUpon>Management.xaml</DependentUpon>
@@ -102,6 +105,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Bus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Distance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -186,12 +193,6 @@
     <Resource Include="paysage2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BL\BL.csproj">
-      <Project>{c97b66d2-22c3-49b3-ba5c-515d5f571a65}</Project>
-      <Name>BL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.8 %28x86 et x64%29</ProductName>
@@ -202,6 +203,27 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{c97b66d2-22c3-49b3-ba5c-515d5f571a65}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="road-210913_640.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="panorama-3629120_640.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="architecture-1837176_640.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bus-731317_640.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bus-2523410_640.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

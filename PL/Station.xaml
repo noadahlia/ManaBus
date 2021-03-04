@@ -9,6 +9,9 @@
         Title="Station" Height="464.6" Width="632.067" WindowStartupLocation="CenterScreen">
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="bus-2523410_640.jpg" Opacity="0.5"/>
+        </Grid.Background>
         <Button x:Name="applyStat_btn" Content="Apply Changes" HorizontalAlignment="Left" Margin="504,323,0,0" VerticalAlignment="Top" Width="95" Height="30" Click="applyStat_btn_Click"/>
         <Button x:Name="delStat_btn" Content="Delete Station" HorizontalAlignment="Left" Margin="504,25,0,0" VerticalAlignment="Top" Width="95" Height="32" FontWeight="Bold" Click="delStat_btn_Click"/>
         <Grid x:Name="statDetails" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" Height="169" Width="206">
@@ -39,6 +42,9 @@
                   EnableRowVirtualization="True" ItemsSource="{Binding}" 
                   Margin="20,203,339,35" RowDetailsVisibilityMode="VisibleWhenSelected" 
                   RenderTransformOrigin="0.5,0.5">
+            <DataGrid.Background>
+                <SolidColorBrush Color="#FFEAA747" Opacity="0.3"/>
+            </DataGrid.Background>
             <DataGrid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

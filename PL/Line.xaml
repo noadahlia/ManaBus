@@ -9,6 +9,9 @@
         Title="Line" Height="489.786" Width="908.524" WindowStartupLocation="CenterScreen">
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="architecture-1837176_640.jpg" Opacity="0.55"/>
+        </Grid.Background>
         <Button x:Name="applyLine_btn" Content="Apply Changes" HorizontalAlignment="Left" Margin="764,344,0,0" VerticalAlignment="Top" Width="110" Height="31" Click="applyLine_btn_Click"/>
         <Button x:Name="delLine_btn" Content="Delete Line" HorizontalAlignment="Left" Margin="764,23,0,0" VerticalAlignment="Top" Width="108" Height="31" FontWeight="Bold" Click="delLine_btn_Click"/>
         <Label Content="List of stations : " HorizontalAlignment="Left" Height="27" Margin="10,128,0,0" VerticalAlignment="Top" Width="181"/>
@@ -26,17 +29,23 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Label Content="Area:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-            <TextBox x:Name="areaTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding Area, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             <Label Content="Line N°:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
             <TextBox x:Name="codeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             <Label Content="Id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <TextBox x:Name="idTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" IsEnabled="False"/>
+            <ComboBox x:Name="cbArea" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="4,5,0,0" Grid.Row="2" VerticalAlignment="Top" Width="119" BorderBrush="White"
+                SelectedItem="{Binding Area}">
+            </ComboBox>
+
         </Grid>
 
         <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" 
                   EnableRowVirtualization="True" ItemsSource="{Binding}" 
                   Margin="15,163,344,17" RowDetailsVisibilityMode="VisibleWhenSelected" 
                   RenderTransformOrigin="0.5,0.5" ColumnWidth="Auto">
+            <DataGrid.Background>
+                <SolidColorBrush Color="#FFD7EE9B" Opacity="0.4"/>
+            </DataGrid.Background>
             <DataGrid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -49,12 +58,12 @@
                 <DataGridTextColumn x:Name="iDColumn" Binding="{Binding Code}" Header="Code" Width="Auto"/>
                 <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="Auto"/>
                 <DataGridTextColumn x:Name="distanceColumn" Binding="{Binding DistancetoNext}" Header="Distance to Next" Width="Auto"/>
-                <DataGridTextColumn x:Name="timeColumn" Binding="{Binding TimetoNext}" Header="Time to Next" Width="Auto"/>
+                <DataGridTextColumn x:Name="timeColumn" Binding="{Binding TimetoNext, Mode=TwoWay, StringFormat=\{0:hh\\:mm\\:ss\}}" Header="Time to Next" Width="Auto"/>
 
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="updateDistance_btn" Content="Update Distance" ToolTip="Update distance and time for selected station, to the next station in this line"/>
+                            <Button x:Name="updateDistance_btn" Content="Update Distance" ToolTip="Update distance and time for selected station, to the next station in this line" Click="updateDistance_btn_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -62,7 +71,7 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="deleteStation_btn" Content="Delete" ToolTip="Delete selected station from this line"/>
+                            <Button x:Name="deleteStation_btn" Content="Delete" ToolTip="Delete selected station from this line" Click="deleteStation_btn_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

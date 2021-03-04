@@ -16,7 +16,6 @@ namespace BLAPI
     {
 
 
-        // La question à se poser c'est "quelles fonctions je vais avoir besoin depuis PL?"
         #region Bus
 
         void AddBus(BO.Bus bus);
@@ -60,6 +59,13 @@ namespace BLAPI
         void DeleteStation(int id);
 
         IEnumerable<BO.LineStation> GetAllStationsPerLine(int id);
+
+        #endregion
+
+        #region LineStation
+        void AddLineStation(int linID, int statID, int prev, int next);
+        void DeleteLineStation(int linID, int statID);
+        void UpdateStationDistanceToNext(LineStation ls, double distance);
 
         #endregion
 

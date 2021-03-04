@@ -8,29 +8,44 @@
         Title="Management" Height="450" Width="800">
 
     <Grid x:Name="services_Grid">
+        <Grid.Background>
+            <ImageBrush ImageSource="panorama-3629120_640.jpg" Opacity="0.7"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Label Content="&#x9;Bus" HorizontalAlignment="Left" VerticalAlignment="Top" Width="264" Height="60" FontSize="24" Margin="0,47,0,0">
+        <Label Content="           Bus" HorizontalAlignment="Left" VerticalAlignment="Top" Width="264" Height="60" FontSize="24" Margin="0,47,0,0" FontFamily="Engravers MT">
             <Label.Background>
                 <SolidColorBrush Color="#FF1E894A" Opacity="0.8"/>
             </Label.Background>
         </Label>
-        <Label Content="&#x9;Line" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="264" FontSize="24" Margin="0,47,0,0">
+        <Label Content="          Line" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="264" FontSize="24" Margin="0,47,0,0" FontFamily="Engravers MT">
             <Label.Background>
                 <SolidColorBrush Color="#FF29C167" Opacity="0.8"/>
             </Label.Background>
         </Label>
-        <Label Content="&#x9;Station" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="264" FontSize="24" Margin="0,47,0,0">
+        <Label Content="      Station" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="264" FontSize="24" Margin="0,47,0,0" FontFamily="Engravers MT">
             <Label.Background>
                 <SolidColorBrush Color="#FF64FFA4" Opacity="0.8"/>
             </Label.Background>
         </Label>
-        <ListBox x:Name="lb_bus" HorizontalAlignment="Left" Height="214" Margin="10,138,0,0" VerticalAlignment="Top" Width="244" ItemsSource="{Binding}" MouseDoubleClick="lb_bus_MouseDoubleClick"/>
-        <ListBox x:Name="lb_line" HorizontalAlignment="Left" Height="214" Margin="10,138,0,0" VerticalAlignment="Top" Width="244" Grid.Column="1" MouseDoubleClick="lb_line_MouseDoubleClick"/>
-        <ListBox x:Name="lb_station" HorizontalAlignment="Left" Height="214" Margin="10,138,0,0" VerticalAlignment="Top" Width="244" Grid.Column="2" MouseDoubleClick="lb_station_MouseDoubleClick"/>
+        <ListBox x:Name="lb_bus" HorizontalAlignment="Left" Height="214" Margin="10,138,0,0" VerticalAlignment="Top" Width="244" ItemsSource="{Binding}" MouseDoubleClick="lb_bus_MouseDoubleClick">
+            <ListBox.Background>
+                <SolidColorBrush Color="White" Opacity="0.5"/>
+            </ListBox.Background>
+        </ListBox>
+        <ListBox x:Name="lb_line" HorizontalAlignment="Left" Height="214" Margin="10,138,0,0" VerticalAlignment="Top" Width="244" Grid.Column="1" MouseDoubleClick="lb_line_MouseDoubleClick">
+            <ListBox.Background>
+                <SolidColorBrush Color="White" Opacity="0.5"/>
+            </ListBox.Background>
+        </ListBox>
+        <ListBox x:Name="lb_station" HorizontalAlignment="Left" Height="214" Margin="10,138,0,0" VerticalAlignment="Top" Width="244" Grid.Column="2" MouseDoubleClick="lb_station_MouseDoubleClick">
+            <ListBox.Background>
+                <SolidColorBrush Color="White" Opacity="0.5"/>
+            </ListBox.Background>
+        </ListBox>
         <Button x:Name="addLine_btn" Content="Add" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Width="103" Height="35" RenderTransformOrigin="3.069,0.368" Grid.Column="1" Background="#FF29C167" Click="addLine_btn_Click"/>
         <Button x:Name="addStation_btn" Content="Add" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Width="103" Height="35" Grid.Column="2" Click="addStation_btn_Click">
             <Button.Background>
@@ -46,8 +61,8 @@
         <Label Content="List of all lines : " HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Width="185" Grid.Column="1"/>
         <Label Content="List of all station:" HorizontalAlignment="Left" Margin="0,107,0,0" VerticalAlignment="Top" Width="185" Grid.Column="2"/>
 
-        <Button Content="Disconnect" Click="Button_Click" Margin="160.667,10,10.333,381.667" Grid.Column="2" />
-        <Button Content="Close" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="98" Height="29" Click="Button_Click_1"/>
+        <Button Content="Disconnect" Click="Button_Click" Margin="162,10,10,380" Grid.Column="2" />
+        <Button Content="Close" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="103" Height="29" Click="Button_Click_1"/>
 
 
 

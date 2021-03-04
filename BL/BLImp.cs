@@ -168,7 +168,6 @@ namespace BL
                                       let stat = dal.GetStation(ls.Station)
                                       select stat.CopyToLineStation(ls);
                 //adds all LineStations where the LineId == to the new line we want to add, to the ListOfStation of the new line
-                //line.ListOfStations = dal.GetLineStation(p => p.LineId == line.Id);
 
             }
             catch (DO.BadLineIdException ex)
@@ -181,8 +180,8 @@ namespace BL
         {
             try
             {
-                dal.RemoveLine(id);
                 dal.DeleteLineFromAllStations(id);
+                dal.RemoveLine(id);
 
             }
             catch (DO.BadLineIdException ex)
@@ -253,7 +252,7 @@ namespace BL
 
             stationDO.CopyPropertiesTo(stationBO);
 
-            stationBO.ListOfLines = from linsta in dal.GetLineStation(ls => ls.Station == code)
+            stationBO.ListOfLines = from linsta in dal.GetLineStation(ls => ls.Station == code && ls.IsActive)
                                     let line = dal.GetLine(linsta.LineId)
                                     select LineDoBoAdapter(line);
 
@@ -373,11 +372,11 @@ namespace BL
 
         #region LineStation     
 
-        public void AddLineStation(int linID, int statID, int index, int prev, int next)
+        public void AddLineStation(int linID, int statID,int prev, int next)
         {
             try
             {
-                dal.AddLineStation(linID, statID, index, prev, next);
+                dal.AddLineStation(linID, statID,prev,next);
             }
             catch (DO.BadLineIdStationIDException ex)
             {
@@ -399,6 +398,21 @@ namespace BL
                 throw new BO.BadLineIdStationIDException("Student ID and Course ID is Not exist", ex);
             }
         }
+
+        public void UpdateStationDistanceToNext(LineStation linsta, double distance)
+        {
+            try
+            {
+                dal.UpdateAdjacentStations(linsta.Code,linsta.NextStation,distance);
+            }
+            catch(DO.BadStationIdException ex)
+            {
+                throw new BO.BadLineIdStationIDException("Student ID and Course ID is Not exist", ex);
+
+            }
+
+        }
+
         #endregion
 
         #region User

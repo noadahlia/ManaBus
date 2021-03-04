@@ -5,18 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="AddLine" Height="264.965" Width="393.427">
-    <Grid Margin="0,0,24,14">
+        Title="AddLine" Height="338.459" Width="729.952">
+    <Grid >
         <Label Content="Id : " HorizontalAlignment="Left" Height="23" Margin="10,18,0,0" VerticalAlignment="Top" Width="104" FontFamily="Constantia"/>
-        <Label Content="Area : " HorizontalAlignment="Left" Height="22" Margin="10,130,0,0" VerticalAlignment="Top" Width="104" FontFamily="Constantia"/>
-        <Label Content="LastStation : " HorizontalAlignment="Left" Height="23" Margin="10,101,0,0" VerticalAlignment="Top" Width="104" FontFamily="Constantia"/>
-        <Label Content="FirstStation : " HorizontalAlignment="Left" Height="28" Margin="10,73,0,0" VerticalAlignment="Top" Width="104" FontFamily="Constantia"/>
-        <Label Content="Code : " HorizontalAlignment="Left" Height="28" Margin="9,41,0,0" VerticalAlignment="Top" Width="104" FontFamily="Constantia"/>
-        <Button x:Name="ok_btn" Content="OK" HorizontalAlignment="Left" Height="30" Margin="244,162,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click"/>
+        <Label Content="Area : " HorizontalAlignment="Left" Height="22" Margin="10,74,0,0" VerticalAlignment="Top" Width="104" FontFamily="Constantia"/>
+        <Label Content="Code : " HorizontalAlignment="Left" Height="28" Margin="10,46,0,0" VerticalAlignment="Top" Width="104" FontFamily="Constantia"/>
+        <Button x:Name="ok_btn" Content="Save" HorizontalAlignment="Left" Height="30" Margin="569,267,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click"/>
         <TextBox x:Name="id_tbx" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="119,17,0,0" />
-        <ComboBox x:Name="cbArea" HorizontalAlignment="Left" Margin="119,130,0,0" VerticalAlignment="Top" Width="120" Height="22" SelectedItem="{Binding Area}" />
-        <TextBox x:Name="last_tbx" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="119,101,0,0"/>
+        <ComboBox x:Name="cbArea" HorizontalAlignment="Left" Margin="119,74,0,0" VerticalAlignment="Top" Width="120" Height="22" SelectedItem="{Binding Area}" />
         <TextBox x:Name="code_tbx" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="119,45,0,0" />
-        <TextBox x:Name="first_tbx" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="119,73,0,0"/>
+
+        <DataGrid x:Name="newlinestationsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,122,476,10" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn x:Name="iDColumn" Binding="{Binding Code}" Header="ID" />
+                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" />
+                
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnRemoveStation" Content="Remove"  ToolTip="UnRegister selected station to the new line" Click="btnRemoveStation_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        
+        <DataGrid x:Name="stationsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="297,122,189,10" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnAddStation" Content="Add"  ToolTip="Register selected station to the new line" Click="btnAddStation_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn x:Name="iDColumn1" Binding="{Binding Code}" Header="ID" />
+                <DataGridTextColumn x:Name="nameColumn1" Binding="{Binding Name}" Header="Name" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Window>
