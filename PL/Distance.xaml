@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="Distance" Height="170.803" Width="212.044">
+        Title="Distance" Height="170.803" Width="212.044" WindowStartupLocation="CenterScreen">
     <Grid Height="140" VerticalAlignment="Bottom">
         <Grid.Background>
             <ImageBrush ImageSource="road-210913_640.jpg" Opacity="0.4"/>

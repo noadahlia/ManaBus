@@ -165,8 +165,9 @@ namespace BL
             {
                 dal.AddLine(lineDO);
                 line.ListOfStations = from ls in dal.GetLineStation(ls => ls.LineId == line.Id && ls.IsActive)
-                                      let stat = dal.GetStation(ls.Station)
-                                      select stat.CopyToLineStation(ls);
+                                       let stat = dal.GetStation(ls.Station)
+                                       select stat.CopyToLineStation(ls);
+
                 //adds all LineStations where the LineId == to the new line we want to add, to the ListOfStation of the new line
 
             }

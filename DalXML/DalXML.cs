@@ -618,6 +618,21 @@ namespace DL
         {
             throw new NotImplementedException();
         }
+
+        public BusOnTrip GetBusOnTrip(int id, TimeSpan start)
+        {
+            throw new NotImplementedException();
+        }
+
+        public LineTrip GetLineTrip(int id, TimeSpan now)
+        {
+            throw new NotImplementedException();
+        }
+
+        public LineStation GetLS(int lineID, int stationID)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
 
