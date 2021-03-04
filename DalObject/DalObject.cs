@@ -392,7 +392,7 @@ namespace DAL
 
         #endregion
 
-        #region LineStation
+        #region LineStation Function
         public IEnumerable<DO.LineStation> GetLineStation(Predicate<DO.LineStation> predicate)
         {
 
@@ -523,11 +523,75 @@ namespace DAL
         }
         #endregion
 
-        #region A coder
+        #region LineTrip Function
+        public void AddLineTrip(LineTrip lineTrip)
+        {
+              if (DataSource.ListLineTrip.FirstOrDefault(t => t.LineId == lineTrip.LineId) != null)
+                throw new DO.BadLineTripIdException(lineTrip.LineId, "Duplicate LineTrip ID");
+            DataSource.ListLineTrip.Add(lineTrip.Clone());
+        }
+
+        public void RemoveLineTrip(int id)
+        {
+            DO.LineTrip lineTrip = DataSource.ListLineTrip.Find(t => t.LineId == id && t.IsActive == true);
+
+            if (lineTrip != null)
+            {
+                lineTrip.IsActive = false;
+            }
+            else
+                throw new DO.BadTripIdException(id, $"bad lineTrip id: {id}");
+        }
+
+        public void UpdateLineTrip(LineTrip Ltrip)
+        {
+            DO.LineTrip lineT = DataSource.ListLineTrip.Find(t => t.LineId == Ltrip.LineId && t.IsActive == true);
+
+            if (lineT != null)
+            {
+                DataSource.ListLineTrip.Remove(lineT);
+                DataSource.ListLineTrip.Add(lineT.Clone());
+            }
+            else
+                throw new DO.BadLineTripIdException(lineT.LineId, $"bad trip id: {lineT.LineId}");
+        }
+
+        public LineTrip GetLineTrip(int id, TimeSpan now)
+        {
+            DO.LineTrip lineT = DataSource.ListLineTrip.Find(t => t.LineId == id && t.IsActive == true && t.StartAt <= now && t.FinishAt >= now);
+
+            if (lineT != null)
+                return lineT.Clone();
+            else
+                throw new DO.BadLineTripIdException(id, $"bad trip id: {id}");
+        }
+
+        public IEnumerable<LineTrip> GetAllLineTrip(Func<LineTrip, bool> predicate = null)
+        {
+            if (predicate == null)
+            {
+                return from lTrip in DataSource.ListLineTrip
+                       where lTrip.IsActive == true
+                       select lTrip.Clone();
+            }
+            else
+            {
+                return from lTrip in DataSource.ListLineTrip
+                       where lTrip.IsActive == true
+                       where predicate(lTrip)
+                       select lTrip.Clone();
+            }
+        }
+
+        public IEnumerable<LineTrip> GetAllLineTrip()
+        {
+            return from lTrip in DataSource.ListLineTrip
+                   select lTrip.Clone();
+        }
+
         public IEnumerable<User> GetAllUsers()
         {
-            return from user in DataSource.ListUser
-                   select user.Clone();
+            throw new NotImplementedException();
         }
 
         public void AddBusOnTrip(BusOnTrip bus)
@@ -545,7 +609,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public BusOnTrip GetBusOnTrip(int id)
+        public BusOnTrip GetBusOnTrip(int id, TimeSpan start)
         {
             throw new NotImplementedException();
         }
@@ -559,42 +623,6 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
-
-
-
-        public void AddLineTrip(LineTrip station)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveLineTrip(int code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateLineTrip(LineTrip station)
-        {
-            throw new NotImplementedException();
-        }
-
-        public LineTrip GetLineTrip(int code)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<LineTrip> GetAllLineTrip(Func<LineTrip, bool> predicate = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<LineTrip> GetAllLineTrip()
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-
 
         #endregion
 

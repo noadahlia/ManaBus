@@ -56,8 +56,17 @@ namespace BO
             base(message, innerException) => Pseudo = ((DO.BadUserIdException)innerException).ID;
         public override string ToString() => base.ToString() + $", bad user id: {Pseudo}";
     }
-}
 
+    [Serializable]
+    public class BadLineTripIdException : Exception
+    {
+        public int ID;
+        public BadLineTripIdException(string message, Exception innerException) :
+            base(message, innerException) => ID = ((DO.BadLineTripIdException)innerException).ID;
+        public override string ToString() => base.ToString() + $", bad lineTrip id: {ID}";
+    }
+
+}
 
 
 

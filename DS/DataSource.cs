@@ -14,9 +14,10 @@ namespace DS
         public static List<Line> ListLine;
         public static List<Trip> ListTrip;
         public static List<User> ListUser;
-        public static List<BusOnTrip> ListLineTrip;
+        public static List<BusOnTrip> ListBusOnTrip;
         public static List<LineStation> ListLineStation;
         public static List<AdjacentStations> ListAdjacentStations;
+        public static List<LineTrip> ListLineTrip;
         static DataSource()
         {
             InitAllLists();

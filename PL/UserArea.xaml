@@ -38,7 +38,7 @@
         </DataGrid>
         <TextBlock x:Name="TimerTextBlock" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Height="35" Width="196"
                    TextAlignment="Center" Margin="572,10,25,25"/>
-        <Button x:Name="Close"  Content="Close" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="98" Height="29" Click="Button_Click_1"/>
-        <Button x:Name="Disconnect"  Content="Disconnect" Click="Button_Click" Margin="132,10,549,31" />
+        <Button x:Name="Close"  Content="Close" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="98" Height="29" Click="Button_Click_Close"/>
+        <Button x:Name="Disconnect"  Content="Disconnect" Click="Button_Click_Disconnect" Margin="132,10,549,31" />
     </Grid>
 </Window>

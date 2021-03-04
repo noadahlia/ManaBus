@@ -27,8 +27,8 @@ namespace BL
             {
                 throw new BO.BadBusIdException("Bus ID doesn't exist", ex);
             }
-          
-            busDO.CopyPropertiesTo(busBO);          
+
+            busDO.CopyPropertiesTo(busBO);
 
             return busBO;
         }
@@ -45,7 +45,7 @@ namespace BL
                     dal.AddBus(busDO);
                 else throw new Exception("License Number must be 8 digits");
             }
-            catch(DO.BadBusIdException ex)
+            catch (DO.BadBusIdException ex)
             {
                 throw new BO.BadBusIdException("This bus already exists", ex);
             }
@@ -61,7 +61,7 @@ namespace BL
             }
             catch (DO.BadBusIdException ex)
             {
-                throw new BO.BadBusIdException("This bus doesn't exist",ex);
+                throw new BO.BadBusIdException("This bus doesn't exist", ex);
             }
             return busDoBoAdapter(busDO);
         }
@@ -150,10 +150,10 @@ namespace BL
 
             lineDO.CopyPropertiesTo(lineBO);
 
-            lineBO.ListOfStations = from ls in dal.GetLineStation(ls => ls.LineId == id&&ls.IsActive)
+            lineBO.ListOfStations = from ls in dal.GetLineStation(ls => ls.LineId == id && ls.IsActive)
                                     let stat = dal.GetStation(ls.Station)
                                     select stat.CopyToLineStation(ls);
-           
+
 
             return lineBO;
         }
@@ -164,9 +164,9 @@ namespace BL
             try
             {
                 dal.AddLine(lineDO);
-                line.ListOfStations= from ls in dal.GetLineStation(ls => ls.LineId == line.Id && ls.IsActive)
-                                     let stat = dal.GetStation(ls.Station)
-                                     select stat.CopyToLineStation(ls);
+                line.ListOfStations = from ls in dal.GetLineStation(ls => ls.LineId == line.Id && ls.IsActive)
+                                      let stat = dal.GetStation(ls.Station)
+                                      select stat.CopyToLineStation(ls);
                 //adds all LineStations where the LineId == to the new line we want to add, to the ListOfStation of the new line
                 //line.ListOfStations = dal.GetLineStation(p => p.LineId == line.Id);
 
@@ -213,7 +213,7 @@ namespace BL
             }
             return LineDoBoAdapter(lineDO);
         }
-        public IEnumerable<Line> GetLinesBy(Predicate<Line> predicate )// a completer ils l ont laisse vide efrat et dan 
+        public IEnumerable<Line> GetLinesBy(Predicate<Line> predicate)// a completer ils l ont laisse vide efrat et dan 
         {
             return from line in dal.GetAllLines()
                    where predicate(LineDoBoAdapter(line))
@@ -291,7 +291,7 @@ namespace BL
                     UpdateLineInfos(line);
                 }
 
-                
+
             }
             catch (DO.BadStationIdException ex)
             {
@@ -377,7 +377,7 @@ namespace BL
         {
             try
             {
-                dal.AddLineStation(linID, statID, index,prev,next);
+                dal.AddLineStation(linID, statID, index, prev, next);
             }
             catch (DO.BadLineIdStationIDException ex)
             {
@@ -385,14 +385,14 @@ namespace BL
             }
         }
 
-        
+
 
         public void DeleteLineStation(int linID, int statID)
         {
             try
             {
                 dal.RemoveLineStation(linID, statID);
-               
+
             }
             catch (DO.BadLineIdStationIDException ex)
             {
@@ -430,14 +430,14 @@ namespace BL
             try
             {
                 dal.AddUser(userDO);
-                
+
             }
             catch (DO.BadUserIdException ex)
             {
                 throw new BO.BadUserIdException("This user already exists", ex);
             }
 
-        } 
+        }
 
         public User GetUser(string pseudo)
         {
@@ -478,7 +478,7 @@ namespace BL
                    where predicate(userDoBoAdapter(user))
                    select userDoBoAdapter(user);
         }
- 
+
         public void UpdateUserInfos(BO.User user)
         {
             DO.User userDO = new DO.User();
@@ -501,11 +501,11 @@ namespace BL
             try
             {
                 dal.LogInVerify(userDO);
-               
+
             }
             catch (DO.BadUserIdException ex)
             {
-                
+
                 throw new BO.BadUserIdException("Wrong User or Password", ex);
 
             }
@@ -517,68 +517,155 @@ namespace BL
             bool check;
             DO.User userDO = new DO.User();
             user.CopyPropertiesTo(userDO);
-            check=dal.isWorker(userDO);
+            check = dal.isWorker(userDO);
             return check;
         }
 
         #endregion
-        //public IEnumerable<LineTime> ListArrivalOfLine(int lineId, TimeSpan hour, int stationKey)
-        //{
-        //    //Calcul of TravelTime between first station of line and our station
-            
 
+        #region LineTrip
+        BO.LineTrip LineTripDoBoAdapter(DO.LineTrip lineTripDO)
+        {
+            BO.LineTrip lineTripBO = new BO.LineTrip();
+            int id = lineTripDO.LineId;
+            TimeSpan time = lineTripDO.StartAt;
+            try
+            {
+                lineTripDO = dal.GetLineTrip(id, time);
+            }
+            catch (DO.BadLineTripIdException ex)
+            {
+                throw new BO.BadLineTripIdException("LineTrip ID doesn't exist", ex);
+            }
+
+            lineTripDO.CopyPropertiesTo(lineTripBO);
+
+            return lineTripBO;
+        }
+        public void AddLineTrip(BO.LineTrip lineTrip)
+        {
+            DO.LineTrip lineTripBO = new DO.LineTrip();
+            lineTrip.CopyPropertiesTo(lineTripBO);
+            try
+            {
+                dal.AddLineTrip(lineTripBO);
+
+            }
+            catch (DO.BadLineTripIdException ex)
+            {
+                throw new BO.BadLineTripIdException("This lineTrip already exists", ex);
+            }
+        }
+        public BO.LineTrip GetLineTrip(int lineId, TimeSpan startTime)
+        {
+            DO.LineTrip ls = dal.GetLineTrip(lineId, startTime);
+            if (ls != null)
+                return LineTripDoBoAdapter(dal.GetLineTrip(lineId, startTime));
+            else
+                return null;
+        }
+
+        public IEnumerable<BO.LineTrip> GetAllLineTrips()
+        {
+            return from lineTripDO in dal.GetAllLineTrip()
+                   orderby lineTripDO.LineId
+                   select LineTripDoBoAdapter(lineTripDO);
+        }
+
+        public void UpdateLineTrip(BO.LineTrip lineTrip)
+        {
+            DO.LineTrip lineTDO = new DO.LineTrip();
+            lineTrip.CopyPropertiesTo(lineTDO);
+            try
+            {
+                dal.UpdateLineTrip(lineTDO);
+            }
+            catch (DO.BadLineTripIdException ex)
+            {
+                throw new BO.BadLineTripIdException("This lineTrip doesn't exist", ex);
+            }
+        }
+        public void DeleteLineTrip(int id)
+        {
+            try
+            {
+                dal.RemoveLineTrip(id);
+
+                foreach (LineTrip lineT in GetAllLineTrips())
+                {
+                    UpdateLineTrip(lineT);
+                }
+
+
+            }
+            catch (DO.BadLineTripIdException ex)
+            {
+                throw new BO.BadLineTripIdException("This lineTrip doesn't exist", ex);
+            }
+        }
+        #endregion
+        //IEnumerable<LineTime> ListArrivalOfLine(int lineId, TimeSpan hour, int stationKey)
+        //{
+
+        //    //Calcul of TravelTime between first station of line and our station
+        //    BO.Line line = GetLine(lineId);
+        //    TimeSpan durationOfTravel = DurationOfTravel(line, stationKey);
+
+        //    DO.LineTrip myLineTrip = dal.GetLineTrip(lineId, hour);
 
 
         //    List<LineTime> listTiming = new List<LineTime>(); //initialize list of all timing for the specified line
-           
+        //    while (myLineTrip.StartAt + durationOfTravel < hour)
+        //        myLineTrip.StartAt += myLineTrip.Frequency; //we can change value of StartTimeRange thanks to Clone() 
+        //    for (TimeSpan i = myLineTrip.StartAt; i <= hour;)
+        //    {
+        //        listTiming.Add(new LineTime
+        //        {
+        //            TripStart = i,
+        //            Id = myLineTrip.LineId,
+        //            ExpectedTimeTillArrive = CalculateTimeOfArrival(i, durationOfTravel)
+        //        });
+        //        i += myLineTrip.Frequency;
+        //    }
+        //    //if station is the first we want to show 2 nexts departures
+        //    if (stationKey == line.FirstStation)
+        //    {
+        //        listTiming.Add(new LineTime
+        //        {
+        //            TripStart = myLineTrip.StartAt,
+        //            Id = myLineTrip.LineId,
+        //            ExpectedTimeTillArrive = myLineTrip.StartAt
+        //        });
+        //        myLineTrip.StartAt += myLineTrip.Frequency;
+        //        listTiming.Add(new LineTime
+        //        {
+        //            TripStart = myLineTrip.StartAt,
+        //            Id = myLineTrip.LineId,
+        //            ExpectedTimeTillArrive = myLineTrip.StartAt
+        //        });
+        //    }
+        //    return listTiming;
 
-        //}
+            //}
 
-        //internal TimeSpan CalculateTimeOfArrival(TimeSpan startOfTRavel, TimeSpan durationOfTravel)
-        //{
-        //    return startOfTRavel + durationOfTravel;
-        //}
+            internal TimeSpan CalculateTimeOfArrival(TimeSpan startOfTRavel, TimeSpan durationOfTravel)
+        {
+            return startOfTRavel + durationOfTravel;
+        }
 
         //internal TimeSpan DurationOfTravel(BO.Line line, int stationKey)
         //{
-        //    int rankOfStation = dl.GetLineStation(line.Id, stationKey).RankInLine;
-        //    IEnumerable<DO.LineStation> stations = (from lineStat in dl.GetAllLineStationsBy(l => l.LineId == line.Id).ToList()
-        //                                            where lineStat.RankInLine <= rankOfStation
-        //                                            select lineStat).ToList();
 
-        //    TimeSpan travelDuration = new TimeSpan();
-        //    for (int i = 0; i < stations.Count() - 1; i++)
-        //    {
-        //        DO.Station station1 = StationBoDoAdapter(GetStation(stations.ElementAt(i).LineId));
-        //        DO.Station station2 = StationBoDoAdapter(GetStation(stations.ElementAt(i + 1).LineId));
 
-        //        travelDuration += ;
-        //    }
 
-        //    return travelDuration;
         //}
 
-        //public IEnumerable<IGrouping<TimeSpan, LineTime>> StationTiming(BO.Station station, TimeSpan hour)
+        //public IEnumerable<IGrouping<TimeSpan, LineTime>> StationTiming(BO.BusStation station, TimeSpan hour)
         //{
-        //    //if (station.LinesThatPass == null)
-        //    //    throw new BO.InexistantLineTripException("לא נמצעו נסיעות בשעות אלו עבור הקו המבוקש");
-        //    try
-        //    {
-        //        List<LineTime> timing = new List<LineTime>();
-        //        foreach (int lineId in station.LinesThatPass)
-        //        {
-        //            foreach (var item in ListArrivalOfLine(lineId, hour, station.BusStationKey))
-        //                timing.Add(item);
-        //        }
 
-        //        return from item in timing
-        //               group item by item.ExpectedTimeTillArrive;
-        //    }
-        //    catch (DO. ex)
-        //    {
-        //        throw new BO.("לא נמצעו נסיעות בשעות אלו עבור הקו המבוקש", ex);
-        //    }
 
-        //}
+        
+
+
     }
 }

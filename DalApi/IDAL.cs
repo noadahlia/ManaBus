@@ -7,8 +7,8 @@ using DO;
 
 namespace DalApi
 {
-   public interface IDAL
-   {
+    public interface IDAL
+    {
         #region Bus Function
         void AddBus(Bus bus);
         void RemoveBus(int license);
@@ -45,7 +45,7 @@ namespace DalApi
         #region Trip Function
         void AddTrip(Trip trip);
         void RemoveTrip(int id);
-        void UpdateTrip(Trip trip );
+        void UpdateTrip(Trip trip);
         Trip GetTrip(int id);
         IEnumerable<Trip> GetAllTrip(Func<Trip, bool> predicate = null);
         IEnumerable<Trip> GetAlTrips();
@@ -68,26 +68,24 @@ namespace DalApi
         void AddBusOnTrip(BusOnTrip bus);
         void RemoveBusOnTrip(int id);
         void UpdateBusOnTrip(BusOnTrip bus);
-        BusOnTrip GetBusOnTrip(int id);
+        BusOnTrip GetBusOnTrip(int id, TimeSpan start);
         IEnumerable<BusOnTrip> GetAllBusOnTrip(Func<BusOnTrip, bool> predicate = null);
         IEnumerable<BusOnTrip> GetAllBusOnTrips();
 
         #endregion
 
-     
-
         #region LineTrip Function
         void AddLineTrip(LineTrip station);
-        void RemoveLineTrip(int code);
+        void RemoveLineTrip(int id);
         void UpdateLineTrip(LineTrip station);
-        LineTrip GetLineTrip(int code);
+        LineTrip GetLineTrip(int id, TimeSpan now);
         IEnumerable<LineTrip> GetAllLineTrip(Func<LineTrip, bool> predicate = null);
         IEnumerable<LineTrip> GetAllLineTrip();
 
         #endregion
-        
+
         #region LineStation Function
-        void AddLineStation(int lineID, int stationID, int index, int prevID,int nextID );
+        void AddLineStation(int lineID, int stationID, int index, int prevID, int nextID);
         void RemoveLineStation(int lineID, int stationID);
         //void UpdateLineStation(LineStation station);
         //LineStation GetLineStation(int code);
@@ -95,14 +93,18 @@ namespace DalApi
         void DeleteLineFromAllStations(int linID);
 
         IEnumerable<LineStation> GetLineStation(Predicate<DO.LineStation> predicate);
-        //IEnumerable<LineStation> GetAllLineStation();
+        LineStation GetLS(int lineID, int stationID);
+    
+    //IEnumerable<LineStation> GetAllLineStation();
 
-        #endregion
-        #region AdjacentStation
-        IEnumerable<DO.AdjacentStations> GetAllAdjStation(Predicate<DO.AdjacentStations> predicate);
-        AdjacentStations GetAdjacentStations(int station1, int station2);
+    #endregion
 
-        #endregion
+    #region AdjacentStation
+    IEnumerable<AdjacentStations> GetAllAdjStation(Predicate<DO.AdjacentStations> predicate);
+    AdjacentStations GetAdjacentStations(int station1, int station2);
 
-    }
+    #endregion
+
+}
+    
 }

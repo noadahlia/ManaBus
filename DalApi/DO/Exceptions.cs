@@ -50,6 +50,20 @@ namespace DO
     }
     #endregion
 
+    #region LineTrip
+    public class BadLineTripIdException : Exception
+    {
+        public int ID;
+        public BadLineTripIdException(int id) : base() => ID = id;
+        public BadLineTripIdException(int id, string message) :
+            base(message) => ID = id;
+        public BadLineTripIdException(int id, string message, Exception innerException) :
+            base(message, innerException) => ID = id;
+
+        public override string ToString() => base.ToString() + $", bad lineTrip id : {ID}";
+    }
+    #endregion
+
     #region UserException
     public class BadUserIdException : Exception
     {
